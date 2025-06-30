@@ -1,0 +1,40 @@
+/* ========================= CSS GÉNÉRAL ==================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
+/* ========================= MAP ============================ */
+#map {
+    height: 500px;
+    width: 600px;
+}
+
+/* ================== LISTE DES POINTS ====================== */
+#points {
+    flex-direction: column;
+}
