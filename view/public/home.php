@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="/public/css/public.css">
+</head>
+
+<body>
+    <div id="center">
+
+        <h1>Carte Interactive</h1>
+        <h3>Parcours DB à Bruxelles</h3>
+        <button>Conextion à l'administration</button>
+
+    </div>
+
+    <div id="ContainerCarte">
+
+        <div class="left-content">
+            <div id="carte"></div>
+            <div class="content">
+            </div>
+        </div>
+        <div id="list">
+            <h3>List des ponts</h3>
+            <h5>clické</h5>
+            <hr>
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+
+        let latitudeBigBen = 50.8467;
+        let letitudeBigBen = 4.3525;
+
+        let map = L.map("carte", {
+            center: [latitudeBigBen, letitudeBigBen],
+            zoom: 18,
+        });
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker([latitudeBigBen, letitudeBigBen])
+            .addTo(map)
+
+            .openPopup();
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
