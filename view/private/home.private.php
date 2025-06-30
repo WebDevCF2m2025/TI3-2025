@@ -69,7 +69,7 @@
                                             <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.792 9.792a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l9.792-9.792zM11.207 2L3 10.207V13h2.793L14 4.793 11.207 2z" />
                                         </svg>
                                     </a>
-                                    <a href="?action=supprimer&id=<?= urlencode($location['id']) ?>" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
+                                    <a href="?page=delete" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm1 2A.5.5 0 0 1 7 7h2a.5.5 0 0 1 0 1H7a.5.5 0 0 1-.5-.5zm2.5 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zm-3.5 1v9a1 1 0 0 0 1 1h3v-10h-4z" />
