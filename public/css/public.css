@@ -1,4 +1,4 @@
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 640px) {
   #carte {
     height: 500px;
     width: 640px;
@@ -17,4 +17,9 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 25px;
+}
+
+#list {
+  height: 500px;
+  overflow: auto;
 }
