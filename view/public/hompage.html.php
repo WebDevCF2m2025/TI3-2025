@@ -16,17 +16,44 @@
         #carte {
             width: 800px;
             height:600px;
+            margin: auto;
         }
-        body{
+        h1{
+            text-align: center;
+        }
+
+        h2{
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .btn{
+            width: 10rem ;
             margin: 0 auto;
+            margin-bottom: 1rem;
         }
+
     </style>
  
 </head>
 <body>
     <h1>Carte interactive</h1>
-    <button onclick="testfetch()">Connexion admin</button>
-    <div id="carte"></div>
+    <h2>Parcours BD à Bruxelles</h2>
+    <div class="btn"><button onclick="testfetch()">Connexion admin</button></div>
+    
+    <div class="view"> 
+         <div id="carte"></div>
+         <div class="liste">
+            <?php foreach($localisations as $local) :  
+            ?>
+            <ul>
+                <li><?= $local['rue'] ?> | <?= $local['codepostal'] ?> <?= $local['ville'] ?> <a href="">Cliquer</a></li>
+            </ul>
+             <?php endforeach;  
+            ?>
+         </div>
+        </div>
+  
  
     <!-- JS de Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
