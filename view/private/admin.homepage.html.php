@@ -17,6 +17,59 @@
   <div class="bg-white p-4 rounded shadow-sm mb-5">
     <h1>ADMIN</h1>
 </div>
+  <div class="table-responsive d-none d-md-block">
+    <table class="table table-hover align-middle bg-white rounded">
+      <thead class="table-light">
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Code postal</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Nombre Vélo</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col" class="text-center">Modifier</th>
+        <th scope="col" class="text-center">Supprimer</th>
+      </tr>
+      </thead>
+      <tbody>
+      <?php foreach ($markers as $marker): ?>
+      <tr>
+        <td>
+          <?= $marker['nom'] ?>
+        </td>
+        <td>
+
+          <?=$marker['adresse'] ?>
+        </td>
+        <td>
+          <?= $marker['codepostal'] ?>
+        </td>
+        <td>
+          <?= $marker['ville'] ?>
+        </td>
+        <td class="text-center">
+          <?=$marker['nb_velos'] ?>
+        </td>
+        <td>
+          <?=$marker['latitude'] ?>
+        </td>
+        <td>
+          <?=$marker['longitude'] ?>
+        </td>
+        <td>
+          <a href="?pg=update&id=<?= $marker['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
+        </td>
+        <td>
+          <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $marker['adresse']?>')? document.location
+            .href='?pg=delete&id=<?= $marker['id']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
+        </td>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+
+
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

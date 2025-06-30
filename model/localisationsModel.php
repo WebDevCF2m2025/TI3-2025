@@ -2,7 +2,7 @@
 
 function getAllMarkers(PDO $db): array {
 
-  $request = $db->query("SELECT m.`id`, m.`nom`, m.`adresse`, m.`codepostal`, m.`ville`, m.`latitude`, m.`longitude`
+  $request = $db->query("SELECT m.`id`, m.`nom`, m.`adresse`, m.`codepostal`, m.`ville`,m.`nb_velos`, m.`latitude`, m.`longitude`
   FROM localisations m 
   ");
 

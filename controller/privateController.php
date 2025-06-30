@@ -9,7 +9,7 @@ if (isset($_GET['pg'])) {
       header("Location: ./");
     exit();
   } elseif ($_GET['pg'] === "admin") {
-   // $marker = getAllMarkers($db);
+    $markers = getAllMarkers($db);
     require_once "../view/private/admin.homepage.html.php";
   } elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
     // convertit le string en int

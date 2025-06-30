@@ -28,14 +28,10 @@ if(isset($_GET['pg'])){
     }
     // appel de la vue
     require_once "../view/public/login.html.php";
-  }else if($_GET['pg'] === "about"){
-    // appel de la vue
-    require_once "../view/public/about.html.php";
-
   }
 }else{
   // chargement du marqueur pour la carte
-  //$markers = getMarkers($db);
+  $markers = getAllMarkers($db);
   // si on veut récupérer les marqueurs en json
   if(isset($_GET['getjson'])){
     echo json_encode($markers );

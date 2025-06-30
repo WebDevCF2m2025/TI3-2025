@@ -6,6 +6,10 @@
 // Script pour la carte Leaflet
 
 
+
+
+
+
 // Initialisation de la carte
 let map = L.map('map').setView([51.5, -0.09], 14); // Coordonnées de Paris
 
@@ -28,7 +32,7 @@ var popup = L.popup();
 
 
 
-map.on('click', function(e){
-  var marker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-  marker.bindPopup("<b>New Marker!</b><br>Coordinates: " + e.latlng.toString()).openPopup();
-});
+// map.on('click', function(e){
+//   var marker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+//   marker.bindPopup("<b>New Marker!</b><br>Coordinates: " + e.latlng.toString()).openPopup();
+// });
