@@ -11,7 +11,7 @@
 <?php
 include "_menu.html.php";
 ?>
-<h1 class="mb-4 text-center">Carte interactive | Administration | Nouvel article</h1>
+<h1 class="mb-4 text-center">Carte interactive | Administration | Ajouter un lieu</h1>
 <div class="container">
     <div class="bg-white p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
@@ -19,23 +19,23 @@ include "_menu.html.php";
         <?php
         if(isset($thanks)):
             ?>
-            <h4 class="alert alert-success">Merci pour votre article !</h4>
+            <h4 class="alert alert-success text-center">Merci pour votre nouveau lieu !</h4>
             <script>
                 setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
             </script>
         <?php
         endif;
         ?>
-        <h2 class="mb-5 text-center">Ajouter une localisation</h2>
+        <h2 class="mb-5 text-center">Ajouter un lieu</h2>
         <div class="container">
             <div class="bg-white p-4 rounded shadow mb-5">
                 <!-- on affiche l'erreur -->
                 <?php if (isset($probleme)): ?>
-                    <div class="alert alert-danger">Erreur lors de l'insertion d'un article</div>
-                    <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
+                    <div class="alert alert-danger">Erreur lors de l'insertion d'un lieu</div>
+                    <a href="javascript:history.go(-1);">Revenir sur le lieu et le corriger</a>
                     <hr>
                 <?php endif; ?>
-                <form action="" method="post" name="article">
+                <form action="" method="post" name="localisation">
                     <div class="mb-3">
                         <label for="nom" class="form-label">Lieu</label>
                         <input type="text" class="form-control" id="nom" name="nom" required>
@@ -65,7 +65,6 @@ include "_menu.html.php";
                         <input type="text" class="form-control" id="longitude" name="longitude" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
-
                 </form>
             </div>
         </div>

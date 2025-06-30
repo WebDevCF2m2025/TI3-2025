@@ -7,26 +7,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <div class="navbar-nav ms-auto">
-                <!-- Correction : usage cohérent de ?pg=... -->
-                <li class="nav-item"> <a class="nav-link" href="./">Accueil</a></li>
-                <?php
-                // si nous sommes connectés
-                if(isset($_SESSION['username'])):
-                    ?>
-                    <li class="nav-item"> <a class="nav-link <?= (isset($_GET['pg']) && $_GET['pg'] === 'admin' || $_GET['pg'] === 'addLoc') ? 'active' : '' ?>" href="./?pg=admin">Administration</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="./?pg=logout">Déconnexion</a></li>
-                    <a href="#" class="nav-link small"> | Connecté en tant qu'<?=$_SESSION['username']?></a>
-
-                <?php
-                // nous ne sommes pas connecté
-                else:
-                    ?>
-                    <a class="nav-link <?= (isset($_GET['pg']) && $_GET['pg'] === 'login') ? 'active' : '' ?>">Connexion</a>
-                <?php
-                endif;
-                ?>
-            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link <?= !isset($_GET['pg']) ? 'active' : '' ?>" href="./">Accueil</a>
+                </li>
+                <?php if (isset($_SESSION['username'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (isset($_GET['pg']) && ($_GET['pg'] === 'admin' || $_GET['pg'] === 'addLoc')) ? 'active' : '' ?>" href="./?pg=admin">Administration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./?pg=logout">Déconnexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link small disabled">| Connecté en tant qu'<?= $_SESSION['username'] ?></span>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (isset($_GET['pg']) && $_GET['pg'] === 'login') ? 'active' : '' ?>" href="./?pg=login">Connexion</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
 </nav>

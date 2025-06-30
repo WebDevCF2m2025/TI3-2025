@@ -18,7 +18,7 @@ function addLoc(PDO $connect, array $datas): bool
     $nom = htmlspecialchars(trim(strip_tags($datas["nom"])));
     $adresse = htmlspecialchars(trim(strip_tags($datas["adresse"])));
     $ville = htmlspecialchars(trim(strip_tags($datas["ville"])));
-    $numero = htmlspecialchars(strip_tags(trim($datas['numero'])));
+    $numero = htmlspecialchars(trim(strip_tags($datas['numero'])));
 
     $codepostal = trim($datas["codepostal"]);
     $latitude = (float)$datas["latitude"];

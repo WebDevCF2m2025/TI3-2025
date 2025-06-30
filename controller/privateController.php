@@ -38,30 +38,33 @@ if (isset($_GET['pg'])) {
 
     // On souhaite supprimer une localisation
     } elseif ($_GET['pg'] === 'delete'
+        && $_SERVER['REQUEST_METHOD'] === 'POST'
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
 
         // On convertit le string en int
-        //settype($_GET['id'], 'integer);
         $idLoc = (int)$_GET['id'];
 
         // Suppression d'une localisation
         if (deleteLocById($db, $idLoc)) {
-            header("Location: ./?pg=admin.delete.html.php");
+            $deletionSuccess = true;
+            include "../view/private/admin.delete.html.php";
             exit();
         }
 
-
     // On souhaite ajouter une localisation
     } elseif ($_GET['pg'] === 'addLoc') {
-        // Si les variables de type post attendues sont là
-        if (isset($_POST['nom'], $_POST['adresse'], $_POST['numero'], $_POST['codepostal'],
-                  $_POST['ville'],$_POST['latitude'], $_POST['longitude'])) {
-            $insert = addLoc($db, $_POST);
-            if ($insert === true) {
-                $thanks = true;
-            } else {
-                $probleme = true;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Si les variables de type post attendues sont là
+            if (isset($_POST['nom'], $_POST['adresse'], $_POST['numero'], $_POST['codepostal'],
+                $_POST['ville'], $_POST['latitude'], $_POST['longitude'])) {
+                $insert = addLoc($db, $_POST);
+
+                if ($insert === true) {
+                    $thanks = true;
+                } else {
+                    $probleme = true;
+                }
             }
         }
         // Appel de la page d'insertion

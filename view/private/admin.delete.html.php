@@ -9,19 +9,33 @@
 <div class="container py-5">
     <div class="card shadow-sm p-4">
         <h2 class="text-danger">⚠️ Confirmation de suppression</h2>
-        <p>Es-tu sûr(e) de vouloir supprimer le lieu : <strong><?= $point['nom'] ?></strong> ?</p>
-        <p class="text-muted"><?= $point['adresse'] ?> <?= $point['numero']?> -
-                              <?= $point['codepostal']?> <?= $point['ville'] ?></p>
-
-        <form method="GET" action="index.php">
-            <input type="hidden" name="pg" value="delete">
-            <input type="hidden" name="id" value="<?= $point['id'] ?>">
-
-            <div class="d-flex gap-2">
-                <a href="index.php?pg=admin" class="btn btn-secondary">Annuler</a>
-                <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+        <?php if (isset($deletionSuccess)): ?>
+            <div class="alert alert-success text-center mt-5">
+                Le lieu a été supprimé avec succès !
             </div>
-        </form>
+            <script>
+                setTimeout(function(){ window.location.href="./?pg=admin"; }, 3000);
+            </script>
+        <?php elseif(isset($point) && !empty($point['id'])): ?>
+            <p>Es-tu sûr(e) de vouloir supprimer le lieu :
+                <strong><?= $point['nom'] ?></strong> ?
+            </p>
+            <p class="text-muted">
+                <?= $point['adresse'] ?> <?= $point['numero'] ?> -
+                <?= $point['codepostal'] ?> <?= $point['ville'] ?>
+            </p>
+            <form method="post" action="?pg=delete&id=<?= $point['id'] ?>" name="localisation">
+                <div class="d-flex gap-2">
+                    <a href="?pg=admin" class="btn btn-secondary">Annuler</a>
+                    <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+                </div>
+            </form>
+        <?php else: ?>
+            <div class="alert alert-danger text-center mt-4">
+                Localisation inconnue ou absente.
+            </div>
+            <a href="?pg=admin" class="btn btn-secondary mt-2">Retour</a>
+        <?php endif; ?>
     </div>
 </div>
 </body>

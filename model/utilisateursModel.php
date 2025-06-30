@@ -32,6 +32,11 @@ function connectUser(PDO $con, string $userLogin, string $userPwd): bool
 
         // On va vérifier le mot de passe entre celui passé par le formulaire et celui venant de la DB
         if(password_verify($userPwd, $result['passwd'])) {
+            // par sécurité (extrême) sur les sessions
+            // en cas de tentative de reconnexion, on supprime
+            // l'ancienne session (cookie + fichier texte)
+            // et on régénère un identifiant
+            session_regenerate_id(true);
             // On met en session tout ce qu'on a été récupéré de la requête
             $_SESSION = $result;
 

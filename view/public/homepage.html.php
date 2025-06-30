@@ -16,13 +16,14 @@
 if(isset($_SESSION['username'])):
 ?>
     <div>
-        <button><a href="./?pg=logout">Déconnexion de l'administration</a></button>
-        <button><a href="./?pg=admin">Aller sur la page de l'administration</a></button>
+        <a class="btn" href="./?pg=logout">Déconnexion de l'administration</a>
+        <a class="btn" href="./?pg=admin">Aller sur la page de l'administration</a>
     </div>
 <?php
 else:
 ?>
-<button><a href="./?pg=login">Connexion à l'administration</a></button>
+    <a class="btn" href="./?pg=login">Connexion à l'administration</a>
+
 <?php
 endif;
 ?>
@@ -38,15 +39,23 @@ endif;
         <br>
         <hr>
         <br>
-        <?php foreach ($points as $point) : ?>
             <div class="point">
                 <ul>
-                    <li><strong><?= $point['nom'] ?></strong> |
-                        <?= $point['adresse'] ?> <?= $point['numero'] ?> -
-                        <?= $point['codepostal'] ?> <?= $point['ville'] ?>
+                    <?php foreach ($points as $idx => $point) : ?>
+                        <li
+                                class="goto-point"
+                                data-lat="<?= $point['latitude'] ?>"
+                                data-lng="<?= $point['longitude'] ?>"
+                                data-idx="<?= $idx ?>"
+                        >
+                            <strong><?= $point['nom'] ?></strong> |
+                            <?= $point['adresse'] ?> <?= $point['numero'] ?> -
+                            <?= $point['codepostal'] ?> <?= $point['ville'] ?>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
+
             </div>
-        <?php endforeach; ?>
     </div>
 </div>
 
@@ -62,17 +71,27 @@ endif;
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    <?php foreach ($points as $point) : ?>
-    L.marker([<?= $point['latitude'] ?>, <?= $point['longitude'] ?>])
+    // Marqueurs synchronisés avec la liste
+    const markers = [];
+    <?php foreach ($points as $idx => $point) : ?>
+    const marker<?= $idx ?> = L.marker([<?= $point['latitude'] ?>, <?= $point['longitude'] ?>])
         .addTo(map)
-        .bindPopup(`<strong><?= addslashes($point['nom']) ?>
-        </strong><br><?= addslashes($point['adresse']) ?> <?= addslashes($point['numero']) ?>
-        <br><?= addslashes($point['codepostal']) ?> <?= addslashes($point['ville']) ?>`)
-
-        .on('click', function () {
-            map.flyTo([<?= $point['latitude'] ?>, <?= $point['longitude'] ?>], 15,);
-        });
+        .bindPopup(`<strong><?= addslashes(htmlspecialchars($point['nom'])) ?></strong><br><?= addslashes(htmlspecialchars($point['adresse'])) ?> <?= addslashes(htmlspecialchars($point['numero'])) ?><br><?= addslashes(htmlspecialchars($point['codepostal'])) ?> <?= addslashes(htmlspecialchars($point['ville'])) ?>`);
+    marker<?= $idx ?>.on('click', function () {
+        map.flyTo([<?= $point['latitude'] ?>, <?= $point['longitude'] ?>], 15);
+    });
+    markers.push(marker<?= $idx ?>);
     <?php endforeach; ?>
+
+    // Ajout de l'interactivité sur la liste
+    document.querySelectorAll('.goto-point').forEach((li, idx) => {
+        li.addEventListener('click', function(){
+            const lat = parseFloat(this.dataset.lat);
+            const lng = parseFloat(this.dataset.lng);
+            map.flyTo([lat, lng], 15);
+            markers[idx].openPopup();
+        });
+    });
 </script>
 </body>
 </html>
