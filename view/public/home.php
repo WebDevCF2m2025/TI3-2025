@@ -64,28 +64,30 @@ require_once "../model/localisationsModel.php";
         </script>
     <script>
 
-        let latitudeBigBen = 50.8467;
-        let letitudeBigBen = 4.3525;
+        const localisations = <?= json_encode($localisations); ?>;
+
+
+        let latitudeGrandPlace = 50.8467;
+        let letitudeGrandPlace = 4.3525;
 
         let map = L.map("carte", {
-            center: [latitudeBigBen, letitudeBigBen],
-            zoom: 18,
+            center: [latitudeGrandPlace, letitudeGrandPlace],
+            zoom: 13,
         });
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
 
-        L.marker([latitudeBigBen, letitudeBigBen])
-            .addTo(map)
+        localisations.forEach(loc => {
 
-            .openPopup();
-
-
-
-
-
-
+            L.marker([loc.latitude, loc.longitude])
+                .addTo(map)
+                .bindPopup(
+                    `<b>${loc.nom}</b><br>${loc.adresse}<br>${loc.codepostal} ${loc.ville}`
+                );
+        }
+        );
     </script>
 
 
