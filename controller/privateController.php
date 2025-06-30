@@ -8,6 +8,10 @@ if (!isset($_GET['page'])) {
         header('Location:./');
     } elseif ($_GET['page'] === 'destroy') {
         logoutAdminUser();
+    } elseif ($_GET['page'] === 'admin') {
+        $locations = getAllLocations($db);
+    } elseif ($_GET['page'] === 'add') {
+        // $locations = getAllLocations($db);
     }
 }
 require_once('../view/private/home.private.php');

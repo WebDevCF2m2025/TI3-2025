@@ -1,37 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Personal - Start Bootstrap Theme</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="./">Accueil</a></li>
-                            <li class="nav-item"><a class="nav-link" href="?page=destroy">Deconnexion</a></li>
-                        </ul>
-                    </div>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Personal - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href=""><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="./">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="?page=admin">Administration</a></li>
+                        <li class="nav-item"><a class="nav-link" href="?page=destroy">Deconnexion</a></li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
+
+
+        <?php if (isset($_GET['page']) && $_GET['page'] === 'admin') : ?>
+
+            <div class="container my-5 d-flex justify-content-center">
+                <table class="table table-striped table-hover table-bordered table-fixed shadow-sm rounded">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width: 14%;">Nom</th>
+                            <th style="width: 18%;">Adresse</th>
+                            <th style="width: 10%;">Code Postal</th>
+                            <th style="width: 12%;">Ville</th>
+                            <th style="width: 10%;">Nb Vélos</th>
+                            <th style="width: 12%;">Latitude</th>
+                            <th style="width: 12%;">Longitude</th>
+                            <th style="width: 12%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($locations as $location): ?>
+                            <tr>
+                                <td title="<?= htmlspecialchars($location['nom']) ?>"><?= htmlspecialchars($location['nom']) ?></td>
+                                <td title="<?= htmlspecialchars($location['adresse']) ?>"><?= htmlspecialchars($location['adresse']) ?></td>
+                                <td><?= htmlspecialchars($location['codepostal']) ?></td>
+                                <td><?= htmlspecialchars($location['ville']) ?></td>
+                                <td><?= (int)$location['nb_velos'] ?></td>
+                                <td><?= htmlspecialchars($location['latitude']) ?></td>
+                                <td><?= htmlspecialchars($location['longitude']) ?></td>
+                                <td class="actions">
+                                    <a href="?page=modifier_localisation&id=<?= urlencode($location['id']) ?>" class="btn btn-sm btn-outline-primary btn-action" title="Modifier">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.792 9.792a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l9.792-9.792zM11.207 2L3 10.207V13h2.793L14 4.793 11.207 2z" />
+                                        </svg>
+                                    </a>
+                                    <a href="?action=supprimer&id=<?= urlencode($location['id']) ?>" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm1 2A.5.5 0 0 1 7 7h2a.5.5 0 0 1 0 1H7a.5.5 0 0 1-.5-.5zm2.5 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zm-3.5 1v9a1 1 0 0 0 1 1h3v-10h-4z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container my-4 d-flex justify-content-end">
+                <a href="?page=add" class="btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg me-1" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v6.5h6.5a.5.5 0 0 1 0 1H8.5v6.5a.5.5 0 0 1-1 0V8.5H1a.5.5 0 0 1 0-1h6.5V1.5A.5.5 0 0 1 8 1z" />
+                    </svg>
+                    Ajouter
+                </a>
+            </div>
+        <?php elseif (isset($_GET['page']) && $_GET['page'] === 'add') : ?>
+            <form method="POST" class="container my-4" style="max-width: 600px;">
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="adresse" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="codepostal" class="form-label">Code Postal</label>
+                    <input type="text" class="form-control" id="codepostal" name="codepostal" required pattern="\d{5}" title="5 chiffres requis">
+                </div>
+
+                <div class="mb-3">
+                    <label for="ville" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="ville" name="ville" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nb_velos" class="form-label">Nombre de vélos</label>
+                    <input type="number" class="form-control" id="nb_velos" name="nb_velos" required min="0" step="1">
+                </div>
+
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">Latitude</label>
+                    <input type="number" class="form-control" id="latitude" name="latitude" required step="any" min="-90" max="90">
+                </div>
+
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">Longitude</label>
+                    <input type="number" class="form-control" id="longitude" name="longitude" required step="any" min="-180" max="180">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+
+        <?php else: ?>
             <!-- Header-->
             <header class="py-5">
                 <div class="container px-5 pb-5">
@@ -39,12 +137,14 @@
                         <div class="col-xxl-5">
                             <!-- Header text content-->
                             <div class="text-center text-xxl-start">
-                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Design &middot; Development &middot; Marketing</div></div>
+                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
+                                    <div class="text-uppercase">Design &middot; Development &middot; Marketing</div>
+                                </div>
                                 <div class="fs-3 fw-light text-muted">I can help your business to</div>
                                 <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Get online and grow fast</span></h1>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
+                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="">Resume</a>
+                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="">Projects</a>
                                 </div>
                             </div>
                         </div>
@@ -183,34 +283,42 @@
                                 <p class="lead fw-light mb-4">My name is Start Bootstrap and I help brands grow.</p>
                                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
                                 <div class="d-flex justify-content-center fs-2 gap-4">
-                                    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-                                    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-                                    <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+                                    <a class="text-gradient" href=""><i class="bi bi-twitter"></i></a>
+                                    <a class="text-gradient" href=""><i class="bi bi-linkedin"></i></a>
+                                    <a class="text-gradient" href=""><i class="bi bi-github"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="#!">Privacy</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Terms</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Contact</a>
-                    </div>
+
+
+        <?php endif; ?>
+
+
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Your Website 2023</div>
+                </div>
+                <div class="col-auto">
+                    <a class="small" href="">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="">Contact</a>
                 </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
 </html>
