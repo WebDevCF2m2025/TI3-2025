@@ -24,7 +24,7 @@ require_once "../model/localisationsModel.php";
 
         <h1>Carte Interactive</h1>
         <h3>Parcours DB à Bruxelles</h3>
-        <button>Conextion à l'administration</button>
+        <a href="./?page=login"> <button>Conextion à l'administration</button></a>
 
     </div>
 
