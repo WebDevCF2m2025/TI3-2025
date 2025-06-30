@@ -6,7 +6,6 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
@@ -15,20 +14,24 @@
           crossorigin=""></script>
   <title>Carte interactif</title>
 </head>
-<body class="bg-secondary">
-<?php
-include "_menu.html.php";
-?>
-<h1 class="mb-4 text-center text-white">Carte inzzteractive</h1>
-<div class="container">
-  <div class="bg-white p-4 rounded shadow-sm mb-5">
-    <h2 class="mb-4 text-center">Carte des C2</h2>
-    <p>Voici une carte interactive où vous pouvez voir les emplacements des C2.</p>
-    <div id="map" style="height: 500px"></div>
+<body>
+<div class="top-page">
+  <h1>Carte interactive</h1>
+  <h3>Parcours BD à Bruxelles</h3>
+  <button><a href="?pg=login"> Connexion à l'administration <a> </button>
+</div>
+
+<div class="main-page">
+  <div>
+    <div id="map" style="height: 500px;background-color: bisque" ></div>
+
   </div>
+  <div>
+    <div style="text-align: end">liste Points</div>
+  </div>
+</div>
 
 <!-- Script File -->
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="script/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+body {
+    padding: 1em;
+    font-family: Arial, sans-serif;
+}
+
+.top-page {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.top-page button{
+  padding: 5px 10px;
+  width: 150px;
+}
