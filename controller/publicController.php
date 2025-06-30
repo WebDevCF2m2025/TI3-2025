@@ -4,49 +4,29 @@ require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
 
-if($_GET['pg']==='json'){
-   
- 
+
+if (!isset($_GET['pg'])) {
+// chargement des articles
+    $localisations = selectAllLocalisation($db);
+// chargement du template de l'accueil
+    require_once "../view/public/hompage.html.php";
+
+}elseif ($_GET['pg']==='json'){
     $localisations = selectAllLocalisation($db);
     header('Content-Type: application/json');
     echo json_encode($localisations);
     exit();
 }
- 
 
-if (!isset($_GET['pg'])) {
-// chargement des articles
-    $localisations = selectAllLocalisation($db);
-
-
-
-// chargement du template de l'accueil
-    require_once "../view/public/hompage.html.php";
 // existence de pg
-}else {
-    if ($_GET['pg'] === 'about') {
-        require_once "../view/about.html.php";
-    } elseif ($_GET['pg'] === 'login') {
-        // création de variables pour ne pas afficher le succès
-        // ou l'erreur de connexion
-        $displaySucces = "d-none";
-        $displayError = "d-none";
-        $displayForm = "";
-        // s'il existe les 2 variables post souhaitées
-        // on essaye de se connecter
-        if (isset($_POST['login'], $_POST['userpwd'])) {
-            $connect = authentificateActivedUser($db, $_POST['login'], $_POST['userpwd']);
+elseif (($_GET['pg']) === 'connect') 
+      {
+        if (isset($_POST['username'], $_POST['passwd'])) {
+            $connect = authentificateActivedUser($db, $_POST['username'], $_POST['passwd']);
             if ($connect) {
-                // affichage du bloc de succès
-                $displaySucces = "";
-                // on cache le formulaire
-                $displayForm = "d-none";
-                // création d'un javascript
-                $jsRedirect = "<script>
-    setTimeout(() => {
-  window.location.href = './';
-}, 3000); // Redirects after 3 seconds
-</script>";
+                header("location: ./");
+                exit;
+           
             } else {
                 $displayError = "";
                 /*
@@ -64,14 +44,23 @@ if (!isset($_GET['pg'])) {
                 */
             }
         }
-        require_once "../view/login.html.php";
+        require_once "../view/public/form.html.php";
+
+
+    } elseif ($_GET['pg'] === 'login') {
+
+        // création de variables pour ne pas afficher le succès
+        // ou l'erreur de connexion
+        $localisations = selectAllLocalisation($db);
+        require_once "../view/private/administration.html.php";
+        $displaySucces = "d-none";
+        $displayError = "d-none";
+        $displayForm = "";
+        header('Location:./');
+        exit();
+        // s'il existe les 2 variables post souhaitées
+        // on essaye de se connecter
+        
+        
     }
-}
 
-
-$test = selectAllLocalisation($db);
-
-var_dump($test);
-require_once "../view/public/hompade.admin.html.php";
-
-require_once "../view/public/hompage.html.php";

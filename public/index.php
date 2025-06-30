@@ -23,7 +23,7 @@ try {
 }
 
 // Chargement du routeur
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['username'])) {
     require_once "../controller/PrivateController.php";
 } else {
     require_once "../controller/PublicController.php";

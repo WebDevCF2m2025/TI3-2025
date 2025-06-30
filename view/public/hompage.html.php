@@ -16,7 +16,7 @@
         #carte {
             width: 800px;
             height:600px;
-            margin: auto;
+            margin: 0 auto;
         }
         h1{
             text-align: center;
@@ -33,13 +33,33 @@
             margin-bottom: 1rem;
         }
 
+        .view{
+            display: flex;
+            border: solid 1px black;
+        }
+
+        .liste{
+            border: solid 1px black;
+        }
+
+          #loginForm {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
  
 </head>
 <body>
     <h1>Carte interactive</h1>
     <h2>Parcours BD à Bruxelles</h2>
-    <div class="btn"><button onclick="testfetch()">Connexion admin</button></div>
+    <div class="btn"> 
+    <a href="?pg=connect"> Se connecter à l'administration</a>    
+    <!-- <button onclick="document.getElementById('loginForm').style.display='block';">
+       
+    </button>  -->
+
+</div>
+       
     
     <div class="view"> 
          <div id="carte"></div>
