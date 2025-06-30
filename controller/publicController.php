@@ -37,11 +37,11 @@ if(isset($_GET['pg'])){
     }
 }else {
     //chargement des articles pour l'accueil
-    $localisation = getLocalisationPublished($db);
+   // $localisation = getLocalisationPublished($db);
     // si on veut récupérer les articles en json
-    if(isset($_GET['getjson'])){
-        echo json_encode($localisation);
-    }else {
+   // if(isset($_GET['getjson'])){
+    //    echo json_encode($localisation);
+    //}else {
         require_once "../view/public/accueil.html.php";
-    }
+   // }
 }

@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `localisations` (
 
 INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(1, 'Espace S Cinquantenaire', 'Parc du Cinquantenaire', 50.842585, 4.389637);
 INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(2, 'Place Maurice Van Meenen', 'Place Maurice Van Meenen - 1060 Saint Gilles', 50.824993, 4.345397);
-INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(3, 'Mont des Arts - Bibliothèque Royale', 'Boulevard de l\'Empereur, 4 - 1000 Bruxelles', 50.843862, 4.356765);
+INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(3, 'Mont des Arts - Bibliothèque Royale', 'Boulevard de l Empereur, 4 - 1000 Bruxelles', 50.843862, 4.356765);
 INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(4, 'Place Rogier', 'Place Rogier - 1210 Bruxelles', 50.855800, 4.358945);
 INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(5, 'Place De Brouckère', 'Place De Brouckère - 1000 Bruxelles', 50.851456, 4.352785);
 INSERT INTO `localisations` (`id`, `nom`, `adresse`, `latitude`, `longitude`) VALUES(6, 'Place Colignon', 'Place Colignon - 1030 Schaerbeek', 50.867029, 4.373310);

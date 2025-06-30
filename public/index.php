@@ -1,5 +1,13 @@
 <?php
+
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 session_start();
+
+
+
 
 // configuration de la connexion à la base de données
 require_once "../config-dev.php";
@@ -41,3 +49,6 @@ var_dump($_SESSION);
 echo '<h3>$_POST</h3>';
 var_dump($_POST);
 echo '</div>';
+
+
+$db = null;
