@@ -11,12 +11,11 @@ if (isset($_SESSION['login'])) {
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
     <title>Carte interactive | Connexion</title>
-    <!-- Tu peux utiliser Bootstrap pour rester cohérent avec le reste du site -->
+    <!-- CDN Bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm mb-4">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-5">
     <div class="container">
         <a class="navbar-brand fw-bold" href="./">
             <img src="https://www.cf2m.be/img/logo.png" alt="Logo CF2M" height ="40" class="me-2">
@@ -25,11 +24,12 @@ if (isset($_SESSION['login'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link <?= !isset($_GET['pg']) ? 'active' : '' ?>" href="./">Accueil</a>
-                <a class="nav-link <?= (isset($_GET['pg']) && $_GET['pg'] === 'login') ? 'active text-primary' : '' ?>" href="./?pg=login">Connexion</a>
-            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"> <a class="nav-link <?= !isset($_GET['pg']) ? 'active' : '' ?>" href="./">Accueil</a></li>
+                <li class="nav-item"> <a class="nav-link <?= (isset($_GET['pg']) && $_GET['pg'] === 'login') ? 'active' : '' ?>" href="./?pg=login">Connexion</a></li>
+            </ul>
         </div>
+    </div>
 </nav>
 
 <h1 class="mb-4 text-center">Carte interactive | Connexion à l'administration</h1>

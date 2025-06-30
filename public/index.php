@@ -24,7 +24,7 @@ try{
 }
 
 // Si nous sommes connectés
-if(isset($_SESSION['login'])) {
+if(isset($_SESSION['username'])) {
     // Nous prenons le contrôleur privé
     require_once "../controller/privateController.php";
 

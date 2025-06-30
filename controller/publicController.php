@@ -19,14 +19,21 @@ if (isset($_GET['pg'])) {
                 $error = "Login et/ou mot de passe incorrect";
             }
         }
-        // appel du formulaire
+        // appel de la page de connexion
         require_once "../view/public/login.html.php";
     } else {
+
+        // appel de la page d'accueil
         $points = getLocalisations($db);
         require_once "../view/public/homepage.html.php";
     }
 } else {
     $points = getLocalisations($db);
-    // Chargement des localisations pour l'accueil
-    require_once "../view/public/homepage.html.php";
+    // Si on veut récupérer les articles en json
+    if(isset($_GET['json'])){
+        echo json_encode($points);
+    } else {
+        // Chargement des localisations pour l'accueil
+        require_once "../view/public/homepage.html.php";
+    }
 }

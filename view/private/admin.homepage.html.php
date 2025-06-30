@@ -1,56 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TI3-2025 | Accueil</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossorigin=""/>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Carte interactive | Accueil de l'administration</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Carte interactive</h1>
-<h2>Parcours BD à Bruxelles</h2>
-<button><a href="./?pg=login">Connexion à l'administration</a></button>
+<body class="bg-light">
+<?php
+include "_menu.html.php";
+?>
+<h1 class="mb-4 text-center">Carte interactive | Accueil de l'administration</h1>
+<div class="container">
+    <div class="bg-white p-4 rounded shadow mb-5">
+        <h4 class="mb-3 text-left mb-3"><a href="?pg=addLoc">Ajouter une localisation</a></h4>
+        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
+        <h3 class="mb-3 text-left mb-3">Gestion des localisations</h3>
 
-<!-- Carte -->
-<div id="map"></div>
+        <?php
+        // pas d'articles publiés
+        if(empty($points)):
+            $h4 = "Pas encore de localisation";
+        else:
+            $nbLoc = count($points);;
+            $pluriel = $nbLoc>1? "s":"";
+            $h4 = "Il y a $nbLoc localisation$pluriel";
+        endif;
+        ?>
+        <h4 class="text-secondary text-left mb-3"><?=$h4?></h4>
 
-<!-- Liste des points -->
-<div id="points">
-    <h2>Liste des points</h2>
-    <p>Cliquez sur un élément dans la liste ci-dessous pour la situer sur la carte</p>
-    <br>
-    <hr>
-    <br>
-    <?php foreach ($points as $point) : ?>
-        <div class="point">
-            <ul>
-                <li><strong><?= $point['nom'] ?></strong> |
-                    <?= $point['adresse'] ?> <?= $point['numero'] ?> -
-                    <?= $point['codepostal'] ?> <?= $point['ville'] ?>
-            </ul>
+        <!-- Affichage pour desktop -->
+        <div class="table-responsive d-none d-md-block">
+            <table class="table table-hover align-middle bg-white rounded">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Code postal</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($points as $point): ?>
+                <tr>
+                    <td>
+                        <?= $point['nom'] ?>
+                    </td>
+                    <td>
+                        <?= $point['adresse'] ?>
+                    </td>
+                    <td>
+                        <?= $point['numero'] ?>
+                    </td>
+                    <td>
+                        <?= $point['ville'] ?>
+                    </td>
+                    <td>
+                        <?=$point['codepostal'] ?>
+                    </td>
+                    <td>
+                        <?=$point['latitude'] ?>
+                    </td>
+                    <td>
+                        <?=$point['longitude'] ?>
+                    </td>
+                    <td>
+                        <a href="?pg=update&id=<?= $point['id']?>" class="btn btn-warning btn-sm">Modifier</a>
+                    </td>
+                    <td>
+                        <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $article['slug']?>')? document.location.href='?pg=delete&id=<?= $article['idarticle']?>': ''" class="btn btn-danger btn-sm">Supprimer</span>
+                    </td>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-    <?php endforeach; ?>
+
+        <!-- Affichage carte mobile (sm uniquement) -->
+        <div class="d-block d-md-none">
+            <?php foreach ($points as $point): ?>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $point['nom'] ?></h5>
+                        <p class="mb-1"><strong>Adresse :</strong> <?= $point['adresse'] ?> <?= $point['numero'] ?></p>
+                        <p class="mb-1"><strong>Ville :</strong> <?= $point['ville'] ?></p>
+                        <p class="mb-1"><strong>Code postal :</strong> <?= $point['codepostal'] ?></p>
+                        <p class="mb-1"><strong>Latitude :</strong> <?= $point['latitude'] ?></p>
+                        <p class="mb-3"><strong>Longitude :</strong> <?= $point['longitude'] ?></p>
+                        <a href="?pg=update&id=<?= $point['id'] ?>" class="btn btn-warning btn-sm me-1">Modifier</a>
+                        <a href="?pg=delete&id=<?= $point['id'] ?>"
+                           onclick="return confirm('Voulez-vous vraiment supprimer <?= addslashes($point['nom']) ?> ?');"
+                           class="btn btn-danger btn-sm">Supprimer</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </div>
 
-<!-- Script Leaflet -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin="">
-</script>
-<script>
-    const map = L.map('map').setView([50.8503396, 4.3517103], 12);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    <?php foreach ($points as $point) : ?>
-    L.marker([<?= $point['latitude'] ?>, <?= $point['longitude'] ?>])
-        .addTo(map)
-    <?php endforeach; ?>
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

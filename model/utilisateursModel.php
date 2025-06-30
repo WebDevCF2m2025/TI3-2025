@@ -52,7 +52,7 @@ function connectUser(PDO $con, string $userLogin, string $userPwd): bool
  */
 function disconnectUser(): bool
 {
-    // Suppression des variables de sesssions
+    // Suppression des variables de sessions
     session_unset();
 
     // Suppression du coolie côté browser / utilisateur
