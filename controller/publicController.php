@@ -5,16 +5,16 @@ if (!isset($_GET['page'])) {
 } else {
     if ($_GET['page'] === 'conn') {
         if (isset($_POST['login'], $_POST['password'])) {
-            $user = authentificateAdminUser($db, $_POST['login'], $_POST['password']);
+            $login = htmlspecialchars(strip_tags(trim($_POST['login'])));
+            $password = htmlspecialchars(strip_tags(trim($_POST['password'])));
+
+            $user = authentificateAdminUser($db, $login, $password);
 
             if ($user) {
-                session_regenerate_id(true); // sécurité contre le vol de session
-
-                // On stocke les infos de session importantes
+                session_regenerate_id(true);
                 $_SESSION['iduser'] = $user['username'];
-                $_SESSION['login'] = $user['idutilisateurs'];
-
-                header('Location: ./'); // redirection après connexion
+                $_SESSION['login'] = $user['idutilisateurs']; 
+                header('Location: ./');
                 exit();
             } else {
                 $erreur = "Login ou mot de passe incorrect.";
