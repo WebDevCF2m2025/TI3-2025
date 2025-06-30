@@ -45,7 +45,10 @@
       // On affiche la liste des points
 
       foreach ($markers as $marker) {
-          echo "<li>{$marker['nom']} | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
+
+          echo "<li >{$marker['nom']}  | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
+          // zoom on the marker when clicked
+
       }
       ?>
 
@@ -54,6 +57,28 @@
 
 <!-- Script File -->
   <script src="js/script.js"></script>
-<script></script>
+<script>
+  // Ajout des marqueurs
+  <?php foreach ($markers as $marker): ?>
+    L.marker([<?= $marker['latitude'] ?>, <?= $marker['longitude'] ?>])
+        .addTo(map)
+      .bindPopup(` <ul>
+      <li> <?= addslashes($marker['adresse']) ?>  </li>
+      <li> <?= addslashes($marker['codepostal']) ?> <?= addslashes($marker['ville']) ?> </li>
+      <li> <?= addslashes($marker['nb_velos']) ?> </li>
+      </ul> `)
+
+      // FlyTO
+      .on('click', function() {
+          map.flyTo([<?= $marker['latitude'] ?>, <?= $marker['longitude'] ?>], 15);
+      });
+  //function buttonClick() {
+  //  map.flyTo([<?php //= $marker['latitude'] ?>//, <?php //= $marker['longitude'] ?>//], 15);
+  //}
+
+  <?php endforeach; ?>
+
+</script>
 </body>
 </html>
+
