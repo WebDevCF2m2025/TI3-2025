@@ -11,18 +11,49 @@ if (!isset($_GET['page'])) {
     } elseif ($_GET['page'] === 'destroy') {
         logoutAdminUser();
     } elseif ($_GET['page'] === 'admin') {
-        $locations = getAllLocations($db);
-    } elseif ($_GET['page'] === 'add') {
-        // $locations = getAllLocations($db);
-    } elseif ($_GET['page'] === 'delete') {
 
-            if (deleteArticle($db, $_GET['id'])) {
-                // Redirige vers la même page sans le paramètre pour éviter de relancer la suppression si on rafraîchit
+        $locations = getAllLocations($db);
+        if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+            $id = (int) $_GET['delete'];
+            if (deleteLocationById($db, $id)) {
                 header('Location:?page=admin');
                 exit;
             } else {
                 $erreur = "Erreur lors de la suppression.";
             }
         }
+    } elseif ($_GET['page'] === 'add') {
+        // Si on soumet le formulaire
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addLocation'])) {
+            if (addLocation($db, $_POST)) {
+                $_SESSION['success_message'] = "Nouvelle localisation ajoutée avec succès.";
+                header('Location: ?page=admin');
+                exit();
+            } else {
+                $_SESSION['error_message'] = "Échec de l'ajout de la localisation.";
+            }
+        }
+    } elseif ($_GET['page'] === 'delete') {
+        $id = (int) $_GET['id'];
+        if (deleteLocationById($db, $id)) {
+            $_SESSION['success_message'] = "Utilisateur supprimé avec succès.";
+        }
+    } elseif (isset($_GET['page']) && $_GET['page'] === 'update') {
+        $id = (int) $_GET['id'];
+        $location = getLocationById($db, $id);
+
+        // Si on soumet le formulaire
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateLocation'])) {
+            $updated = updateLocationById($db, $_POST, (int) $_POST['id']);
+
+            if ($updated) {
+                $_SESSION['success_message'] = "Localisation mise à jour avec succès.";
+                header('Location:?page=admin');
+                exit();
+            } else {
+                $_SESSION['error_message'] = "Échec de la mise à jour.";
+            }
+        }
     }
+}
 require_once('../view/private/home.private.php');

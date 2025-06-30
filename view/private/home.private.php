@@ -39,48 +39,46 @@
 
         <?php if (isset($_GET['page']) && $_GET['page'] === 'admin') : ?>
 
-            <div class="container my-5 d-flex justify-content-center">
-                <table class="table table-striped table-hover table-bordered table-fixed shadow-sm rounded">
-                    <thead class="table-dark">
-                        <tr>
-                            <th style="width: 14%;">Nom</th>
-                            <th style="width: 18%;">Adresse</th>
-                            <th style="width: 10%;">Code Postal</th>
-                            <th style="width: 12%;">Ville</th>
-                            <th style="width: 10%;">Nb Vélos</th>
-                            <th style="width: 12%;">Latitude</th>
-                            <th style="width: 12%;">Longitude</th>
-                            <th style="width: 12%;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($locations as $location): ?>
+            <div class="container my-5">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered shadow-sm rounded">
+                        <thead class="table-dark">
                             <tr>
-                                <td title="<?= htmlspecialchars($location['nom']) ?>"><?= htmlspecialchars($location['nom']) ?></td>
-                                <td title="<?= htmlspecialchars($location['adresse']) ?>"><?= htmlspecialchars($location['adresse']) ?></td>
-                                <td><?= htmlspecialchars($location['codepostal']) ?></td>
-                                <td><?= htmlspecialchars($location['ville']) ?></td>
-                                <td><?= (int)$location['nb_velos'] ?></td>
-                                <td><?= htmlspecialchars($location['latitude']) ?></td>
-                                <td><?= htmlspecialchars($location['longitude']) ?></td>
-                                <td class="actions">
-                                    <a href="?page=modifier_localisation&id=<?= urlencode($location['id']) ?>" class="btn btn-sm btn-outline-primary btn-action" title="Modifier">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.792 9.792a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l9.792-9.792zM11.207 2L3 10.207V13h2.793L14 4.793 11.207 2z" />
-                                        </svg>
-                                    </a>
-                                    <a href="?page=delete" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-sm btn-outline-danger btn-action" title="Supprimer">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm1 2A.5.5 0 0 1 7 7h2a.5.5 0 0 1 0 1H7a.5.5 0 0 1-.5-.5zm2.5 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zm-3.5 1v9a1 1 0 0 0 1 1h3v-10h-4z" />
-                                        </svg>
-                                    </a>
-                                </td>
+                                <th>Nom</th>
+                                <th>Adresse</th>
+                                <th class="d-none d-sm-table-cell">Code Postal</th>
+                                <th>Ville</th>
+                                <th class="d-none d-md-table-cell">Nb Vélos</th>
+                                <th class="d-none d-lg-table-cell">Latitude</th>
+                                <th class="d-none d-lg-table-cell">Longitude</th>
+                                <th>Actions</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($locations as $location): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($location['nom']) ?></td>
+                                    <td><?= htmlspecialchars($location['adresse']) ?></td>
+                                    <td class="d-none d-sm-table-cell"><?= htmlspecialchars($location['codepostal']) ?></td>
+                                    <td><?= htmlspecialchars($location['ville']) ?></td>
+                                    <td class="d-none d-md-table-cell"><?= (int)$location['nb_velos'] ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= htmlspecialchars($location['latitude']) ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= htmlspecialchars($location['longitude']) ?></td>
+                                    <td class="text-nowrap">
+                                        <a href="?page=update&id=<?= $location['id'] ?>" class="btn btn-sm btn-outline-primary me-1" title="Modifier">
+                                            ✏️
+                                        </a>
+                                        <a href="?page=admin&delete=<?= $location['id'] ?>" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-sm btn-outline-danger" title="Supprimer">
+                                            🗑️
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
             <div class="container my-4 d-flex justify-content-end">
                 <a href="?page=add" class="btn btn-success">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg me-1" viewBox="0 0 16 16">
@@ -103,7 +101,7 @@
 
                 <div class="mb-3">
                     <label for="codepostal" class="form-label">Code Postal</label>
-                    <input type="text" class="form-control" id="codepostal" name="codepostal" required pattern="\d{5}" title="5 chiffres requis">
+                    <input type="text" class="form-control" id="codepostal" name="codepostal">
                 </div>
 
                 <div class="mb-3">
@@ -126,9 +124,49 @@
                     <input type="number" class="form-control" id="longitude" name="longitude" required step="any" min="-180" max="180">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="submit" class="btn btn-primary" name="addLocation">Ajouter</button>
             </form>
+        <?php elseif (isset($_GET['page']) && $_GET['page'] === 'update') : ?>
+            <form method="POST" class="container my-4" style="max-width: 600px;">
+                <input type="hidden" name="id" value="<?= $location['id'] ?>">
 
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" value="<?= htmlspecialchars($location['nom']) ?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="adresse" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" value="<?= htmlspecialchars($location['adresse']) ?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="codepostal" class="form-label">Code Postal</label>
+                    <input type="text" class="form-control" id="codepostal" name="codepostal" value="<?= htmlspecialchars($location['codepostal']) ?>">
+                </div>
+
+                <div class="mb-3">
+                    <label for="ville" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="ville" name="ville" value="<?= htmlspecialchars($location['ville']) ?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nb_velos" class="form-label">Nombre de vélos</label>
+                    <input type="number" class="form-control" id="nb_velos" name="nb_velos" value="<?= htmlspecialchars($location['nb_velos']) ?>" required min="0" step="1">
+                </div>
+
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">Latitude</label>
+                    <input type="number" class="form-control" id="latitude" name="latitude" value="<?= htmlspecialchars($location['latitude']) ?>" required step="any" min="-90" max="90">
+                </div>
+
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">Longitude</label>
+                    <input type="number" class="form-control" id="longitude" name="longitude" value="<?= htmlspecialchars($location['longitude']) ?>" required step="any" min="-180" max="180">
+                </div>
+
+                <button type="submit" name="updateLocation" class="btn btn-primary">Mettre à jour</button>
+            </form>
         <?php else: ?>
             <!-- Header-->
             <header class="py-5">
