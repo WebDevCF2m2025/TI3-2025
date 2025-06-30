@@ -42,5 +42,7 @@ var_dump($_POST);
 echo '</div>';
 
 
+var_dump(SelectLocalisationById($db, 2));
+
 // bonne pratique
 $db = null;
