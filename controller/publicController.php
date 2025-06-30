@@ -2,6 +2,7 @@
 require_once('../model/utilisateursModel.php');
 require_once('../model/localisationsModel.php');
 if (!isset($_GET['page'])) {
+    $locations = getAllLocations($db);
 } else {
     if ($_GET['page'] === 'conn') {
         if (isset($_POST['login'], $_POST['password'])) {

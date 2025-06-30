@@ -27,16 +27,39 @@
                 <div>
                     <button type="submit">Se connecter</button>
                     <a href="./" class="back-link">Revenir à la page d'accueil</a>
-                    <span style="color: red; margin-top: 3px;"><?php if (isset($erreur)){echo $erreur;}?></span>
+                    <span style="color: red; margin-top: 3px;"><?php if (isset($erreur)) {
+                                                                    echo $erreur;
+                                                                } ?></span>
                 </div>
             </form>
         <?php else: ?>
             <h1>Carte interactive</h1>
             <h2>Thème de la carte</h2>
             <a id="adminBtn" href="?page=conn">Connexion à<br> l'administration</a>
-            <div id="carte"></div>
 
+            <div id="carteAndList">
+                <div id="carte"></div>
+
+                <div class="scrollable-list">
+                    <div class="list-header">
+                        <h2>Liste des points</h2>
+                        <h3>Cliquez sur un élément dans la liste ci-dessous pour le situer sur la carte</h3>
+                    </div>
+
+                    <ul>
+                        <?php foreach ($locations as $location): ?>
+                            <li>
+                                <?= htmlspecialchars($location['nom']) ?> |
+                                <?= htmlspecialchars($location['adresse']) ?> -
+                                <?= htmlspecialchars($location['codepostal']) ?> |
+                                <a href="">Photo</a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
         <?php endif; ?>
+
     </div>
 
     <script src="../../public/js/main.js"></script>

@@ -20,6 +20,7 @@ function authentificateAdminUser(PDO $pdo, string $login, string $password): arr
 
         return false;
     } catch (PDOException $e) {
+        
         return false;
     }
 }
