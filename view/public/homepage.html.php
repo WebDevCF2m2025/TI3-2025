@@ -23,6 +23,7 @@
   if (isset($_SESSION['username'])) :
   ?>
   <button><a href="?pg=logout"> Déconnexion </a></button>
+  <button><a href="?pg=admin"> Administration </a></button>
   <?php
   else:
   ?>
@@ -35,7 +36,20 @@
 
 <div class="main-page">
     <div id="map" style="width: 50%" ></div>
-    <div style="text-align: end">liste Points</div>
+  <div>
+    <div style="text-align: center">liste des Points</div>
+    <p style="text-align: center">Cliquez sur un element ci-dessous pour le situer sur la carte.</p>
+    <hr>
+    <ul id="points-list">
+      <?php
+      // On affiche la liste des points
+
+      foreach ($markers as $marker) {
+          echo "<li>{$marker['nom']} | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
+      }
+      ?>
+
+  </div>
 </div>
 
 <!-- Script File -->

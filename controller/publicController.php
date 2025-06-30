@@ -1,5 +1,5 @@
 <?php
-//require_once "model/localisation.php"
+require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
 if(isset($_GET['pg'])){

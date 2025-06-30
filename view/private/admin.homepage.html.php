@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
 <?php
-include "menu.html.php";
+  include "menu.html.php";
 ?>
 <h1 class="mb-4 text-center">MVC-CRUD-Procedural | Connexion</h1>
 <div class="container">
