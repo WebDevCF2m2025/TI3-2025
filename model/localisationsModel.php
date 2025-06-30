@@ -28,7 +28,7 @@ function selectOneLocalisatoinById(PDO $connect, int $idLocalisation): array | b
 
 
     try {
-        $prepare->execute([$$idLocalisation]);
+        $prepare->execute([$idLocalisation]);
 
         if ($prepare->rowCount() === 0) return false;
 
@@ -44,7 +44,7 @@ function selectOneLocalisatoinById(PDO $connect, int $idLocalisation): array | b
 
 
 
-function updateLocalisationById(PDO $connection, array $datas, int $idLocalisation)
+function updateLocalisationById(PDO $connection, array $datas, int $idLocalisation):bool
 {
 
     if ($datas['idLocalisation'] != $idLocalisation) die("Attaque !");
