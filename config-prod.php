@@ -2,7 +2,7 @@
 
 # MySQL
 const DB_HOST = "localhost";
-const DB_NAME = "crud_mvc_procedural";
+const DB_NAME = "TI3_2025";
 const DB_LOGIN = "root";
 const DB_PWD = "";
 const DB_PORT = 3306; // MariaDB uses port 3307 by default
