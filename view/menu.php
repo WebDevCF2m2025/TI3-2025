@@ -24,7 +24,7 @@
 $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
         if(!isset($_GET['pg'])){
             $activeHome = "active text-primary";
-        }elseif($_GET['pg']==="admin"){
+        }elseif($_GET['pg']==="adminR"){
             $activeAdmin = "active text-primary";
         }elseif($_GET['pg']==="login"){
             $activeLogin = "active text-primary";
@@ -41,7 +41,7 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
                 if(isset($_SESSION['idutilisateurs'])):
                 ?>
                     
-                    <a class="nav-link  <?=$activeAdmin?>" href="./?pg=admin">Administration</a>
+                    <a class="nav-link  <?=$activeAdmin?>" href="./?pg=adminR">Administration</a>
                     <a class="nav-link" href="./?pg=logout">Déconnexion</a>
 
                 <?php else:

@@ -15,12 +15,12 @@ if (isset($_GET['pg'])) {
             // redirection
             header("Location: ./");
         exit();
-        // page à propos
-    } elseif ($_GET['pg'] === "admin") {
+
+    } elseif ($_GET['pg'] === "adminR") {
         //chargement des articles pour l'administration
 
         // appel de la vue
-        require_once "../view/admin.php";
+        require_once "../view/private/adminR.php";
     } elseif ($_GET['pg'] === "delete"
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
@@ -31,11 +31,11 @@ if (isset($_GET['pg'])) {
 
         //suppression d'un article
         if (deleteArticleById($db, $idarticle)) {
-            header("Location: ./?pg=admin");
+            header("Location: ./?pg=adminR");
             exit();
         }
         // on souhaite ajouter un article
-    } elseif ($_GET['pg'] === "addArticle") {
+    } elseif ($_GET['pg'] === "adminC") {
         // si les variables de type post attendues sont là
         if (isset($_POST['title'], $_POST['articletext'])) {
             $insert = addArticle($db, $_POST);
@@ -46,11 +46,11 @@ if (isset($_GET['pg'])) {
             }
         }
         // appel de la vue
-        require_once "../view/admin.insert.html.php";
+        require_once "../view/private/adminC.php";
 
         // on souhaite modifier un article qu'on récupère grâce à
         // son identifiant qui doit être un string contenant que des entiers [0-9]+
-    } elseif ($_GET['pg'] === "update"
+    } elseif ($_GET['pg'] === "adminU"
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
 
@@ -72,7 +72,7 @@ if (isset($_GET['pg'])) {
             }
         }
         // appel de la vue
-        require_once "../view/admin.update.html.php";
+        require_once "../view/private/adminU.php";
     }
 
 } else {
