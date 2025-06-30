@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body class="bg-light">
-
+<?php include_once "../view/menu.php"; ?>
 <h1 class="mb-4 text-center">Connexion</h1>
 <div class="container">
     <div class="bg-white p-4 rounded shadow-sm mb-5">

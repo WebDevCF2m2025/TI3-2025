@@ -22,6 +22,7 @@ try{
 }catch(Exception $e){
     // mode production -> error_log($e->getMessage());
     die($e->getMessage());
+    
 }
 
 // Si nous sommes connectés
@@ -32,4 +33,5 @@ if(isset($_SESSION['login'])){
     require_once "../controller/publicController.php";
 }
 
+var_dump($_SESSION);
 $db = null;

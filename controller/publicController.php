@@ -5,6 +5,7 @@ echo "/publicController";
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
+$navActive = false;
 
 if(isset($_GET['pg'])){
     if($_GET['pg']==="login"){

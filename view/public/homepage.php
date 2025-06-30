@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body class="bg-light">
-<?php include_once "menu.php"; ?>
+<?php
+    if($navActive){
+        include_once "../view/menu.php"; 
+    }    
+?>
     <h1 class="mb-4 text-center">Carte Interactive</h1>
     <a href="?pg=login"><button>connexion à l'administration</button></a>
 </br>
