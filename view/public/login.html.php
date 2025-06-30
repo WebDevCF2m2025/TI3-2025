@@ -23,10 +23,12 @@ include "menu.html.php";
           <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci de vous être connecté !</div>
           <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Login et/ou mot de passe
             incorrecte !</div>
-          <form class="<?=$displayForm?>" action="" name="login" method="post">
+          <form class="<?=$displayForm?>" action="" name="username" method="post">
             <div class="mb-3">
-              <label for="login" class="form-label">Login</label>
-              <input type="text" class="form-control" id="login" name="login" placeholder="Votre login" required autofocus>
+              <label for="username" class="form-label">Login</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Votre username"
+                     required
+                     autofocus>
             </div>
             <div class="mb-3">
               <label for="passwd" class="form-label">Mot de passe</label>

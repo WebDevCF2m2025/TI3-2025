@@ -59,3 +59,4 @@ if (isset($_GET['pg'])) {
   require_once "../view/public/homepage.html.php";
 
 }
+echo "Hello from PrivateController!";

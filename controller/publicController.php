@@ -10,9 +10,9 @@ if(isset($_GET['pg'])){
     $displayForm = ""; // affichage du formulaire visible par défaut
 
     //tentative de connexion
-    if(isset($_POST['login']) && isset($_POST['passwd'])){
+    if(isset($_POST['username']) && isset($_POST['passwd'])){
       // si c'est le bon utilisateur
-      if(connectUser($db, $_POST['login'], $_POST['passwd'])){
+      if(connectUser($db, $_POST['username'], $_POST['passwd'])){
         $displaySuces = ""; // succès visible
         $displayForm = "d-none"; // on cache le formulaire
         // création d'un javascript de redirection

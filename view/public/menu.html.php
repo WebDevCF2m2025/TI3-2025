@@ -24,7 +24,7 @@
         <a class="nav-link <?=$activeAbout?>" href="./?pg=about">À propos</a>
         <?php
         // si nous sommes connectés
-        if(isset($_SESSION['login'])):
+        if(isset($_SESSION['username'])):
           ?>
           <span class="nav-link small"> | <?=$_SESSION['username']?></span>
           <a class="nav-link <?=$activeAdmin?>" href="./?pg=admin">Administration</a>

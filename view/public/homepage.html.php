@@ -18,17 +18,24 @@
 <div class="top-page">
   <h1>Carte interactive</h1>
   <h3>Parcours BD à Bruxelles</h3>
-  <button><a href="?pg=login"> Connexion à l'administration <a> </button>
+  <?php
+  // Si l'utilisateur est connecté, on affiche le bouton de déconnexion
+  if (isset($_SESSION['username'])) :
+  ?>
+  <button><a href="?pg=logout"> Déconnexion </a></button>
+  <?php
+  else:
+  ?>
+  <button><a href="?pg=login"> Connexion à l'administration</a></button>
+  <?php
+  endif;
+  ?>
+
 </div>
 
 <div class="main-page">
-  <div>
-    <div id="map" style="height: 500px;background-color: bisque" ></div>
-
-  </div>
-  <div>
+    <div id="map" style="width: 50%" ></div>
     <div style="text-align: end">liste Points</div>
-  </div>
 </div>
 
 <!-- Script File -->
