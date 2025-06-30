@@ -23,4 +23,16 @@ try{
     die($e->getMessage());
 }
 
-//
+// Si nous sommes connectés
+if(isset($_SESSION['login'])) {
+    // Nous prenons le contrôleur privé
+    require_once "../controller/privateController.php";
+
+// Si pas connecté
+} else {
+    // Nous prenons le contrôleur public
+    require_once "../controller/publicController.php";
+}
+
+// Bonne pratique
+$db = null;
