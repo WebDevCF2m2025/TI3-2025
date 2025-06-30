@@ -1,3 +1,7 @@
+<?php
+require_once "../model/localisationsModel.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9li/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="/public/css/public.css">
 </head>
 
@@ -20,21 +24,31 @@
     </div>
 
     <div id="ContainerCarte">
-
+        <!-- 
         <div class="left-content">
             <div id="carte"></div>
             <div class="content">
             </div>
-        </div>
+        </div> -->
         <div id="list">
             <h3>List des ponts</h3>
             <h5>clické</h5>
             <hr>
-            <ul>
-                <li>
+            <?php
+            $localisations = selectAllFromLocalisations($db);
 
-                </li>
-            </ul>
+            ?>
+            <?php foreach ($localisations as $loc): ?>
+                <ul>
+                    <li><?= $loc['nom'], " | ", $loc['adresse'], " -", $loc['codepostal'], " ", $loc['ville'], " | " ?> <a
+                            href="">Photo</a>
+                    </li>
+
+
+                </ul>
+            <?php endforeach; ?>
+
+
         </div>
     </div>
 
@@ -66,6 +80,10 @@
 
 
     </script>
+
+    <?php
+    var_dump($localisations)
+        ?>
 </body>
 
 </html>
