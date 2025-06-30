@@ -15,11 +15,11 @@ include "_menu.html.php";
 <div class="container">
     <div class="bg-white p-4 rounded shadow mb-5">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=addLoc">Ajouter une localisation</a></h4>
-        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Gestion des localisations</h3>
+        <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr>
+        <h2 class="mb-3 text-center mb-3">Gestion des localisations</h2>
 
         <?php
-        // pas d'articles publiés
+        // pas de localisation publiés
         if(empty($points)):
             $h4 = "Pas encore de localisation";
         else:
@@ -28,10 +28,10 @@ include "_menu.html.php";
             $h4 = "Il y a $nbLoc localisation$pluriel";
         endif;
         ?>
-        <h4 class="text-secondary text-left mb-3"><?=$h4?></h4>
+        <h4 class="text-secondary text-center small mb-3"><?=$h4?></h4>
 
         <!-- Affichage pour desktop -->
-        <div class="table-responsive d-none d-md-block">
+        <div class="table-responsive d-none d-lg-block">
             <table class="table table-hover align-middle bg-white rounded">
                 <thead class="table-light">
                 <tr>
@@ -74,15 +74,15 @@ include "_menu.html.php";
                         <a href="?pg=update&id=<?= $point['id']?>" class="btn btn-warning btn-sm">Modifier</a>
                     </td>
                     <td>
-                        <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $article['slug']?>')? document.location.href='?pg=delete&id=<?= $article['idarticle']?>': ''" class="btn btn-danger btn-sm">Supprimer</span>
+                        <a href="?pg=confirm_delete&id=<?= $point['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
                     </td>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
 
-        <!-- Affichage carte mobile (sm uniquement) -->
-        <div class="d-block d-md-none">
+        <!-- Affichage carte mobile (md uniquement) -->
+        <div class="d-block d-lg-none">
             <?php foreach ($points as $point): ?>
                 <div class="card mb-3">
                     <div class="card-body">
@@ -93,9 +93,7 @@ include "_menu.html.php";
                         <p class="mb-1"><strong>Latitude :</strong> <?= $point['latitude'] ?></p>
                         <p class="mb-3"><strong>Longitude :</strong> <?= $point['longitude'] ?></p>
                         <a href="?pg=update&id=<?= $point['id'] ?>" class="btn btn-warning btn-sm me-1">Modifier</a>
-                        <a href="?pg=delete&id=<?= $point['id'] ?>"
-                           onclick="return confirm('Voulez-vous vraiment supprimer <?= addslashes($point['nom']) ?> ?');"
-                           class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="?pg=confirm_delete&id=<?= $point['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
                     </div>
                 </div>
             <?php endforeach; ?>

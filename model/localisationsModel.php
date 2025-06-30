@@ -62,7 +62,6 @@ function addLoc(PDO $connect, array $datas): bool
 }
 
 
-
 /*
  * READ
  */
@@ -71,7 +70,8 @@ function addLoc(PDO $connect, array $datas): bool
  * @return array
  */
 // Fonction pour récupérer les localisations
-function getLocalisations(PDO $connect): array {
+function getLocalisations(PDO $connect): array
+{
     $sql  = " SELECT * FROM localisations ";
     try{
         $query = $connect->query($sql);
@@ -82,4 +82,42 @@ function getLocalisations(PDO $connect): array {
         die($e->getMessage());
     }
 }
+/**
+ * Récupère une localisation par son ID
+ *
+ * @param PDO $connect
+ * @param int $id
+ * @return array|false
+ */
+function getOneLocById(PDO $connect, int $id): array|false
+{
+    $sql = "SELECT * FROM localisations WHERE id = ?";
+    $request = $connect->prepare($sql);
 
+    try {
+        $request->execute([$id]);
+        $result = $request->fetch(PDO::FETCH_ASSOC);
+        $request->closeCursor();
+        return $result;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
+
+/*
+ * DELETE
+ */
+
+// Fonction pour supprimer une localisation
+function deleteLocById(PDO $connect, int $idLoc): bool
+{
+    $sql = "DELETE FROM `localisations` WHERE `id` = ?";
+    $request = $connect->prepare($sql);
+    try {
+        $request->execute([$idLoc]);
+        $request->closeCursor();
+        return true;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}

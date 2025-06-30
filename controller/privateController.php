@@ -14,14 +14,29 @@ if (isset($_GET['pg'])) {
             exit();
         }
 
-        // Accueil de l'administration
+    // Accueil de l'administration
     } elseif ($_GET['pg'] === 'admin') {
         // Chargement des localisations pour l'administration
         $points = getLocalisations($db);
         // Appel de la page d'administration
         require_once "../view/private/admin.homepage.html.php";
 
-        // On souhaite supprimer une localisation
+    // On souhaite afficher la page de confirmation avant suppression
+    } elseif ($_GET['pg'] === 'confirm_delete'
+        && isset($_GET['id'])
+        && ctype_digit($_GET['id'])) {
+
+        $idLoc = (int)$_GET['id'];
+        $point = getOneLocById($db, $idLoc);
+
+        if (!$point) {
+            die("Lieu introuvable.");
+        }
+
+        include "../view/private/admin.delete.html.php";
+        exit();
+
+    // On souhaite supprimer une localisation
     } elseif ($_GET['pg'] === 'delete'
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
@@ -32,11 +47,11 @@ if (isset($_GET['pg'])) {
 
         // Suppression d'une localisation
         if (deleteLocById($db, $idLoc)) {
-            header("Location: ./?pg=admin");
+            header("Location: ./?pg=admin.delete.html.php");
             exit();
         }
 
-    // UPDATE
+
     // On souhaite ajouter une localisation
     } elseif ($_GET['pg'] === 'addLoc') {
         // Si les variables de type post attendues sont là

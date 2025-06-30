@@ -15,8 +15,7 @@ include "_menu.html.php";
 <div class="container">
     <div class="bg-white p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
-        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Formulaire d'insertion</h3>
+        <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr>
         <?php
         if(isset($thanks)):
             ?>
@@ -27,9 +26,9 @@ include "_menu.html.php";
         <?php
         endif;
         ?>
+        <h2 class="mb-5 text-center">Ajouter une localisation</h2>
         <div class="container">
-            <div class="bg-white p-4 rounded shadow-sm mb-5">
-                <h2 class="mb-3 text-center mb-5">Ajouter une localisation</h2>
+            <div class="bg-white p-4 rounded shadow mb-5">
                 <!-- on affiche l'erreur -->
                 <?php if (isset($probleme)): ?>
                     <div class="alert alert-danger">Erreur lors de l'insertion d'un article</div>
@@ -38,7 +37,7 @@ include "_menu.html.php";
                 <?php endif; ?>
                 <form action="" method="post" name="article">
                     <div class="mb-3">
-                        <label for="nom" class="form-label">Nom de l'arrêt de tram</label>
+                        <label for="nom" class="form-label">Lieu</label>
                         <input type="text" class="form-control" id="nom" name="nom" required>
                     </div>
                     <div class="mb-3">
