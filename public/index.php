@@ -26,12 +26,12 @@ try{
 }
 
 // Si nous sommes connectés
-if(isset($_SESSION['login'])){
+if(isset($_SESSION['idutilisateurs'])){
     require_once "../controller/privateController.php";
 }else{
     // sinon
     require_once "../controller/publicController.php";
 }
 
-var_dump($_SESSION);
+
 $db = null;

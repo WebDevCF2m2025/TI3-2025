@@ -22,7 +22,7 @@ if(isset($_GET['pg'])){
                 $jsRedirect = " <script>
                                     setTimeout(() => {
                                         window.location.href = './';
-                                    }, 3000); 
+                                    }, 1500); 
                                 </script>";
             }else{
                 // affichage de l'erreur

@@ -3,6 +3,19 @@
         <a class="navbar-brand fw-bold" href="./">
             MISI
         </a>
+
+        <?php
+        if(isset($_SESSION['idutilisateurs'])):
+        ?>    
+            <div class="position-absolute start-50 translate-middle-x">
+                <span class="nav-brand  text-success fw-bold"> * Bonjour <?=$_SESSION['username']?> *</span>
+            </div>    
+
+
+            <?php
+        endif;
+        ?>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,6 +30,7 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
             $activeLogin = "active text-primary";
         }
         ?>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
             <div class="navbar-nav ms-auto">
                 <!-- Correction : usage cohérent de ?pg=... -->
@@ -24,15 +38,14 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
 
                 <?php
                 // si nous sommes connectés
-                if(isset($_SESSION['login'])):
+                if(isset($_SESSION['idutilisateurs'])):
                 ?>
-                    <span class="nav-link small"> | <?=$_SESSION['username']?></span>
+                    
                     <a class="nav-link  <?=$activeAdmin?>" href="./?pg=admin">Administration</a>
                     <a class="nav-link" href="./?pg=logout">Déconnexion</a>
 
-                <?php
-                // nous ne sommes pas connecté
-                else:
+                <?php else:
+                // nous ne sommes pas connecté 
                 ?>
                 <a class="nav-link <?=$activeLogin?>" href="./?pg=login">Connexion</a>
                 <?php
@@ -42,3 +55,4 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
         </div>
     </div>
 </div>
+<script src="js/bootstrap.bundle.min.js"></script>

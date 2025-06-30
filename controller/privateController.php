@@ -3,6 +3,7 @@
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
+echo "/privateController";
 
 if (isset($_GET['pg'])) {
     // déconnexion
@@ -17,16 +18,16 @@ if (isset($_GET['pg'])) {
         // page à propos
     } elseif ($_GET['pg'] === "admin") {
         //chargement des articles pour l'administration
-        $articles = getAllArticles($db);
+
         // appel de la vue
-        require_once "../view/admin.homepage.html.php";
+        require_once "../view/admin.php";
     } elseif ($_GET['pg'] === "delete"
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
 
         // on convertit le string en int
         // settype($_GET['id'],"integer");
-        $idarticle = (int)$_GET['id'];
+
 
         //suppression d'un article
         if (deleteArticleById($db, $idarticle)) {
@@ -76,7 +77,7 @@ if (isset($_GET['pg'])) {
 
 } else {
     //chargement des articles pour l'accueil
-    $articles = getArticlesPublished($db);
-    require_once "../view/homepage.html.php";
+    $navActive = true;
+    require_once "../view/public/homepage.php";
 }
 

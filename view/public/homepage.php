@@ -18,8 +18,16 @@
     }    
 ?>
     <h1 class="mb-4 text-center">Carte Interactive</h1>
-    <a href="?pg=login"><button>connexion à l'administration</button></a>
+    <div class="container d-flex justify-content-center">
+    <?php
+    if(!$navActive):
+    ?>
+    <a href="?pg=login"><button class="btn btn-success fw-bold rounded">Connexion à l'administration</button></a>
+    <?php
+    endif;
+    ?>
+        
+    </div>
 </br>
 </body>
 </html>
-<?php var_dump($_SESSION); ?>
