@@ -5,6 +5,7 @@
 session_start();
 
 require_once "../config-dev.php";
+require_once "../model/localisationsModel.php";
 
 try{
     // instanciation de PDO
@@ -16,7 +17,7 @@ try{
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
-
+        
     // en cas d'erreur, instanciation d'Exception
 }catch(Exception $e){
     // mode production -> error_log($e->getMessage());
@@ -44,6 +45,7 @@ var_dump($_SESSION);
 echo '<h3>$_POST</h3>';
 var_dump($_POST);
 echo '</div>';
+var_dump($locations); ////////// !!!!!!!!!!OK!!!!!!!!!!!!!
 
 endif;
 
