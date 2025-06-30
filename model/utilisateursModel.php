@@ -7,7 +7,7 @@ function connectUser(PDO $connect,string $login,string $pwd): bool
     trim($login);
     trim($pwd);
 
-    $sql = "SELECT * FROM `utilisateur` WHERE `login` = ? AND `active` = 1";
+    $sql = "SELECT * FROM `utilisateurs` WHERE `username` = ?";
 
     $request = $connect->prepare($sql);
 
@@ -17,9 +17,9 @@ function connectUser(PDO $connect,string $login,string $pwd): bool
         $user = $request->fetch();
         $request->closeCursor();
 
-        if(password_verify($pwd,$user['userpwd'])){
+        if(password_verify($pwd,$user['passwd'])){
             $_SESSION = $user;
-            unset($_SESSION['userpwd']);
+            unset($_SESSION['passwd']);
             return true;
         }else{
             return false;

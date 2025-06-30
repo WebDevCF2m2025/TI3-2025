@@ -18,4 +18,18 @@ if (!isset($_GET['pg'])) {
     header('Content-Type: application/json');
     echo json_encode($localisations);
     exit();
+}elseif($_GET['pg']==='connexion'){
+
+    if(isset($_POST['login'],$_POST['password'])){
+
+        $connect = connectUser($db,$_POST['login'],$_POST['password']);
+
+        if($connect){
+            header('Location: ./?pg=admin');
+            exit();
+        }else{
+            echo "erreur";
+        }
+    }
+    require_once "../view/public/connexion.php";
 }

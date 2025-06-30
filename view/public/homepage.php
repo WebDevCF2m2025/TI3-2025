@@ -61,7 +61,7 @@
     <div class="header">
         <h1>Carte interactive</h1>
         <h2>Les stations cambio</h2>
-        <button id="btn">Connexion à l'administration</button>
+        <a href="./?pg=connexion"><button id="btn">Connexion à l'administration</button></a>
     </div>
     <div class="containeur">
         <div id="carte"></div>
@@ -76,7 +76,7 @@
                 foreach ($localisations as $article):
                 ?>
                     <ul>
-                        <li><?= $article['nom'] ?> | <?= $article['adresse'] ?> <?= $article['numero'] ?> - <?= $article['codepostal'] ?> <?= $article['ville'] ?> <a href="">Cliquer</a></li>
+                        <li><?= $article['nom'] ?> | <?= $article['adresse'] ?> <?= $article['numero'] ?> - <?= $article['codepostal'] ?> <?= $article['ville'] ?></li>
                     </ul>
                 <?php
                 endforeach;

@@ -18,7 +18,7 @@ try {
     ($e->getMessage());
 }
 
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['username'])) {
     require_once "../controller/privateController.php";
 } else {
     require_once "../controller/publicController.php";
