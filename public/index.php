@@ -1,5 +1,4 @@
 <?php
-# exemple5MVC/public/index.php
 
 /*
  * Contrôleur frontal
@@ -40,7 +39,7 @@ if(isset($_SESSION['login'])){
 if(APP_MODE == "dev"):
 
 // Affichage de la barre de débogage
-    echo '<div class="bg-white p-4 rounded shadow-sm mb-5"<hr><h3>Barre de débogage</h3><hr>';
+    echo '<div <hr><h3>Barre de débogage</h3><hr>';
     echo '<h4>session_id() ou SID</h4>';
     var_dump(session_id());
     echo '<h4>$_GET</h4>';
