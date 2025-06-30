@@ -2,7 +2,8 @@
 function getAllLocations(PDO $pdo): array|false
 {
     try {
-        $sql = "SELECT * FROM localisations";
+        $sql = "SELECT * FROM localisations
+ORDER BY id ASC;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
@@ -14,7 +15,7 @@ function getAllLocations(PDO $pdo): array|false
 
         return false;
     } catch (PDOException $e) {
-        error_log("Erreur PDO dans getAllLocations : " . $e->getMessage());
+        $e->getMessage();
         return false;
     }
 }

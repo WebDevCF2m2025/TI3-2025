@@ -12,17 +12,19 @@ require_once "../model/utilisateursModel.php";
 require_once "../model/localisationsModel.php";
 
 
+
 // notre connexion PDO
 try {
     // instanciation de PDO
-    $db = new PDO(DB_DSN,
+    $db = new PDO(
+        DB_DSN,
         DB_LOGIN,
         DB_PWD,
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]);
-
+        ]
+    );
 } catch (Exception $e) {
     die($e->getMessage());
 }
