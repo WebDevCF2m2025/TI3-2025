@@ -29,7 +29,7 @@ if(isset($_GET['pg'])){
         }
 
         // appel de la vue
-        require_once "../view/login.html.php";
+        require_once "../view/public/login.html.php";
     }elseif($_GET['pg']==="accueil"){
 
         // appel de la vue

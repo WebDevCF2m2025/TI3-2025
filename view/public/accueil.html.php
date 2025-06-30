@@ -24,7 +24,7 @@
         <div id="container1">
         <h2>Carte interactive</h2>
         <h4>Parcours BD à Bruxelles</h4>
-        <a href="login.html.php"><button>Se connecter</button></a>
+        <a href="?pg=username"><button>Se connecter</button></a>
         </div>
 
 
@@ -34,57 +34,7 @@
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
             </script>
 
-                <div id="liste">
-                <ul>
-                    <li>adresse: 'Place Maurice Van Meenen - 1060 Saint Gilles', latitude: 50.824993, longitude: 4.345397</li>
-                    <li>adresse: "Boulevard de l'Empereur, 4 - 1000 Bruxelles", latitude: 50.843862, longitude: 4.356765</li>
-                    <li>adresse: 'Place Rogier - 1210 Bruxelles', latitude: 50.855800, longitude: 4.358945</li>
-                    <li>adresse: 'Place De Brouckère - 1000 Bruxelles', latitude: 50.851456, longitude: 4.352785</li>
-                    <li>adresse: 'Place Colignon - 1030 Schaerbeek', latitude: 50.867029, longitude: 4.373310</li>
-                    <li>adresse: 'Place de la Bourse - 1000 Bruxelles', latitude: 50.848609, longitude: 4.349734</li>
-                    <li>adresse: 'Place du Luxembourg - 1050 Bruxelles', latitude: 50.839102, longitude: 4.373078</li>
-                    <li>adresse: 'Place Saint Denis - 1190 Forest', latitude: 50.809698, longitude: 4.316902</li>
-                    <li>adresse: 'Koudenberg, 3 - 1000 Bruxelles', latitude: 50.843094, longitude: 4.358020</li>
-                    <li>adresse: 'Square Hoedemaekers 10 - 1140 Evere', latitude: 50.872601, longitude: 4.403192</li>
-                    <li>adresse: 'Chaussée de Gand, 1129 - 1082 BSA', latitude: 50.864312, longitude: 4.296932</li>
-                    <li>adresse: 'Place Communale - 1080 Molenbeek', latitude: 50.854744, longitude: 4.338636</li>
-                    <li>adresse: 'Parvis de Saint Gilles - 1060 Saint Gilles', latitude: 50.830507, longitude: 4.345351</li>
-                    <li>adresse: 'Place du Jeu de Balle - 1000 Bruxelles', latitude: 50.837009, longitude: 4.345736</li>
-                    <li>adresse: 'Place Simon Bolivar - 1030 Schaerbeek', latitude: 50.860645, longitude: 4.358590</li>
-                    <li>adresse: 'Rue Roger Van der Weyden 3 - 1000 Bruxelles', latitude: 50.841889, longitude: 4.343493</li>
-                    <li>adresse: 'Place du Conseil, 1 - 1070 Anderlecht', latitude: 50.839053, longitude: 4.329663</li>
-                    <li>adresse: 'Avenue Salomé, 2', latitude: 50.830842, longitude: 4.455309</li>
-                    <li>adresse: "Place de l'Altitude Cent (au-dessus du proxy Delhaize)", latitude: 50.816655, longitude: 4.336770</li>
-                    <li>adresse: 'Place de la Monnaie - 1000 Bruxelles', latitude: 50.850002, longitude: 4.353347</li>
-                    <li>adresse: 'Place Ferdinand Cocq - 1050 Ixelles', latitude: 50.833045, longitude: 4.366952</li>
-                    <li>adresse: 'Grand-Place', latitude: 50.846747, longitude: 4.352462</li>
-                    <li>adresse: 'Place Rouppe - 1000 Bruxelles', latitude: 50.842803, longitude: 4.345832</li>
-                    <li>adresse: 'Place Dumon, ?? - 1150 Woluwé Saint Pierre', latitude: 50.839945, longitude: 4.465015</li>
-                    <li>adresse: 'Parvis Sainte-Alix, 1150 Woluwé St Pierre', latitude: 50.827823, longitude: 4.462162</li>
-                    <li>adresse: 'Place Flagey - 1050 Ixelles', latitude: 50.827762, longitude: 4.372441</li>
-                    <li>adresse: 'Parc Elisabeth', latitude: 50.865263, longitude: 4.325386</li>
-                    <li>adresse: 'Rue du Lombard, 77 - 1000 Bruxelles', latitude: 50.844660, longitude: 4.352998</li>
-                    <li>adresse: 'Square Hoedemaekers 10 - 1140 Evere', latitude: 50.872024, longitude: 4.403433</li>
-                    <li>adresse: 'Croisement Rue Saint Marie et Rue du Compte de Flandre', latitude: 50.855635, longitude: 4.338896</li>
-                    <li>adresse: 'Rue Joseph Mertens, 15 - 1082 BSA', latitude: 50.864091, longitude: 4.292859</li>
-                    <li>adresse: 'Place Cardinal Mercier, 10 - 1090 Jette', latitude: 50.880399, longitude: 4.328213</li>
-                    <li>adresse: 'Maison Antoine, Place jourdan 1 - 1040 Etterbeek', latitude: 50.836824, longitude: 4.381443</li>
-                    <li>adresse: 'Quai des péniches, 16 - 1000 Bruxelles', latitude: 50.860510, longitude: 4.348487</li>
-                    <li>adresse: 'Square Prince Léopold', latitude: 50.883673, longitude: 4.341004</li>
-                    <li>adresse: 'Place Simonis', latitude: 50.863094, longitude: 4.330406</li>
-                    <li>adresse: 'Place Reine Paola 11, 1083 Ganshoren', latitude: 50.875087, longitude: 4.300563</li>
-                    <li>adresse: 'Place Roi Baudouin - 1082 BSA', latitude: 50.863323, longitude: 4.295852</li>
-                    <li>adresse: 'Place Sainte-Catherine', latitude: 50.850595, longitude: 4.347675</li>
-                    <li>adresse: 'Place de Londres 5,  1050 Ixelles', latitude: 50.837668, longitude: 4.368435</li>
-                    <li>adresse: "Parc de l'Abbaye - 1190 Forest", latitude: 50.810617, longitude: 4.316946</li>
-                    <li>adresse: 'Place Emile Bockstael', latitude: 50.877137, longitude: 4.347441</li>
-                    <li>adresse: 'Place Royale, 2 - 1000 Bruxelles', latitude: 50.842305, longitude: 4.359477</li>
-                    <li>adresse: 'Chemin du Rossignol 18-2°', latitude: 50.895585, longitude: 4.385503</li>
-                    <li>adresse: 'Place Saint Josse - 1210 Saint Josse', latitude: 50.849782, longitude: 4.374246</li>
-                    <li>adresse: 'Avenue Edmond Galoppin - 1150 WSP', latitude: 50.831469, longitude: 4.426945</li>
-                    <li>adresse: 'Place De Brouckère 41', latitude: 50.852100, longitude: 4.353410</li>
-                </ul>
-                </div>
+               
 
             <script src="carte.js"></script>  
 
