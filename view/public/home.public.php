@@ -18,15 +18,16 @@
             <form id="connectForm" method="post">
                 <div>
                     <label for="login">Nom d'utilisateur</label>
-                    <input type="text">
+                    <input type="text" id="login" name="login">
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password">
+                    <input type="password" id="password" name="password">
                 </div>
                 <div>
                     <button type="submit">Se connecter</button>
                     <a href="./" class="back-link">Revenir à la page d'accueil</a>
+                    <span style="color: red; margin-top: 3px;"><?php if (isset($erreur)){echo $erreur;}?></span>
                 </div>
             </form>
         <?php else: ?>
