@@ -42,6 +42,9 @@ if(isset($_GET['pg'])){
    // if(isset($_GET['getjson'])){
     //    echo json_encode($localisation);
     //}else {
+        $listes = getLocalisationsPublished($db);
         require_once "../view/public/accueil.html.php";
    // }
 }
+
+

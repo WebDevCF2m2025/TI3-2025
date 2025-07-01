@@ -1,12 +1,22 @@
 h4{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     margin-bottom: 30px;
+    color: grey;
 
 }
 
 h2{
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin-bottom: -6px;
+}
 
+
+body{
+  margin: 0;
+  padding: 0;
+
+background-color: rgb(42, 42, 42);
 }
 
 #container1 {
@@ -15,20 +25,51 @@ h2{
     display: flex;
     flex-direction: column;
     align-items: center;
+  
   }
   
+
+  #general{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+   
+
+  }
   button{
     padding:13px;
     font-size: 16px;
-    background-color: rgb(232, 234, 235);
-    border-radius: 5%;
-    border: 2px solid rgb(163, 163, 163);
+    background-color: white;
     color: rgb(0, 0, 0) ;
-    
+    border-radius: 6%;
+    width: 350px;
+  }
+
+  li{
+    list-style-type: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
 
-  #container2{
+  #liste {
+    flex: 1;
+    min-width: 45%;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    height: 600px;
+    overflow-y: auto;
+}
+
+#carte {
+  flex: 1;
+  min-width: 50%;
+  height: 500px;
+  border-radius: 3%;
+}
+
   
-    
-  }

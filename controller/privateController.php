@@ -169,7 +169,7 @@ if (isset($_GET['pg'])) {
 
 } else {
     //chargement des articles pour l'accueil
-    $localisation = getLocalisationPublished($db);
+    $listes = getLocalisationsPublished($db);
     require_once "../view/public/accueil.html.php";
 }
 
