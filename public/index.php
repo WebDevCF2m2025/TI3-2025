@@ -49,7 +49,8 @@ if(APP_MODE == "dev"):
 // echo '<h3>$_POST</h3>';
 // var_dump($_POST);
 // echo '</div>';
-// var_dump($locations); ////////// !!!!!!!!!!OK!!!!!!!!!!!!!
+// var_dump($locations); 
+// var_dump($jlocations); 
 
 endif;
 

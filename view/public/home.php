@@ -25,13 +25,13 @@
                 <th>Latitude</th>
                 <th>longitude</th>
             </tr>
-            <?php foreach ($locations as $location): ?>
+            <?php foreach ($locations as $loc): ?>
                 <tr>            
-                    <td><?= htmlspecialchars($location['nom']) ?></td>
-                    <td><?= htmlspecialchars($location['adresse']) ?></td>
-                    <td><?= htmlspecialchars($location['codepostal']) ?></td>
-                    <td><?= htmlspecialchars($location['latitude']) ?></td>
-                    <td><?= htmlspecialchars($location['longitude']) ?></td>
+                    <td><?= htmlspecialchars($loc['nom']) ?></td>
+                    <td><?= htmlspecialchars($loc['adresse']) ?></td>
+                    <td><?= htmlspecialchars($loc['codepostal']) ?></td>
+                    <td><?= htmlspecialchars($loc['latitude']) ?></td>
+                    <td><?= htmlspecialchars($loc['longitude']) ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
@@ -55,5 +55,6 @@
             .bindPopup(popupContent);
         });
     </script>
+    <script src="../public/js/script.js"></script>
 </body>
 </html>
