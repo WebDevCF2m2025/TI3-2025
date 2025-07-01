@@ -106,7 +106,6 @@
         <div class="info-box">
             <h4>Informations actuelles</h4>
             <p><strong>ID:</strong> <?= htmlspecialchars($location['id']) ?></p>
-            <p><strong>Créée:</strong> Localisation #<?= htmlspecialchars($location['id']) ?></p>
         </div>       
     </div>
 </body>

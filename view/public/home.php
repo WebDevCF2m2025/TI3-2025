@@ -13,26 +13,27 @@
 <body>
     <h1 class="main-title">Carte interactive</h1>
     <h3 class="main-subtitle">Parcours BD à Bruxelles</h3>
-    <a href="./?pg=username" class="btn-custom">Se connecter</a>
+    <a href="./?pg=username" class="btn">Se connecter</a>
     <div class="container-custom">
       <div id="map"></div>  
       <div class="table-zone-custom">        
         <table>
-            <tr>
-                <th>ID</th>
+            <tr>                
                 <th>Nom</th>
                 <th>Adresse</th>
                 <th>Code Postal</th>
                 <th>Latitude</th>
                 <th>longitude</th>
             </tr>
-            <?php foreach ($locations as $loc):?>
-            <tr>
-                <?php foreach($loc as $val):?>
-                    <td><?= $val ?></td>
-                <?php endforeach;?>
-            </tr>
-            <?php endforeach;?>
+            <?php foreach ($locations as $location): ?>
+                <tr>            
+                    <td><?= htmlspecialchars($location['nom']) ?></td>
+                    <td><?= htmlspecialchars($location['adresse']) ?></td>
+                    <td><?= htmlspecialchars($location['codepostal']) ?></td>
+                    <td><?= htmlspecialchars($location['latitude']) ?></td>
+                    <td><?= htmlspecialchars($location['longitude']) ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
       </div>
     </div>

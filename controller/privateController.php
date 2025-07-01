@@ -13,7 +13,7 @@ switch ($action) {
         break;
         
     case 'add':
-        // Добавление новой локации
+        
         $errors = [];
         $success = "";
         
@@ -24,7 +24,7 @@ switch ($action) {
             $latitude = trim($_POST['latitude'] ?? '');
             $longitude = trim($_POST['longitude'] ?? '');
             
-            // Валидация
+            
             if (empty($nom)) $errors[] = "Le nom est requis";
             if (empty($adresse)) $errors[] = "L'adresse est requise";
             if (empty($codepostal)) $errors[] = "Le code postal est requis";
@@ -34,7 +34,7 @@ switch ($action) {
             if (empty($errors)) {
                 if (addLocation($db, $nom, $adresse, $codepostal, $latitude, $longitude)) {
                     $success = "Localisation ajoutée avec succès!";
-                    // Очищаем поля
+                    
                     $_POST = [];
                 } else {
                     $errors[] = "Erreur lors de l'ajout";
@@ -45,7 +45,7 @@ switch ($action) {
         break;
         
     case 'edit':
-        // Редактирование локации
+        
         $id = $_GET['id'] ?? 0;
         $errors = [];
         $success = "";
@@ -62,7 +62,7 @@ switch ($action) {
             $latitude = trim($_POST['latitude'] ?? '');
             $longitude = trim($_POST['longitude'] ?? '');
             
-            // Валидация
+            
             if (empty($nom)) $errors[] = "Le nom est requis";
             if (empty($adresse)) $errors[] = "L'adresse est requise";
             if (empty($codepostal)) $errors[] = "Le code postal est requis";
@@ -88,7 +88,7 @@ switch ($action) {
         break;
         
     case 'delete':
-        // Удаление локации
+        
         $id = $_GET['id'] ?? 0;
         
         if ($id && deleteLocation($db, $id)) {
