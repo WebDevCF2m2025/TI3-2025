@@ -11,8 +11,9 @@ if(isset($_GET['pg'])){
         $displayError = "d-none"; // non visible par défaut
         $displayForm = ""; // affichage du formulaire visible par défaut
         // ici tentative de connexion
-        if(isset($_POST['username']) && isset($_POST['passwd'])){
+        if(isset($_POST['username']) ){
             // si c'est le bon utilisateur
+    
             if(connectUser($db,$_POST['username'],$_POST['passwd'])){
                 $displaySucces = ""; // succès visible
                 $displayForm = "d-none"; // on cache le formulaire

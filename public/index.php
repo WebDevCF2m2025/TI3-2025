@@ -8,7 +8,6 @@ session_start();
 
 
 
-
 // configuration de la connexion à la base de données
 require_once "../config-dev.php";
 
@@ -31,11 +30,11 @@ try{
 }
 
 // Si nous sommes connectés
-if(isset($_SESSION['username'])){
-    require_once "../controller/PrivateController.php";
+if(isset($_SESSION['idutilisateurs'])){
+    require_once "../controller/privateController.php";
 }else{
     // sinon
-    require_once "../controller/PublicController.php";
+    require_once "../controller/publicController.php";
 }
 
 // Affichage de la barre de débogage

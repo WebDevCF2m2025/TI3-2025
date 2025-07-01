@@ -1,8 +1,8 @@
 <?php
 
 # controller/PrivateController.php
-require_once "../model/ArticleModel.php";
-require_once "../model/UserModel.php";
+require_once "../model/localisationsModel.php";
+require_once "../model/utilisateursModel.php";
 
 if (isset($_GET['pg'])) {
     // déconnexion
@@ -23,7 +23,7 @@ if (isset($_GET['pg'])) {
         // accueil de l'administration
     } elseif ($_GET['pg'] === "admin") {
         //chargement des articles pour l'administration
-        $articles = getAllLocalisation($db);
+        $ok = getAllLocalisation($db);
         // appel de la vue
         require_once "../view/admin.accueil.html.php";
     } elseif ($_GET['pg'] === "delete"
@@ -42,7 +42,14 @@ if (isset($_GET['pg'])) {
         // on souhaite ajouter un article
     } elseif ($_GET['pg'] === "addLocalisation") {
         // si les variables de type post attendues sont là
-        if (isset($_POST['nom']<?php
+        if (isset($_POST['nom'], $_POST['adresse'])) {
+            $insert = addlocalisation($db, $_POST);
+            if ($insert === true) {
+                $merci = true;
+            } else {
+                $probleme = true;
+            }
+        }
 # controller/PrivateController.php
 require_once "../model/ArticleModel.php";
 require_once "../model/UserModel.php";
@@ -82,17 +89,8 @@ if (isset($_GET['pg'])) {
             header("Location: ./?pg=admin");
             exit();
         }
-        // on souhaite ajouter un article
+        // on souhaite ajouter une localisation
     } elseif ($_GET['pg'] === "addLocalisation") {
-        // si les variables de type post attendues sont là
-        if ($_POST['title'], $_POST['articletext'], $_POST['adresse'], $_POST['latitude'], $_POST['longitude']) {
-            $insert = addlocalisation($db, $_POST);
-            if ($insert === true) {
-                $merci = true;
-            } else {
-                $probleme = true;
-            }
-        }
         // appel de la vue
         require_once "../view/admin.insert.html.php";
 
@@ -110,7 +108,7 @@ if (isset($_GET['pg'])) {
         if($location===false) $error = "Cette localisation n'existe plus";
 
         // si les variables de type post attendues sont là
-        if (isset($_POST['title'], $_POST['articletext'], $_POST['adresse'], $_POST['latitude'], $_POST['longitude'])) {
+        if (isset($_POST['nom'], $_POST['adresse'], $_POST['latitude'], $_POST['longitude'])) {
            $update = updatelocalisationById($db, $_POST);
             if ($update === true) {
                 $merci = true;
@@ -125,11 +123,11 @@ if (isset($_GET['pg'])) {
 
 } else {
     //chargement des articles pour l'accueil
-    $articles = getlocalisationPublished($db);
+    $liste = getlocalisationPublished($db);
     require_once "../view/homepage.html.php";
 }
 
-)) {
+ {
             $insert = addlocalisation($db, $_POST);
             if ($insert === true) {
                 $merci = true;
@@ -169,7 +167,23 @@ if (isset($_GET['pg'])) {
 
 } else {
     //chargement des articles pour l'accueil
-    $listes = getLocalisationsPublished($db);
+    $liste = getLocalisationPublished($db);
+
     require_once "../view/public/accueil.html.php";
 }
 
+{
+    $insert = addLocalisation($db, $_POST);
+    if ($insert === true) {
+        $merci = true;
+    } else {
+        $probleme = true;
+    }
+}{
+    $insert = addLocalisation($db, $_POST);
+    if ($insert === true) {
+        $merci = true;
+    } else {
+        $probleme = true;
+    }
+}

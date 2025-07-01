@@ -13,16 +13,16 @@
  * @return bool
  *
  */
-function connectUser(PDO $con, string $userLogin, string $passwd): bool
+function connectUser(PDO $con, string $userName): bool
 {
     // on va protéger des espaces au début et à la fin
     // des variables de connexions (copier/coller).
-    $userLogin = trim($userusername);
-    $userPwd = trim($passwd);
+    $userName = trim($userName);
+    $passWd = trim($passWd);
     // requête préparée que sur le login (champ unique)
     $request = $con->prepare("SELECT * FROM `utilisateurs` WHERE `username`= ?");
     try{
-        $request->execute([$userusername]);
+        $request->execute([$userName]);
         // on a récupéré personne
         if($request->rowCount()===0) return false;
         // on a donc UN utilisateur (champ unique),
@@ -43,6 +43,7 @@ function connectUser(PDO $con, string $userLogin, string $passwd): bool
         }else{
             return false;
         }
+
 
     }catch (Exception $e){
         die($e->getMessage());

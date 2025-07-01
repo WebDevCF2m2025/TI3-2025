@@ -152,7 +152,7 @@
             <div id="liste">
             
                 <ul>
-                <h2>Liste des localisations</h2>
+                <h3>Liste des localisations</h3>
                     <?php
                 
                     foreach($listes as $liste):

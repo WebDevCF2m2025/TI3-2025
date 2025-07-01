@@ -52,8 +52,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="login"
-                  name="login"
+                  id="username"
+                  name="username"
                   placeholder="Votre login"
                   required
                   autofocus
@@ -65,8 +65,8 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="userpwd"
-                  name="userpwd"
+                  id="passwd"
+                  name="passwd"
                   placeholder="Votre mot de passe"
                   required
                 />
