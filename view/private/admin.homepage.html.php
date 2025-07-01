@@ -188,7 +188,7 @@ License: https://freebootstrap.net/license
                         <td><?=$article['latitude']?></td>
                         <td><?=$article['longitude']?></td>
                         <td><a class="text-decoration-none" href="?pg=update&idarticle=<?=$article['id']?>"><p class="bg-success p-2 rounded ">Modifier</p></a></td>
-                        <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'article : \n <?=addslashes(html_entity_decode($article['adresse'])) // pour mettre des slashs devant les "'" ?>'? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger p-2 rounded">Supprimer</p></td>
+                        <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'adresse : \n <?=$article['nom'];?>')? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger p-2 rounded">Supprimer</p></td>
                     </tr>
                         <?php
                     endforeach;
@@ -218,7 +218,7 @@ License: https://freebootstrap.net/license
                         <script>document.write(new Date().getFullYear());</script> 
                         All rights reserved. Designed with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://freebootstrap.net">FreeBootstrap.net</a>
                     </div>
-                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distributed by<a href="https://themewagon.com" target="_blank">ThemeWagon</a></div>
+                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distribué par<a href="https://themewagon.com" target="_blank">Centre de formation CF2M</a></div>
                 </div>
             </div>
         </footer>
@@ -232,6 +232,9 @@ License: https://freebootstrap.net/license
 <!-- End Back to top-->
 
 <!-- ======= Javascripts =======-->
+
+
+
 <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/vendors/gsap/gsap.min.js"></script>
 <script src="assets/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>

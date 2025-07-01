@@ -135,7 +135,7 @@ License: https://freebootstrap.net/license
                     <div class="col-lg-12 mb-2 mb-lg-0">
                         <div class="row">
                             <div class="col-lg-11">
-                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Ajouter un nouvel adresse</h1>
+                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Ajouter une nouvelle adresse</h1>
                                 <h4 class="mb-3"  data-aos="fade-up" data-aos-delay="100"><a href="./?pg=admin" style="color: purple;">Retour à l'administration</a></h4>
                             </div>
                             </div>
@@ -151,8 +151,8 @@ License: https://freebootstrap.net/license
         <!-- ======= FAQ =======-->
         <section class="section faq__v2" id="faq">
             <div class="container">
-                <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci pour votre article</div>
-                <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Article non valide !</div>
+                <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci pour votre adresse</div>
+                <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Adresse non valide !</div>
                 <?php
                 // si c'est un succès, on crée la redirection en js
                 if(isset($jsRedirect)) echo $jsRedirect;
@@ -202,7 +202,7 @@ License: https://freebootstrap.net/license
                         <script>document.write(new Date().getFullYear());</script> 
                         All rights reserved. Designed with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://freebootstrap.net">FreeBootstrap.net</a>
                     </div>
-                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distributed by<a href="https://themewagon.com" target="_blank">ThemeWagon</a></div>
+                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distribué par<a href="https://themewagon.com" target="_blank">Centre de formation CF2M</a></div>
                 </div>
             </div>
         </footer>

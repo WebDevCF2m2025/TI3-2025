@@ -92,7 +92,7 @@ if (!isset($_GET['pg'])) {
                 $jsRedirect = "<script>
     setTimeout(() => {
   window.location.href = './?pg=admin';
-}, 3000); // Redirects after 3 seconds
+}, 4000); // Redirects after 4 seconds
 </script>";
             } else {
                 $displayError = "";

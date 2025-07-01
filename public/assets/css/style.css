@@ -28,7 +28,41 @@ Buy Pro
   --nav-inverse: #000000;
   --nav-inverse-alt: #ffffff;
 }
+/* Style pour la navbar horizontale */
 
+
+nav.d-flex.w-100 {
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.navbar-nav {
+    gap: 1rem;
+}
+
+.nav-link {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #fff;
+    background: #0d6efd;
+    text-decoration: none;
+}
+
+.navbar-nav.ms-auto {
+    border-left: 1px solid #e0e0e0;
+    padding-left: 1.5rem;
+    margin-left: 1.5rem;
+}
 
 #carte {
             width: 800px;

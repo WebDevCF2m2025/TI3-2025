@@ -10,7 +10,35 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
 <!-- Ma CSS -->
-<style>
+
+   
+ <style>
+    .navbar-custom {
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 0.75rem 1.5rem;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar-custom .nav-link {
+        color: #333;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: #007bff;
+        background-color: rgba(0, 123, 255, 0.1);
+        border-radius: 0.5rem;
+    }
+
+    .navbar-custom .nav-link strong {
+        font-weight: 600;
+    }
+
+
+
        #carte {
            width: 1150px;
            height:600px;
