@@ -50,9 +50,5 @@ if(isset($_SESSION['username'])) {
 //var_dump($_POST);
 //echo '</div>';
 
-
-
-
-
 // Bonne pratique
 $db = null;

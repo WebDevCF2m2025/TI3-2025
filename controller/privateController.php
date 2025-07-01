@@ -8,6 +8,7 @@ if (!isset($_SESSION['username'])) {
 // Dépendances
 require "../model/utilisateursModel.php";
 require "../model/localisationsModel.php";
+
 if (isset($_GET['json'])) {
     $points = getLocalisations($db);
     header('Content-Type: application/json');

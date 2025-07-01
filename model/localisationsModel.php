@@ -191,14 +191,17 @@ function deleteLocById(PDO $connect, int $idLoc): bool
  * @return int
  */
 function countLocalisations(PDO $db): int {
-    $stmt = $db->query("SELECT COUNT(*) FROM localisations");
-    return (int)$stmt->fetchColumn();
+    $sql = "SELECT COUNT(*) FROM localisations";
+    $request = $db->query($sql);
+    return (int)$request->fetchColumn();
 }
 
-function getLocalisationsByPage(PDO $db, int $start, int $limit): array {
-    $stmt = $db->prepare("SELECT * FROM localisations ORDER BY nom ASC LIMIT :start, :limit");
-    $stmt->bindValue(':start', $start, PDO::PARAM_INT);
-    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll();
+function getLocalisationsByPage(PDO $db, int $start, int $limit): array
+{
+    $sql = "SELECT * FROM localisations ORDER BY nom ASC LIMIT :start, :limit";
+    $request = $db->prepare($sql);
+    $request->bindValue(':start', $start, PDO::PARAM_INT);
+    $request->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $request->execute();
+    return $request->fetchAll();
 }

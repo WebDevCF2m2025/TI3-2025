@@ -19,13 +19,13 @@ include "_menu.html.php";
         <h2 class="mb-3 text-center mb-3">Gestion des localisations</h2>
 
         <?php
-        // pas de localisation publiés
+        // pas de localisation publiée
         if(empty($points)):
-            $h4 = "Pas encore de localisation";
+            $h4 = "Pas encore de lieu";
         else:
             $nbLoc = count($points);;
             $pluriel = $nbLoc>1? "s":"";
-            $h4 = "Il y a $totalLoc localisation$pluriel";
+            $h4 = "Il y a $totalLoc localisation$pluriel dans la base de données";
         endif;
         ?>
         <h4 class="text-secondary text-center small mb-3"><?=$h4?></h4>
@@ -76,6 +76,7 @@ include "_menu.html.php";
                     <td>
                         <a href="?pg=confirm_delete&id=<?= $point['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
                     </td>
+                </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
