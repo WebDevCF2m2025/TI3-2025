@@ -18,12 +18,12 @@ L.control.scale({
 
 const geocoderControl = new L.Control.Geocoder().addTo(carte);
 
-const icone = L.icon({
+/*const icone = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/128/2776/2776067.png',
     iconSize: [64, 64],
     iconAnchor: [32, 64],
     popupAnchor: [0, -64],
-});
+});*/
 
 /* Ajouter un marqueur déplaçable */
 let marqueurDeplacable = L.marker(carte.getCenter(), {draggable:true, icon:icone}).addTo(carte);
