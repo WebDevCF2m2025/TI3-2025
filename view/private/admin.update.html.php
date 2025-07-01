@@ -50,19 +50,7 @@ License: https://freebootstrap.net/license
         <div class="container d-flex align-items-center justify-content-between">
 
 
-            <!-- Start Logo-->
-            <a class="navbar-brand w-auto" href="./">
-                <!-- If you use a text logo, uncomment this if it is commented-->
-                <!-- Vertex-->
-
-                <!-- If you plan to use an image logo, uncomment this if it is commented-->
-
-                <!-- logo dark--><img class="logo dark img-fluid" src="assets/images/logo-dark.svg" alt="FreeBootstrap.net image placeholder">
-
-                <!-- logo light--><img class="logo light img-fluid" src="assets/images/logo-light.svg" alt="FreeBootstrap.net image placeholder">
-
-            </a>
-            <!-- End Logo-->
+          
 
             <!-- Start offcanvas-->
             <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1" aria-labelledby="fbs__net-navbarsLabel">
@@ -97,7 +85,7 @@ License: https://freebootstrap.net/license
     if(isset($_SESSION['username'])):
     ?>
         <li class="nav-item"><a class="nav-link scroll-link  " href="./?pg=admin">Administration</a></li>
-        <li class="nav-item"><a class="nav-link scroll-link" href="./?pg=disconnect">Déconnexion de <?=$_SESSION['username']?></a></li>
+        <li class="nav-item"><a class="nav-link scroll-link" href="./?pg=disconnect">Déconnexion </a></li>
     <?php
     // pas connecté
     else:
@@ -146,9 +134,9 @@ License: https://freebootstrap.net/license
                 <div class="row">
                     <div class="col-lg-12 mb-2 mb-lg-0">
                         <div class="row">
-                            <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up" data-aos-delay="0">webdev la classe one</span>
-                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Modification d'un article</h1>
-                                <h4 class="mb-3" data-aos="fade-up" data-aos-delay="100"><a href="./?pg=admin">Retour à l'administration</a> CR(U)D</h4>
+                            <div class="col-lg-11"><span class="hero-subtitle text-uppercase"  style="color: purple;" data-aos="fade-up" data-aos-delay="0">webdev la classe one</span>
+                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Modification d'une adresse</h1>
+                                <h4 class="mb-3" data-aos="fade-up" data-aos-delay="100"><a href="./?pg=admin"  style="color: purple;">Retour au tableau de bord/Admin</a></h4>
                             </div>
                             </div>
                         </div>
@@ -169,23 +157,23 @@ License: https://freebootstrap.net/license
                 // si c'est un succès, on crée la redirection en js
                 if(isset($jsRedirect)) echo $jsRedirect;
                 ?>
-                <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">Formulaire</span>
+                <span class="subtitle text-uppercase mb-3" style="color: purple;" data-aos="fade-up" data-aos-delay="0">Formulaire</span>
                   <form class="<?=$displayForm?>" action="" method="post" name="insertion">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">nom</label>
-                        <input type="text" name="nom"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['nom']?> ">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Nom</strong></label>
+                        <input type="text" name="nom"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['nom']?>" placeholder="Entrez votre nom">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">adresse</label>
-                        <input type="text" name="adresse"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['adresse']?> ">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Adresse</strong></label>
+                        <input type="text" name="adresse"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['adresse']?>" placeholder="Entrez votre adresse">
                     </div>
                       <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">latitude</label>
-                        <input type="text" name="latitude"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['latitude']?> ">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Latitude</strong></label>
+                        <input type="text" name="latitude"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['latitude']?>" placeholder="Entrez la latitude">
                     </div>
                        <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">longitude</label>
-                        <input type="text" name="longitude"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['longitude']?> ">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Longitude</strong></label>
+                        <input type="text" name="longitude"  class="form-control" id="exampleFormControlInput1" value="<?=$localisation['longitude']?>"  placeholder="Entrez la longitude">
                     </div>
                     
                     

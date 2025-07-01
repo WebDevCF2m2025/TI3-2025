@@ -50,19 +50,7 @@ License: https://freebootstrap.net/license
         <div class="container d-flex align-items-center justify-content-between">
 
 
-            <!-- Start Logo-->
-            <a class="navbar-brand w-auto" href="./">
-                <!-- If you use a text logo, uncomment this if it is commented-->
-                <!-- Vertex-->
-
-                <!-- If you plan to use an image logo, uncomment this if it is commented-->
-
-                <!-- logo dark--><img class="logo dark img-fluid" src="assets/images/logo-dark.svg" alt="FreeBootstrap.net image placeholder">
-
-                <!-- logo light--><img class="logo light img-fluid" src="assets/images/logo-light.svg" alt="FreeBootstrap.net image placeholder">
-
-            </a>
-            <!-- End Logo-->
+          
 
             <!-- Start offcanvas-->
             <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1" aria-labelledby="fbs__net-navbarsLabel">
@@ -139,16 +127,16 @@ License: https://freebootstrap.net/license
                                             <form class="<?=$displayForm?>" id="contactForm" method="post">
                                                 <div class="row gap-3 mb-3">
                                                     <div class="col-md-12">
-                                                        <label class="mb-2" for="name">Login</label>
-                                                        <input class="form-control" id="name" type="text" name="login" required="" placeholder="Entrez votre login">
+                                                        <label class="mb-2" for="name"><strong>Login</strong></label></label>
+                                                        <input class="form-control" id="name" type="text" name="login" required="" placeholder="Entrez votre login.">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label class="mb-2" for="email">Mot de passe</label>
-                                                        <input class="form-control" id="email" type="password" name="userpwd" required="" placeholder="Entrez votre mot de passe">
+                                                        <label class="mb-2" for="email"><strong>Mot de passe</strong></label>
+                                                        <input class="form-control" id="email" type="password" name="userpwd" required="" placeholder="Entrez votre mot de passe.">
                                                     </div>
                                                 </div>
 
-                                                <button class="btn btn-primary fw-semibold" type="submit">Connexion</button>
+                                                <button class="btn btn-purple fw-semibold" type="submit" style="background-color: purple; border-color: purple;">Connexion</button>
                                             </form>
                                             <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci de vous être connecté !</div>
                                             <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Login et/ou mot de passe incorrecte !</div>
@@ -199,7 +187,7 @@ License: https://freebootstrap.net/license
                         =>>> Buy the pro version, which includes a functional PHP/AJAX contact form and many additional features.: https://freebootstrap.net/template/vertex-pro-bootstrap-website-template-for-portfolio/ <<<=
                         -->
                         &copy;
-                        <script>document.write(new Date().getFullYear());</script> Nova.
+                        <script>document.write(new Date().getFullYear());</script>
                         All rights reserved. Designed with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://freebootstrap.net">FreeBootstrap.net</a>
                     </div>
                     <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distributed by<a href="https://themewagon.com" target="_blank">ThemeWagon</a></div>

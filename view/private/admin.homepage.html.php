@@ -50,19 +50,7 @@ License: https://freebootstrap.net/license
         <div class="container d-flex align-items-center justify-content-between">
 
 
-            <!-- Start Logo-->
-            <a class="navbar-brand w-auto" href="./">
-                <!-- If you use a text logo, uncomment this if it is commented-->
-                <!-- Vertex-->
-
-                <!-- If you plan to use an image logo, uncomment this if it is commented-->
-
-                <!-- logo dark--><img class="logo dark img-fluid" src="assets/images/logo-dark.svg" alt="FreeBootstrap.net image placeholder">
-
-                <!-- logo light--><img class="logo light img-fluid" src="assets/images/logo-light.svg" alt="FreeBootstrap.net image placeholder">
-
-            </a>
-            <!-- End Logo-->
+         
 
             <!-- Start offcanvas-->
             <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1" aria-labelledby="fbs__net-navbarsLabel">
@@ -97,7 +85,7 @@ License: https://freebootstrap.net/license
     if(isset($_SESSION['username'])):
     ?>
         <li class="nav-item"><a class="nav-link scroll-link  " href="./?pg=admin">Administration</a></li>
-        <li class="nav-item"><a class="nav-link scroll-link" href="./?pg=disconnect">Déconnexion de <?=$_SESSION['username']?></a></li>
+        <li class="nav-item"><a class="nav-link scroll-link" href="./?pg=disconnect">Déconnexion  </a></li>
     <?php
     // pas connecté
     else:
@@ -146,9 +134,9 @@ License: https://freebootstrap.net/license
                 <div class="row">
                     <div class="col-lg-12 mb-2 mb-lg-0">
                         <div class="row">
-                            <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up" data-aos-delay="0">webdev la classe one</span>
-                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Accueil de l'administration</h1>
-                                <h4 class="mb-3" data-aos="fade-up" data-aos-delay="100"><a href="./?pg=new">Ajouter un nouvel article</a> C(R)UD</h4>
+                            <div class="col-lg-11"><span class="hero-subtitle text-uppercase" style="color: purple;"data-aos="fade-up" data-aos-delay="0">Webdev first class</span>
+                                <h3 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Tableau de bord administration</h3>
+                                <h4 class="mb-3" data-aos="fade-up" data-aos-delay="100"><a href="./?pg=new" style="color: purple;">Ajouter une nouvelle adresse</a></h4>
                             </div>
                             </div>
                         </div>
@@ -163,7 +151,7 @@ License: https://freebootstrap.net/license
         <!-- ======= FAQ =======-->
         <section class="section faq__v2" id="faq">
             <div class="container">
-                <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">Nos derniers articles</span>
+                <span class="subtitle text-uppercase mb-3" style="color: purple;" data-aos="fade-up" data-aos-delay="0">Nos dernières adresses</span>
                 <?php
                 // on compte le nombre d'articles
                 $nbArticles = count($localisations);
@@ -180,11 +168,11 @@ License: https://freebootstrap.net/license
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">nom</th>
-                        <th scope="col">adresse</th>
-                        <th scope="col">latitude</th>
-                        <th scope="col">longitude</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Latitude</th>
+                        <th scope="col">Longitude</th>
                         <th scope="col">Modifier</th>
                         <th scope="col">Supprimer</th>
                     </tr>
@@ -200,7 +188,7 @@ License: https://freebootstrap.net/license
                         <td><?=$article['latitude']?></td>
                         <td><?=$article['longitude']?></td>
                         <td><a class="text-decoration-none" href="?pg=update&idarticle=<?=$article['id']?>"><p class="bg-success p-2 rounded ">Modifier</p></a></td>
-                        <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'article : \n <?=addslashes(html_entity_decode($article['adresse'])); // pour mettre des slashs devant les "'" ?>')? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger p-2 rounded">Supprimer</p></td>
+                        <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'article : \n <?=addslashes(html_entity_decode($article['adresse'])) // pour mettre des slashs devant les "'" ?>'? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger p-2 rounded">Supprimer</p></td>
                     </tr>
                         <?php
                     endforeach;
@@ -227,7 +215,7 @@ License: https://freebootstrap.net/license
                         =>>> Buy the pro version, which includes a functional PHP/AJAX contact form and many additional features.: https://freebootstrap.net/template/vertex-pro-bootstrap-website-template-for-portfolio/ <<<=
                         -->
                         &copy;
-                        <script>document.write(new Date().getFullYear());</script> Nova.
+                        <script>document.write(new Date().getFullYear());</script> 
                         All rights reserved. Designed with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://freebootstrap.net">FreeBootstrap.net</a>
                     </div>
                     <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distributed by<a href="https://themewagon.com" target="_blank">ThemeWagon</a></div>

@@ -34,6 +34,8 @@ Buy Pro
             width: 800px;
             height:600px;
         }
+
+        
     
 body {
   font: 1rem/1.7 "Inter", sans-serif;
@@ -41,6 +43,7 @@ body {
   color: var(--bs-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 .site-wrap {
