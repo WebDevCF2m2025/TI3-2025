@@ -13,8 +13,7 @@ function connectUser(PDO $con, string $userLogin, string $userPwd): bool
     try{
         $request->execute([$userLogin]);
         if($request->rowCount()===0) return false;
-
-        // Получаем данные пользователя
+        
         $result = $request->fetch(PDO::FETCH_ASSOC);
 
         $request->closeCursor();

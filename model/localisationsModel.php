@@ -1,7 +1,7 @@
 <?php
-
+//R
 function getAllLocations(PDO $connect): array {
-    $stmt = $connect->prepare("SELECT * FROM localisations ORDER BY nom");
+    $stmt = $connect->prepare("SELECT * FROM localisations ORDER BY id");
     
     try {
         $stmt->execute();
