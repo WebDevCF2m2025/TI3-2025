@@ -35,6 +35,6 @@ if(isset($_GET['pg'])){
     }
 }else {
     //chargement des articles pour l'accueil
-
+    $lists = getListPublished($db);
     require_once "../view/public/homepage.php";
 }

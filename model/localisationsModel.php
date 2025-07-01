@@ -1,4 +1,6 @@
 <?php
+echo "_lm";
+
 # model/ArticleModel.php
 /*
  * CRUD
@@ -81,17 +83,9 @@ function addArticle(PDO $connect, array $datas): bool
  * page d'accueil par date de publication descendante
  * Pas d'affichage des articles plus tard que la date actuelle
  */
-function getArticlesPublished(PDO $connect): array
+function getListPublished(PDO $connect): array
 {
-    // requête préparée (non obligatoire, car pas d'entrée utilisateur)
-    $request = $connect->prepare("
-    SELECT a.`idarticle`, a.`title`, a.`slug`, SUBSTRING(a.`articletext`,1,300) AS `articletext`, a.`articlepublished`, a.`articledatepublished`, u.`login`, u.`username`
-    FROM `article` a 
-        INNER JOIN `user` u 
-            ON a.`user_iduser`= u.`iduser`
-    WHERE a.`articlepublished`=1 AND a.`articledatepublished` < current_timestamp()
-    ORDER BY a.`articledatepublished` DESC ;
-");
+    $request = $connect->prepare("SELECT * FROM `localisations`");
     try {
         $request->execute();
         $results = $request->fetchAll();
@@ -101,7 +95,6 @@ function getArticlesPublished(PDO $connect): array
         die($e->getMessage());
     }
 }
-
 
 /**
  * @param PDO $connect

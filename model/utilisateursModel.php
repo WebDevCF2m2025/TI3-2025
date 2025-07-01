@@ -1,4 +1,5 @@
 <?php
+echo "_um";
 
 # Connexion de l'administrateur en utilisant password_verify
 

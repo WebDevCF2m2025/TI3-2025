@@ -1,9 +1,11 @@
 <?php
+echo "/privateController";
+
 # controller/PrivateController.php
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
-echo "/privateController";
+
 
 if (isset($_GET['pg'])) {
     // déconnexion
@@ -78,6 +80,7 @@ if (isset($_GET['pg'])) {
 } else {
     //chargement des articles pour l'accueil
     $navActive = true;
+    $lists = getListPublished($db);
     require_once "../view/public/homepage.php";
 }
 
