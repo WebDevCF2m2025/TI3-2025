@@ -1,6 +1,15 @@
 <?php
 
 require_once "../model/utilisateursModel.php";
+require_once "../model/localisationsModel.php";
+// pour charger les articles en json
+if (isset($_GET['json'])) {
+    $localisations = selectAllFromLocalisations($db);
+    echo json_encode($localisations);
+    exit();
+}
+
+
 
 if (isset($_GET['page']) && $_GET['page'] === 'login') {
     $error = null;
