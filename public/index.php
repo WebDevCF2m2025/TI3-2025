@@ -1,13 +1,17 @@
 <?php
+# exemple5MVC/public/index.php
 
+/*
+ * Contrôleur frontal
+ */
 
 session_start();
 
-
+// configuration de la connexion à la base de données
 require_once "../config-dev.php";
 
 
-
+// notre connexion PDO
 try {
     // instanciation de PDO
     $db = new PDO(DB_DSN,
@@ -22,27 +26,32 @@ try {
     die($e->getMessage());
 }
 
-// Chargement du routeur
-if (isset($_SESSION['username'])) {
-    require_once "../controller/PrivateController.php";
-} else {
-    require_once "../controller/PublicController.php";
+if (isset($_GET['json'])) {
+    require_once __DIR__ . '/../model/localisationsModel.php'; // chemin absolu depuis public/index.php
+    $localisations = selectAllLocalisation($db);
+    header('Content-Type: application/json');
+    echo json_encode($localisations);
+    exit();
 }
 
-// Débogage
-echo '<div class="container"><hr><h3>Barre de débogage</h3><hr>';
-echo '<h4>session_id() ou SID</h4>';
-var_dump(session_id());
-echo '<h4>$_GET</h4>';
-var_dump($_GET);
-echo '<h4>$_SESSION</h4>';
-var_dump($_SESSION);
-echo '<h3>$_POST</h3>';
-var_dump($_POST);
-echo '</div>';
+// Chargement du routeur
+if (isset($_SESSION['idutilisateurs'])) {
+    require_once "../controller/privateController.php";
+} else {
+    require_once "../controller/publicController.php";
+}
 
-
-var_dump(SelectLocalisationById($db, 2));
+// // Débogage
+// echo '<div class="container"><hr><h3>Barre de débogage</h3><hr>';
+// echo '<h4>session_id() ou SID</h4>';
+// var_dump(session_id());
+// echo '<h4>$_GET</h4>';
+// var_dump($_GET);
+// echo '<h4>$_SESSION</h4>';
+// var_dump($_SESSION);
+// echo '<h3>$_POST</h3>';
+// var_dump($_POST);
+// echo '</div>';
 
 // bonne pratique
 $db = null;

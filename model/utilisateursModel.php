@@ -1,8 +1,4 @@
 <?php
-
-# Connexion de l'administrateur en utilisant password_verify
-
-
 # model/UserModel.php
 
 /**
@@ -11,14 +7,14 @@
  * @param string $pwd
  * @return bool
  */
-function authentificateActivedUser(PDO $connect, string $user, string $pwd): bool
+function authentificateUtilisateurs(PDO $connect, string $user, string $pwd): bool
 {
     // protection des mauvais copié/collé trim()
     $login = trim($user);
     $userpwd = trim($pwd);
 
     // requête préparée avec le login SEULEMENT si l'utilisateur est actif
-    $sql = "SELECT * FROM `utilisateurs` WHERE username = ? " ;
+    $sql = "SELECT * FROM `utilisateurs` WHERE username=? ";
     $stmt = $connect->prepare($sql);
 
     try {
@@ -45,14 +41,22 @@ function authentificateActivedUser(PDO $connect, string $user, string $pwd): boo
 }
 
 /**
-
+ * Choisir tous les users pour l'update
  * @param PDO $connection
  * @return array
  */
+function selectAllUser(PDO $connection):array
+{
+    try{
+        $select = $connection->query("SELECT `idutilisateurs`, `username` FROM `utilisateurs`");
+        $return = $select->fetchAll();
+        $select->closeCursor();
+        return $return;
+    }catch(Exception $e){
+        die($e->getMessage());
+    }
 
-
-# Déconnexion de l'administrateur
-
+}
 
 // fonction pour déconnecter l'utilisateur
 /**

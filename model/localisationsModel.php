@@ -1,20 +1,54 @@
 <?php
+# model/ArticleModel.php
+
+
 
 /**
+ * Sélection pour l'administration
  * @param PDO $connexion
  * @return array
- * Sélection de tous location
- * 
  */
-
- function selectAllLocalisation(PDO $connexion): array | bool
+function selectAllLocalisation(PDO $connexion): array
 {
-    $sql = "SELECT * FROM `localisations`";
+    $sql = "
+    SELECT *
+    FROM `localisations` 
+    
+       
+    ;
+    ";
+    try {
+        // requête
+        $query = $connexion->query($sql);
+        // récupération des résultats (tableau indexé, si 0 => [])
+        $resultat = $query->fetchAll();
+        // bonne pratique
+        $query->closeCursor();
+        // envoyer le résultat
+        return $resultat;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
+
+/**
+ * On récupère l'article pour l'update (avec son user de base))
+ * @param PDO $connexion
+ * @param int $idarticle
+ * @return array|bool
+ */
+function selectOneLocalisationById(PDO $connexion, int $id): array|bool
+{
+    $sql = " SELECT * FROM `localisations`  
+     WHERE `id`= ?";
     $prepare = $connexion->prepare($sql);
 
     try{
-        $prepare->execute();
-       $recup = $prepare->fetchAll();
+        // on récupère 1 ou 0 article
+       $prepare->execute([$id]);
+       if($prepare->rowCount()===0) return false;
+       // on a trouvé un article
+       $recup = $prepare->fetch();
        $prepare->closeCursor();
        return $recup;
 
@@ -23,101 +57,121 @@
     }
 }
 
-function SelectLocalisationById(PDO $connexion, int $id): array | bool
-{
-    $sql = "SELECT * FROM `localisations` WHERE `id` = :id";
-    $prepare = $connexion->prepare($sql);
-
-    try {
-        $prepare->execute(['id' => $id]);
-        $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        $prepare->closeCursor();
-        return $result;
-    } catch (Exception $e) {
-        die("Erreur lors de la récupération de la localisation : " . $e->getMessage());
-    }
-}
-
-
-
-
-
-function updateLocalisationById(PDO $connection, array $datas, int $idarticle): bool
-{
-    // Vérifie que l'ID transmis correspond à celui de l'article
-    if (!isset($datas['id']) || $datas['id'] != $idarticle) {
-        die("Tentative de modification non autorisée !");
-    }
-
-    // Préparation de la requête sans mettre à jour la colonne id
-    $sql = "UPDATE `localisations` 
-            SET `rue` = :rue,
-                `codepostal` = :codepostal,
-                `ville` = :ville,
-                `latitude` = :latitude,
-                `longitude` = :longitude
-            WHERE `id` = :id";
-
-    $prepare = $connection->prepare($sql);
-
-    try {
-        $success = $prepare->execute([
-            ':rue'       => $datas['rue'],
-            ':codepostal'=> $datas['codepostal'],
-            ':ville'     => $datas['ville'],
-            ':latitude'  => $datas['latitude'],
-            ':longitude' => $datas['longitude'],
-            ':id'        => $idarticle
-        ]);
-        $prepare->closeCursor();
-        return $success;
-    } catch (Exception $e) {
-        die("Erreur lors de la mise à jour : " . $e->getMessage());
-    }
-}
-
-
-function createLocalisation(PDO $connexion, array $datas): bool
-{
-    // Vérification minimale des données requises
-    $requiredFields = ['rue', 'codepostal', 'ville', 'latitude', 'longitude'];
-    foreach ($requiredFields as $field) {
-        if (!isset($datas[$field])) {
-            die("Champ requis manquant : $field");
-        }
-    }
-
-    $sql = "INSERT INTO `localisations` (`rue`, `codepostal`, `ville`, `latitude`, `longitude`)
-            VALUES (:rue, :codepostal, :ville, :latitude, :longitude)";
+function updateLocalisationById(PDO $connection, array $datas, int $id){
+    // on vérifie que la personne n'essaye pas d'accéder à un autre article
     
-    $prepare = $connexion->prepare($sql);
+    // préparation de la requête
+$sql = "UPDATE `localisations` SET `rue`= :rue,
+                   `codepostal`= :codepostal,
+                   `ville`= :ville,
+                   `latitude` = :latitude,
+                   `longitude` = :longitude
+                   WHERE `id`= :id";
 
-    try {
-        $success = $prepare->execute([
-            ':rue'        => $datas['rue'],
-            ':codepostal' => $datas['codepostal'],
-            ':ville'      => $datas['ville'],
-            ':latitude'   => $datas['latitude'],
-            ':longitude'  => $datas['longitude']
-        ]);
-        $prepare->closeCursor();
-        return $success;
-    } catch (Exception $e) {
-        die("Erreur lors de l'insertion : " . $e->getMessage());
-    }
+
+    // On va traiter nos variables post avant une éventuelle mise à jour
+
+// on va encoder la rue
+    $rue = htmlspecialchars(trim(strip_tags($datas['rue'])),ENT_QUOTES);
+// on va encoder l' adresse 
+    $codepostal = htmlspecialchars(trim(strip_tags($datas['codepostal'])),ENT_QUOTES);
+    // on va encoder la ville
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])),ENT_QUOTES);
+
+// on va encoder le latitude
+   $latitude = (float) trim($datas['latitude']);
+// on va encoder lea longitude 
+ $longitude = (float) trim($datas['longitude']);
+
+   if (
+    empty($rue) ||
+    empty($codepostal) ||
+    empty($ville) ||
+    empty($latitude) ||
+    empty($longitude)
+) return false;
+
+
+
+$prepare = $connection->prepare($sql);
+
+try{
+$prepare->bindValue(":rue", $rue);
+$prepare->bindValue(":codepostal", $codepostal);
+$prepare->bindValue(":ville", $ville);
+$prepare->bindValue(":latitude", $latitude);
+$prepare->bindValue(":longitude", $longitude);
+$prepare->bindValue(":id", $id, PDO::PARAM_INT);
+
+
+    $prepare->execute();
+    return true;
+
+}catch(Exception $e){
+    die($e->getMessage());
 }
 
+}
 
-function deleteLocalisationById(PDO $connexion, int $id): bool
+/**
+ * Supprime un article
+ * @param PDO $connexion
+ * @param int $id
+ * @return bool
+ */
+function deleteLocalisation(PDO $connexion, int $id): bool
 {
-    $sql = "DELETE FROM `localisations` WHERE `id` = :id";
+    // requête préparée
+    $sql = "DELETE FROM `localisations` WHERE `id`=?";
     $prepare = $connexion->prepare($sql);
-
     try {
-        $success = $prepare->execute([':id' => $id]);
+        $prepare->execute([$id]);
         $prepare->closeCursor();
-        return $success;
+        return true;
     } catch (Exception $e) {
-        die("Erreur lors de la suppression : " . $e->getMessage());
+        die($e->getMessage());
     }
 }
+
+/**
+ * @param PDO $con
+ * @param array $datas
+ * @return bool
+ * @throws \Random\RandomException
+ */
+function insertlocalisation(PDO $con, array $datas): bool
+{
+    // on va encoder le nom
+    $rue = htmlspecialchars(trim(strip_tags($datas['rue'])),ENT_QUOTES);
+// on va encoder lea adresse 
+    $codepostal = htmlspecialchars(trim(strip_tags($datas['codepostal'])),ENT_QUOTES);
+    // on va encoder la ville
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])),ENT_QUOTES);
+// on va encoder le latitude
+   $latitude = (float) trim($datas['latitude']);
+// on va encoder lea longitude 
+ $longitude = (float) trim($datas['longitude']);
+
+    if (
+        empty($rue) ||
+        empty($codepostal) ||
+        // strlen($nom) > 100 ||
+        // strlen($adresse) > 100 ||
+        empty($ville) ||
+        empty($latitude) ||
+        empty($longitude)) return false;
+
+
+
+$sql = "INSERT INTO localisations (rue, codepostal, ville, latitude, longitude) VALUES (?, ?, ?, ?, ?)";
+$prepare = $con->prepare($sql);
+
+try {
+    $prepare->execute([$rue, $codepostal, $ville, $latitude, $longitude]);
+    return true;
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+
+}
+
