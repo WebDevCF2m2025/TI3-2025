@@ -31,8 +31,10 @@ include "_menu.html.php";
             <div class="bg-white p-4 rounded shadow mb-5">
                 <!-- on affiche l'erreur -->
                 <?php if (isset($probleme)): ?>
-                    <div class="alert alert-danger">Erreur lors de l'insertion d'un lieu</div>
-                    <a href="javascript:history.go(-1);">Revenir sur le lieu et le corriger</a>
+                    <div class="alert alert-danger text-center">Erreur lors de l'insertion d'un lieu</div>
+                    <button type="button" class="btn btn-primary" onclick="history.back();">
+                        Revenir sur le lieu et le corriger
+                    </button>
                     <hr>
                 <?php endif; ?>
                 <form action="" method="post" name="localisation">

@@ -34,7 +34,7 @@ endif;
     <!-- Liste des points -->
     <div id="points">
         <h2>Liste des points</h2>
-        <p>Cliquez sur un élément dans la liste ci-dessous pour la situer sur la carte</p>
+        <p>Cliquez sur un élément dans la liste ci-dessous pour le situer sur la carte</p>
         <br>
         <hr>
         <br>

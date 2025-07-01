@@ -32,6 +32,9 @@ include "_menu.html.php";
                 <!-- on affiche l'erreur -->
                 <?php if (isset($error)): ?>
                     <div class="alert alert-danger text-center">Erreur lors de la modification d'un lieu</div>
+                    <button type="button" class="btn btn-primary" onclick="history.back();">
+                        Revenir sur le lieu et le corriger
+                    </button>
                     <hr>
                 <?php endif; ?>
                 <form action="" method="post" name="localisation">
