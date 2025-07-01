@@ -1,5 +1,5 @@
 <?php
-# controller/PublicController.php
+# TI3-2025/controller/PublicController.php
 
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
