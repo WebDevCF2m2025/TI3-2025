@@ -13,7 +13,7 @@
  * @return bool
  *
  */
-function connectUser(PDO $con, string $userName): bool
+function connectUser(PDO $con, string $userName, string $passWd): bool
 {
     // on va protéger des espaces au début et à la fin
     // des variables de connexions (copier/coller).
@@ -32,7 +32,7 @@ function connectUser(PDO $con, string $userName): bool
         $request->closeCursor();
         // on va vérifier son mot de passe
         // entre celui passé par le formulaire et celui venant de la DB
-        if(password_verify($passwd,$result['passwd'])){
+        if(password_verify($passWd,$result['passwd'])){
             // on met en session tout ce qu'on a été récupéré de la requête
             // tableau associatif = tableau associatif
             $_SESSION = $result;

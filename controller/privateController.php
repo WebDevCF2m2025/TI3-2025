@@ -167,7 +167,7 @@ if (isset($_GET['pg'])) {
 
 } else {
     //chargement des articles pour l'accueil
-    $liste = getLocalisationPublished($db);
+    $listes = getLocalisationPublished($db);
 
     require_once "../view/public/accueil.html.php";
 }

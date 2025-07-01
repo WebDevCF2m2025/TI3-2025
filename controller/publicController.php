@@ -11,7 +11,7 @@ if(isset($_GET['pg'])){
         $displayError = "d-none"; // non visible par défaut
         $displayForm = ""; // affichage du formulaire visible par défaut
         // ici tentative de connexion
-        if(isset($_POST['username']) ){
+        if(isset($_POST['username']) && isset($_POST['passwd'])){
             // si c'est le bon utilisateur
     
             if(connectUser($db,$_POST['username'],$_POST['passwd'])){
@@ -43,7 +43,7 @@ if(isset($_GET['pg'])){
    // if(isset($_GET['getjson'])){
     //    echo json_encode($localisation);
     //}else {
-        $listes = getLocalisationsPublished($db);
+        $liste = getLocalisationsPublished($db);
         require_once "../view/public/accueil.html.php";
    // }
 }
