@@ -50,7 +50,7 @@ body::before {
        .view{
            display: flex;
               flex-direction: column;
-           border: solid 1px black;
+          
        }
        .liste{
            border: solid 1px black;

@@ -160,7 +160,7 @@ body::before {
                 <div class="row">
                     <div class="col-lg-12 mb-2 mb-lg-0">
                         <div class="row">
-                            <div class="col-lg-11">
+                            <div class=" mb-5 d-flex justify-content-center col-lg-11">
                                 <span class=" faq-subtitle text-uppercase" data-aos="fade-up" data-aos-delay="0">Liste des localisations de la base de données</span>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ body::before {
                     $h3 = "Il y a $nbArticles localisation d'adresse$pluriel";
                 endif;
                 ?>
-                        <h3 class="h3 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0"><?=$h3?></h3>
+                        <h3 class=" h3 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0"><?=$h3?></h3>
                 <table class="table opacity-75 table-striped table-hover">
                     <thead>
                     <tr>
