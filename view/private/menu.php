@@ -11,7 +11,7 @@
                         <a class="nav-link" href="./?pg=admin">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?pg=creation">Création</a>
+                        <a class="nav-link" href="./?pg=creation">Nouveau point</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./?pg=disconnect">Déconnexion</a>

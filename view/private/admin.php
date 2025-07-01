@@ -42,7 +42,7 @@
               <td><?= $l['latitude'] ?></td>
               <td><?= $l['longitude'] ?></td>
               <td>
-                <a href="./?pg=delete&idLocalisation=<?= $l['id'] ?>" class="btn btn-danger btn-sm rounded-3">
+                <a onclick="if(confirm('Voulez-vous vraiment supprimer l\'article : <?= addslashes(html_entity_decode($l['nom'])); ?> ?')){window.location.href='./?pg=delete&idLocalisation=<?= $l['id'] ?>';}" class="btn btn-danger btn-sm rounded-3">
                   Supprimer
                 </a>
               </td>
@@ -62,4 +62,3 @@
 </body>
 
 </html>
-

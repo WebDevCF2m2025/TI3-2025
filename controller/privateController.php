@@ -7,6 +7,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === 'admin') {
 
     $localisations = selectAllLocalisation($db);
     require_once "../view/private/admin.php";
+    
 } elseif (isset($_GET['pg']) && $_GET['pg'] === 'creation') {
 
 
