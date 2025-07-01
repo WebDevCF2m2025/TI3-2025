@@ -88,12 +88,12 @@
                         <h1 class="mt-4"><?=$h3?></h1>
                         
                         <div class="card mb-4">
-                            <div class="card-body">
-                               
-                                <a target="_blank" href="?pg=new">Ajouter un nouvel localisation </a>
-                                
-                            </div>
-                        </div>
+  <div class="card-body">
+    <a href="?pg=new" target="_blank" class="btn btn-primary">
+      Ajouter un nouvel localisation
+    </a>
+  </div>
+</div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>

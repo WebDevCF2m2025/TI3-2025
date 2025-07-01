@@ -64,7 +64,16 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="card-footer text-center py-3">
                                     
+                                    <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci pour l'ajout de la localisation.</div>
+                                            <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">La localisation n'a pas pu être ajoutée.</div>
+                                </div>
+                                <?php
+                                    // si c'est un succès, on crée la rediraction en js
+                                    if(isset($jsRedirect)) echo $jsRedirect;
+                                    ?>
+                            </div>
                                 </div>
                             </div>
                         </div>
