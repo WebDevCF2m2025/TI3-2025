@@ -34,7 +34,7 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
                 // nous ne sommes pas connecté
                 else:
                 ?>
-                <a class="nav-link <?=$activeLogin?>" href="./?pg=login">Connexion</a>
+                <a class="nav-link <?=$activeLogin?>" href="./?pg=username">Connexion</a>
                 <?php
                 endif;
                 ?>

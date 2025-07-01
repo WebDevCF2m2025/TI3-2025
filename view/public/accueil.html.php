@@ -9,6 +9,12 @@
         <link rel="icon" type="" href=""/>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
         <style>
             #carte {
                 width: 600px;
@@ -19,8 +25,9 @@
         </style>
 
     </head>
+    <?php include "../view/_menu.html.php"; ?>
+
     <body>
-            
                 <div id="container1">
                     <h2>CARTE INTERACTIVE</h2>
                     <h4>Parcours BD à Bruxelles</h4>
@@ -155,10 +162,10 @@
                 <h3>Liste des localisations</h3>
                     <?php
                 
-                    foreach($listes as $liste):
+                    foreach($liste as $listes):
                     ?>
                         <li>
-                            <a><?php echo $liste['nom']. "| ". $liste['adresse']; ?></a>
+                            <a><?php echo $listes['nom']. "| ". $listes['adresse']; ?></a>
                         </li>
                     <?php
                     endforeach;

@@ -24,7 +24,7 @@
   </head>
   <body class="bg-secondary">
 
-    <?php include "_menu.html.php"; ?>
+  <?php include "../view/_menu.html.php"; ?>
 
     <div class="container py-5 w-50">
       <h1 class="mb-4 text-center text-light">Connexion</h1>

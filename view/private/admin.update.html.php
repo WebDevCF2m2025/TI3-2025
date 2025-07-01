@@ -9,3 +9,11 @@
         <link rel="icon" type="" href=""/>
         <link rel="stylesheet" href="../../public/css/style.css" />
         <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    </head>
+    <body>
+    
+
+            <?php include "../view/_menu.html.php"; ?>
+            
+    </body>
+</html>

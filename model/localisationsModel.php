@@ -18,3 +18,4 @@ function getLocalisationsPublished(PDO $connect): array
         die($e->getMessage());
     }
 }
+
