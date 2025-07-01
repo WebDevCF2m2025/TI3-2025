@@ -112,6 +112,15 @@ body::before {
     margin-bottom: 1rem;
 }
 
+footer {
+    text-align: center;
+    padding: 1rem;
+
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 
 </style>
 </head>
@@ -145,6 +154,11 @@ body::before {
 </div>
 
 </div>
+
+<footer>
+<p>© 2025 - C'etait compliquer mais heureusement qu'on a eu 2 jour! merci. Ce site à été réalisé par <strong>Vahagn</strong></p>
+<p>Dirigé par <a target="_blank"   href="https://www.cf2m.be/home">CF2M</a></p>
+</footer>
 
 <!-- JS de Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

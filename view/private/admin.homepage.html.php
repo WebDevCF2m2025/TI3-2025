@@ -229,7 +229,7 @@ body::before {
                         =>>> Buy the pro version, which includes a functional PHP/AJAX contact form and many additional features.: https://freebootstrap.net/template/vertex-pro-bootstrap-website-template-for-portfolio/ <<<=
                         -->
                         &copy;
-                        <script>document.write(new Date().getFullYear());</script> C'etait compliquer mais heureusement qu'on a eu 2 jour! merci <i class="bi bi-heart-fill text-danger"> </i> Fait par <a href="">Vahagn</a>
+                        <script>document.write(new Date().getFullYear());</script> C'etait compliquer mais heureusement qu'on a eu 2 jour! merci <i class="bi bi-heart-fill text-danger"> </i> Fait par <a href="#">Vahagn</a>
                     </div>
                     <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distribuer par<a href="https://www.cf2m.be/home" target="_blank">CF2M</a></div>
                 </div>
