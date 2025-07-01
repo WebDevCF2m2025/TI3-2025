@@ -1,16 +1,20 @@
 <?php
+# model/ArticleModel.php
+
+
 
 /**
  * Sélection pour l'administration
  * @param PDO $connexion
  * @return array
  */
-function selectAllLocalisations(PDO $connexion): array
+function selectAllLocalisation(PDO $connexion): array
 {
     $sql = "
-    SELECT l.`id`, l.`nom` , l.`adresse` , l.`codepostal` , l.`ville` , l.`latitude` , l.`longitude`
-    FROM `localisations` l 
-
+    SELECT *
+    FROM `localisations` 
+    
+       
     ;
     ";
     try {
@@ -27,60 +31,91 @@ function selectAllLocalisations(PDO $connexion): array
     }
 }
 
-
 /**
- * @param PDO $con
- * @param array $datas
- * @return bool
- * @throws \Random\RandomException
+ * On récupère l'article pour l'update (avec son user de base))
+ * @param PDO $connexion
+ * @param int $idarticle
+ * @return array|bool
  */
-function insertLocalisations(PDO $con, array $datas): bool
+function selectOneLocalisationById(PDO $connexion, int $id): array|bool
 {
+    $sql = " SELECT *
+    FROM `localisations`  
+     WHERE `id`= ?";
+    $prepare = $connexion->prepare($sql);
 
+    try{
+        // on récupère 1 ou 0 article
+       $prepare->execute([$id]);
+       if($prepare->rowCount()===0) return false;
+       // on a trouvé un article
+       $recup = $prepare->fetch();
+       $prepare->closeCursor();
+       return $recup;
 
-    // on va encoder le nom
-    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])), ENT_QUOTES);
-    // on va encoder le adresse
-    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])), ENT_QUOTES);
-    // on va encoder le codepostal
-    $codepostal = htmlspecialchars(trim(strip_tags($datas['codepostal'])), ENT_QUOTES);
-    // on va encoder le adresse
-    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])), ENT_QUOTES);
-    // on va encoder le latitude
-    $latitude = htmlspecialchars(trim(strip_tags($datas['latitude'])), ENT_QUOTES);
-    // on va encoder le longitude
-    $longitude = htmlspecialchars(trim(strip_tags($datas['longitude'])), ENT_QUOTES);
-
-
-
-    if (empty($nom) || strlen($nom) > 50 ||  empty($adresse) || strlen($adresse) > 50 ||  empty($codepostal) || strlen($codepostal) > 4 ||  empty($ville) || strlen($ville) > 20 ||  empty($latitude) || strlen($latitude) > 50 ||  empty($longitude) || strlen($longitude) > 50) return false;
-
-   
-
-    $sql = "INSERT INTO `localisations` (`nom`,
-                       `adresse`,
-                       `codepostal`,
-                       `ville`,
-                       `latitude`,
-                       `longitude`) VALUES (?,?,?,?,?,?)";
-
-    $prepare = $con->prepare($sql);
-
-    try {
-
-        $prepare->execute([
-            $nom,
-            $adresse,
-            $codepostal,
-            $ville,
-            $latitude,
-            $longitude
-
-        ]);
-        return true;
-    } catch (Exception $e) {
+    }catch(Exception $e){
         die($e->getMessage());
     }
+}
+
+function updateLocalisationById(PDO $connection, array $datas, int $id){
+    // on vérifie que la personne n'essaye pas d'accéder à un autre article
+    
+    // préparation de la requête
+ $sql = "UPDATE `localisations` SET `nom`= :nom,
+                   `adresse`= :adresse,
+                   `codepostal` = :codepostal,
+                   `ville` = :ville,
+                   `latitude` = :latitude,
+                   `longitude` = :longitude
+                   WHERE `id`= :id";
+
+
+    // On va traiter nos variables post avant une éventuelle mise à jour
+
+// on va encoder le nom
+    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])),ENT_QUOTES);
+// on va encoder lea adresse 
+    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])),ENT_QUOTES);
+    // on va encoder le latitude
+   $codepostal = (int) trim($datas['codepostal']);
+    // on va encoder lea ville 
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])),ENT_QUOTES);
+// on va encoder le latitude
+   $latitude = (float) trim($datas['latitude']);
+// on va encoder lea longitude 
+ $longitude = (float) trim($datas['longitude']);
+
+    if (
+        empty($nom) ||
+        empty($adresse) ||
+        empty($ville) ||
+        empty($codepostal) ||
+        strlen($nom) > 100 ||
+        strlen($adresse) > 100 ||
+        empty($latitude) ||
+        empty($longitude)) return false;
+
+
+
+$prepare = $connection->prepare($sql);
+
+try{
+    $prepare->bindValue("nom", $nom);
+    $prepare->bindValue("adresse", $adresse);
+  $prepare->bindValue("codepostal", $codepostal);
+    $prepare->bindValue("ville", $ville);
+    $prepare->bindValue("latitude", $latitude);
+    $prepare->bindValue("longitude", $longitude);
+    $prepare->bindValue("id", $id); // <-- AJOUT OBLIGATOIRE
+
+    $prepare->execute();
+    return true;
+
+}catch(Exception $e){
+    die($e->getMessage());
+}
+
 }
 
 /**
@@ -89,7 +124,7 @@ function insertLocalisations(PDO $con, array $datas): bool
  * @param int $id
  * @return bool
  */
-function deleteLocalisations(PDO $connexion, int $id): bool
+function deleteLocalisation(PDO $connexion, int $id): bool
 {
     // requête préparée
     $sql = "DELETE FROM `localisations` WHERE `id`=?";
@@ -101,4 +136,50 @@ function deleteLocalisations(PDO $connexion, int $id): bool
     } catch (Exception $e) {
         die($e->getMessage());
     }
+}
+
+/**
+ * @param PDO $con
+ * @param array $datas
+ * @return bool
+ * @throws \Random\RandomException
+ */
+function insertlocalisation(PDO $con, array $datas): bool
+{
+   
+// on va encoder le nom
+    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])),ENT_QUOTES);
+// on va encoder lea adresse 
+    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])),ENT_QUOTES);
+    // on va encoder le latitude
+   $codepostal = (int) trim($datas['codepostal']);
+    // on va encoder lea ville 
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])),ENT_QUOTES);
+// on va encoder le latitude
+   $latitude = (float) trim($datas['latitude']);
+// on va encoder lea longitude 
+ $longitude = (float) trim($datas['longitude']);
+
+    if (
+        empty($nom) ||
+        empty($adresse) ||
+        empty($ville) ||
+        empty($codepostal) ||
+        strlen($nom) > 100 ||
+        strlen($adresse) > 100 ||
+        empty($latitude) ||
+        empty($longitude)) return false;
+
+
+
+$sql = "INSERT INTO localisations (nom, adresse, codepostal, ville ,latitude, longitude) VALUES (?, ?, ?, ?,?,?)";
+$prepare = $con->prepare($sql);
+
+try {
+    $prepare->execute([$nom, $adresse,$codepostal,$ville ,$latitude, $longitude]);
+    return true;
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+
 }

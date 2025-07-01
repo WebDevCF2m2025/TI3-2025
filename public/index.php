@@ -27,11 +27,11 @@ try {
 }
 
 // Chargement du routeur
-
-    require_once "../controller/PrivateController.php";
-
-    require_once "../controller/PublicController.php";
-
+if (isset($_SESSION['idutilisateurs'])) {
+    require_once "../controller/privateController.php";
+} else {
+    require_once "../controller/publicController.php";
+}
 
 // Débogage
 echo '<div class="container"><hr><h3>Barre de débogage</h3><hr>';
