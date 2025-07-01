@@ -39,7 +39,7 @@ include "menu.html.php";
           <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
           <hr>
         <?php endif; ?>
-        <form class="<?=$displayForm?>" action="" method="post" name="article">
+        <form class="<?=$displayForm?>" action="" method="post" name="marker">
           <input type="hidden" name="id" value="<?=$marker['id']?>">
           <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>

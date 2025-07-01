@@ -40,6 +40,7 @@ if (APP_MODE == "dev") :
   echo '<h3>$_POST</h3>';
   var_dump($_POST);
   echo '</div>';
+  var_dump(updateMarkerById($db, (array)1, "Nouveau Nom", "Nouvelle Adresse", "75000", "Paris", 10, 48.8566, 2.3522));
 endif;
 
 //  fermeture de la connexion à la base de données

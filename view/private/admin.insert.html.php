@@ -32,14 +32,14 @@ include "menu.html.php";
     ?>
     <div class="container">
       <div class="bg-white p-4 rounded shadow-sm mb-5">
-        <h2 class="mb-3 text-center mb-5">Modification de l'article</h2>
+        <h2 class="mb-3 text-center mb-5">Modification du marqueur</h2>
         <!-- on affiche l'erreur -->
         <?php if (isset($error)): ?>
           <div class="alert alert-danger"><?=$error?></div>
-          <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
+          <a href="javascript:history.go(-1);">Revenir sur les informations du marqueurs et les modifier</a>
           <hr>
         <?php endif; ?>
-        <form class="<?=$displayForm?>" action="" method="post" name="article">
+        <form class="<?=$displayForm?>" action="" method="post">
           <input type="hidden" name="id">
           <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>

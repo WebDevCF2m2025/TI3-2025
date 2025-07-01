@@ -37,7 +37,7 @@ function deleteMarkerById(PDO $db, int $id): bool {
 
 // Modifier un marqueur/ information
 
-function updateMarkerById(PDO $db, array $datas): bool
+function updateMarkerById(PDO $db,array $datas): bool
 {
   // verification des champs
   $nom = trim($datas['nom']);
@@ -94,4 +94,37 @@ function getOneMarkerById(PDO $db, int $id): array|false
     die($e->getMessage());
   }
 }
+// Ajouter un marqueur
+function addMarker(PDO $db, array $datas): bool
+{
+  // verification des champs
+  $nom = trim($datas['nom']);
+  $adresse = trim($datas['adresse']);
+  $codepostal = trim($datas['codepostal']);
+  $ville = trim($datas['ville']);
+  $nb_velos = trim($datas['nb_velos']);
+  $latitude = trim($datas['latitude']);
+  $longitude = trim($datas['longitude']);
+
+  if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($nb_velos) || empty($latitude) ||
+    empty($longitude)) {
+    return false;
+  } elseif (strlen($nom) > 30 || strlen($adresse) > 100 || strlen($ville) > 20 || strlen($codepostal) > 4) {
+    return false;
+  }
+
+  $sql = "INSERT INTO localisations (`nom`, `adresse`, `codepostal`, `ville`, `nb_velos`, `latitude`, `longitude`)
+          VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+  $prepare = $db->prepare($sql);
+
+  try{
+    $prepare->execute([$nom, $adresse, $codepostal, $ville, $nb_velos, $latitude, $longitude]);
+    $prepare->closeCursor();
+    return true;
+  }catch (Exception $e){
+    die($e->getMessage());
+  }
+}
+
 

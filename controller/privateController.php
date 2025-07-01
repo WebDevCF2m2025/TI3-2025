@@ -21,10 +21,10 @@ if (isset($_GET['pg'])) {
     }
   } elseif ($_GET['pg'] === "addMarker") {
     // si les variables de type post attendues sont là
-    if (isset($_POST['title'], $_POST['description'], $_POST['latitude'], $_POST['longitude'])) {
+    if (isset($_POST['nom'], $_POST['adresse'] ,$_POST['codepostal'], $_POST['ville'],$_POST['nb_velos'], $_POST['latitude'], $_POST['longitude'])) {
       $insert = addMarker($db, $_POST);
       if ($insert === true) {
-        $merci = true;
+        echo "ok";
       } else {
         $error = true;
       }

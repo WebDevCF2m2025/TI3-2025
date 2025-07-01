@@ -72,9 +72,6 @@
       .on('click', function() {
           map.flyTo([<?= $marker['latitude'] ?>, <?= $marker['longitude'] ?>], 15);
       });
-  //function buttonClick() {
-  //  map.flyTo([<?php //= $marker['latitude'] ?>//, <?php //= $marker['longitude'] ?>//], 15);
-  //}
 
   <?php endforeach; ?>
 
