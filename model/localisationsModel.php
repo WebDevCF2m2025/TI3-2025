@@ -88,12 +88,7 @@ function getListPublished(PDO $connect): array
 
 
 
-/**
- * @param PDO $connect
- * @param int $id
- * @return array|bool
- * On récupère un article via son ID pour la modification
- */
+
 function getOneArticleById(PDO $connect, int $id): array|bool
 {
     // requête préparée obligatoire, ca entrée utilisateur
@@ -121,75 +116,56 @@ function getOneArticleById(PDO $connect, int $id): array|bool
  * UPDATE
  */
 
-function updateArticleById(PDO $connect, array $datas): bool
+
+function updateAdresseById(PDO $connect, array $datas): bool
 {
 
 
-    // protection des variables
-    // vérification du titre
-    $title = htmlspecialchars(trim(strip_tags($datas['title'])));
-
-    if (empty($title) || strlen($title) > 160) return false;
-
-    // vérification du slug
-    $slug = htmlspecialchars(trim(strip_tags($datas['slug'])));
-
-    if (empty($slug) || strlen($slug) > 165) return false;
-
-
     // encodage du texte
-    $text = htmlspecialchars(trim(strip_tags($datas['articletext'])));
+    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])));
+    if (empty($nom) || strlen($nom) > 200) return false;
 
-    if (empty($text) || strlen($text) > 65000) return false;
+        // encodage du texte
+    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])));
+    if (empty($adresse) || strlen($adresse) > 200) return false;
 
-    // si on a coché 'articlepublished'
-    if (isset($datas['articlepublished'])) {
-        $isPublished = 1;
-        $datePublished = empty($datas['articledatepublished']) ? date("Y-m-d H:i:s") : $datas['articledatepublished'];
-    } else {
-        $isPublished = 0;
-        $datePublished = null;
-    }
+    $codepostal = (int)$datas['codepostal'];
+    if (empty($codepostal) || $codepostal > 9000) return false;
 
-    $iduser = (int) $datas['user_iduser'];
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])));
+    if (empty($ville) || strlen($ville) > 100) return false;
 
-    if(empty($iduser)) return false;
+    $latitude = (float)$datas['latitude'];
+    if (empty($latitude) ) return false;
 
-    $idarticle = (int) $datas['idarticle'];
+    $longitude = (float)$datas['longitude'];
+    if (empty($longitude) ) return false;
+    
+    $id = (int)$datas['id'];
+    
 
-    if(empty($idarticle)) return false;
-
-    $sql = "UPDATE `article` SET 
-                 `title` = ?,
-                 `slug` = ?,
-                 `articletext` = ?,
-                 `articlepublished`= ?,
-                 `articledatepublished`=?,
-                 `user_iduser`=?
-            WHERE `idarticle` = ?
-                     ";
+    $sql = "UPDATE `localisations` SET `nom` = ?, `adresse` = ?, `codepostal` = ?, `ville` = ?, `latitude` = ?, `longitude` = ? ;";
 
     $prepare = $connect->prepare($sql);
 
-    try{
+    try {
+        $prepare->execute([
+            $nom,
+            $adresse,
+            $codepostal,
+            $ville,
+            $latitude,
+            $longitude,
+           
 
-        $prepare->execute(
-            [
-                $title,
-                $slug,
-                $text,
-                $isPublished,
-                $datePublished,
-                $iduser,
-                $idarticle,
-            ]
-        );
+        
+        ]);
         $prepare->closeCursor();
         return true;
-
-    }catch (Exception $e){
+    } catch (Exception $e) {
         die($e->getMessage());
     }
+
 
 }
 

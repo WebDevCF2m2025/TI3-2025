@@ -53,25 +53,24 @@ if (isset($_GET['pg'])) {
 
         // on souhaite modifier un article qu'on récupère grâce à
         // son identifiant qui doit être un string contenant que des entiers [0-9]+
-    } elseif ($_GET['pg'] === "adminU"
-        && isset($_GET['id'])
-        && ctype_digit($_GET['id'])) {
-
+    } elseif ($_GET['pg'] === "adminU" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
+            
         $displayForm = ""; // le formulaire est affiché
         // on va convertir l'id en entier
-        $idarticle = (int) $_GET['id'];
-        $article = getOneArticleById($db, $idarticle);
+        $id = (int)$_GET['id'];
+        
+    
 
-        if($article===false) $error = "Cet article n'existe plus";
+        if($adresseU===false) $error = "Cet article n'existe plus";
 
         // si les variables de type post attendues sont là
-        if (isset($_POST['title'], $_POST['articletext'])) {
-           $update = updateArticleById($db, $_POST);
+        if (isset($_POST['nom'], $_POST['adresse'])) {
+           $update = updateAdresseById($db, $_POST);
             if ($update === true) {
                 $merci = true;
                 $displayForm = "d-none"; // on cache le formulaire
             } else {
-                $error = "Erreur lors de la modification d'un article";
+                $error = "Erreur lors de la modification d'un adresse";
             }
         }
         // appel de la vue

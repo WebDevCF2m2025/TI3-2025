@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MVC-CRUD-Procedural | Administration | Modification</title>
+    <title>Modification</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png"/>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -14,7 +14,7 @@
 <?php
 include_once "../view/menu.php"; 
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Modification</h1>
+<h1 class="mb-4 text-center">Modification</h1>
 <div class="container">
     <div class="bg-white p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=adminR">Retour à l'administration</a></h4>
@@ -25,7 +25,7 @@ include_once "../view/menu.php";
         ?>
         <h4 class="alert alert-success">Merci pour votre mise à jour !</h4>
         <script>
-            setTimeout(function(){ window.location.href="./?pg=admin"; },1500);
+            setTimeout(function(){ window.location.href="./?pg=adminR"; },1500);
         </script>
         <?php
         endif;
@@ -39,34 +39,43 @@ include_once "../view/menu.php";
                     <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
                     <hr>
                     <?php endif; ?>
-                    <form class="<?=$displayForm?>" action="" method="post" name="article">
-                        <input type="hidden" name="idarticle" value="<?=$article['idarticle']?>">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Titre</label>
-                            <input type="text" class="form-control" id="title" name="title" maxlength="160" required placeholder="Titre de l'article" value="<?=$article['title']?>">
+                    <form action="" method="post" name="list">
+                        <div class="container d-flex justify-content-between">
+                            <div class="mb-3  col-lg-5">
+                                <label for="nom" class="form-label">nom</label>
+                                <input type="text" class="form-control" id="nom" name="nom" maxlength="160" required placeholder="nom">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="ville" class="form-label">ville</label>
+                                <input type="text" class="form-control" id="ville" name="ville" maxlength="160" required placeholder="ville">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="slug" class="form-label">Slug</label>
-                            <input type="text" class="form-control" id="title" name="slug" maxlength="165" required placeholder="slug" value="<?=$article['slug']?>">
+                        <div class="container d-flex justify-content-between">
+                            
+                            <div class="mb-3 col-lg-5">
+                                <label for="adresse" class="form-label">adresse</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" maxlength="160" required placeholder="adresse">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="codepostal" class="form-label">codepostal</label>
+                                <input type="text" class="form-control" id="codepostal" name="codepostal" maxlength="160" required placeholder="codepostal">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="articletext" class="form-label">Texte</label>
-                            <textarea class="form-control" id="articletext" name="articletext" rows="6" required placeholder="Votre texte"><?=$article['articletext']?></textarea>
-                        </div>
-                        <div class="form-check mb-3">
-                            <?php
-                               $check = $article['articlepublished']===1 ? 'checked':'';
-                            ?>
-                            <input type="checkbox" class="form-check-input" id="articlepublished" name="articlepublished" value="1" <?=$check?>>
-                            <label class="form-check-label" for="articlepublished">Publier ?</label>
-                        </div>
-                        <div id="dateContainer" class="mb-3">
-                            <label class="form-label fw-semibold">Date et heure de publication :</label>
-                            <input type="datetime-local" name="articledatepublished" class="form-control" value="<?=$article['articledatepublished']?>">
-                        </div>
-                        <input type="hidden" name="user_iduser" value="<?=$_SESSION['iduser']?>">
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
 
+                        <div class="container d-flex justify-content-between">
+                            <div class="mb-3 col-lg-5">
+                                <label for="latitude" class="form-label">latitude</label>
+                                <input type="text" class="form-control" id="latitude" name="latitude" maxlength="160" required placeholder="latitude">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="longitude" class="form-label">longitude</label>
+                                <input type="text" class="form-control" id="longitude" name="longitude" maxlength="160" required placeholder="longitude">
+                            </div>
+                        </div>
+                        <div class="container">
+                            <input type="hidden" name="iduser" value="<?=$_SESSION['idutilisateurs']?>">
+                            <button type="submit" class="btn btn-primary col-lg-12">Envoyer</button>
+                        </div>
                     </form>
                 </div>
             </div>

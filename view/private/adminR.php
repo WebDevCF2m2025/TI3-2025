@@ -67,7 +67,7 @@ include_once "../view/menu.php";
                                 <?= $list['longitude'] ?>
                             </td>
                             <td>
-                                <a href="?pg=update&id=<?= $list['idarticle']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
+                                <a href="?pg=adminU&id=<?= $list['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
                             </td>
                             <td>
                                 <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $list['slug']?>')? document.location.href='?pg=delete&id=<?= $list['idarticle']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
@@ -89,7 +89,7 @@ include_once "../view/menu.php";
                         <h6 class="card-text"><?=$list['latitude']?></h6>
                         <h6 class="card-text"><?= $list['longitude'] ?></h6>
                         <div class="d-flex gap-2">
-                            <a href="?pg=update&id=<?= $list['nom']?>" class="badge bg-warning">Modifier</a>
+                            <a href="?pg=adminU&id=<?= $list['id']?>" class="badge bg-warning">Modifier</a>
                             <a href="" onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $list['nom']?>')? document.location.href='?pg=delete&id=<?= $list['nom']?>': ''" class="badge bg-danger">Supprimer</a>
                         </div>
                     </div>
