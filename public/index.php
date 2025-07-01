@@ -20,7 +20,7 @@ try {
 }
 
 // Vérifier si l'utilisateur est connecté
-if (isset($_SESSION['idutilisateurs'])) {
+if (isset($_SESSION['username'])) {
   // Si l'utilisateur est connecté, charger le contrôleur privé
   require_once "../controller/PrivateController.php";
 } else {

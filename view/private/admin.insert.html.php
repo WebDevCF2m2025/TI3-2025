@@ -27,7 +27,7 @@
 <?php
 include "menu.html.php";
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Modification</h1>
+<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Insertion</h1>
 <div class="container">
   <div class="bg-white p-4 rounded shadow-sm mb-5">
     <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
@@ -45,15 +45,14 @@ include "menu.html.php";
     ?>
     <div class="container">
       <div class="bg-white p-4 rounded shadow-sm mb-5">
-        <h2 class="mb-3 text-center mb-5">Modification du marqueur</h2>
         <!-- on affiche l'erreur -->
         <?php if (isset($error)): ?>
           <div class="alert alert-danger"><?=$error?></div>
           <a href="javascript:history.go(-1);">Revenir sur les informations des marqueurs et les modifier</a>
           <hr>
         <?php endif; ?>
-
-        <div class="map-container" style="width: 1000px" >
+            <h3 class="mb-3 text-center mb-5 bg-secondary p-5">Insérer un marqueur</h3>
+        <div class="map-container" style="width: 100%; margin-bottom: 200px" >
           <div id="map"></div>
         </div>
         <form class="<?=$displayForm?>" action="" method="post">
@@ -70,7 +69,7 @@ include "menu.html.php";
           </div>
           <div class="mb-3">
             <label for="postal" class="form-label">Code Postal</label>
-            <input type="text" class="form-control" id="postal" name="codepostal" maxlength="165" required
+            <input type="text" class="form-control" id="codepostal" name="codepostal" maxlength="165" required
                    placeholder="code Postal">
           </div>
           <div class="mb-3">
@@ -102,32 +101,64 @@ include "menu.html.php";
       </div>
     </div>
   </div>
-
-
   <script>
-    // click on the map and add value to input
     let map = L.map('map').setView([50.8301436, 4.3402184], 13);
+
     var Thunderforest_SpinalMap = L.tileLayer('https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}{r}.png?apikey={apikey}', {
       attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       apikey: 'd4bf4b9119c54964bac529246362d8b4',
       maxZoom: 22
     }).addTo(map);
 
-    map.on('click', function(e) {
-      var lat = e.latlng.lat;
-      var lng = e.latlng.lng;
+    let marker;
+
+    map.on('click', async function (e) {
+      const { lat, lng } = e.latlng;
+
+      // Supprimer l'ancien marqueur
+      if (marker) map.removeLayer(marker);
+
+      // Ajouter un nouveau marqueur avec popup
+      marker = L.marker([lat, lng]).addTo(map).bindPopup("Coordonnée insérée avec succès").openPopup();
+
+      // Mettre les coordonnées dans les champs du formulaire
       document.querySelector('#latitude').value = lat;
       document.querySelector('#longitude').value = lng;
-      L.marker([lat, lng]).addTo(map).bindPopup("Coordonée Inserer avec succées").openPopup();
-    });
-    // remove the marker when clicked
-    map.on('popupclose', function(e) {
-      var marker = e.popup._source;
-      map.removeLayer(marker);
+
+      // Requête vers l'API Nominatim
+      const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`;
+
+      try {
+        const response = await fetch(url, {
+          headers: {
+            'User-Agent': 'TonNomOuProjet - formulaire-geocoding' // requis par Nominatim
+          }
+        });
+
+        const data = await response.json();
+        console.log("Résultat de Nominatim :", data);
+
+        const adresse = (data.address.house_number || '') + ' ' + (data.address.road || '');
+        const ville = data.address.city || data.address.town || data.address.village || '';
+        const codePostal = data.address.postcode || '';
+
+        document.getElementById('adresse').value = adresse.trim();
+        document.getElementById('ville').value = ville;
+        document.getElementById('codePostal').value = codePostal;
+
+      } catch (error) {
+        console.error('Erreur lors du reverse geocoding :', error);
+      }
     });
 
-
+    // Optionnel : supprimer le marqueur quand le popup se ferme
+    map.on('popupclose', function (e) {
+      const m = e.popup._source;
+      if (m) map.removeLayer(m);
+    });
   </script>
+
+
 
   <script src="js/script.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
