@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <style>
+    body {
+
+      font-family: "impact Strive", ui-serif;
+      color: white;
+    }
+    h3 {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+    }
+  </style>
 </head>
 <body class="bg-light">
 <?php
@@ -35,7 +47,7 @@
       </tr>
       </thead>
       <tbody>
-      <?php foreach ($markers as $marker): ?>
+      <?php foreach ($marks as $marker): ?>
       <tr>
         <td>
           <?= $marker['nom'] ?>
@@ -69,6 +81,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    <h3><?=$pagination ?></h3>
   </div>
 
 

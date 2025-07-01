@@ -11,8 +11,6 @@
     $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
     if(!isset($_GET['pg'])){
       $activeHome = "active";
-    }elseif($_GET['pg']==="about"){
-      $activeAbout = "active";
     }elseif($_GET['pg']==="admin"){
       $activeAdmin = "active";
     }
@@ -21,7 +19,6 @@
       <div class="navbar-nav ms-auto">
         <!-- Correction : usage cohérent de ?pg=... -->
         <a class="nav-link <?=$activeHome?>" href="./">Accueil</a>
-        <a class="nav-link <?=$activeAbout?>" href="./?pg=about">À propos</a>
         <?php
         // si nous sommes connectés
         if(isset($_SESSION['username'])):

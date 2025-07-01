@@ -7,8 +7,21 @@
   <nom>MVC-CRUD-Procedural | Connexion</nom>
   <link rel="icon" type="image/x-icon" href="img/logo.png"/>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <style>
+    body {
+
+      font-family: "impact Strive", ui-serif;
+      color: white;
+    }
+  </style>
 </head>
 <body class="bg-light">
 <?php
@@ -39,6 +52,10 @@ include "menu.html.php";
           <a href="javascript:history.go(-1);">Revenir sur les informations des marqueurs et les modifier</a>
           <hr>
         <?php endif; ?>
+
+        <div class="map-container" style="width: 1000px" >
+          <div id="map"></div>
+        </div>
         <form class="<?=$displayForm?>" action="" method="post">
           <input type="hidden" name="id">
           <div class="mb-3">
@@ -87,6 +104,32 @@ include "menu.html.php";
   </div>
 
 
+  <script>
+    // click on the map and add value to input
+    let map = L.map('map').setView([50.8301436, 4.3402184], 13);
+    var Thunderforest_SpinalMap = L.tileLayer('https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}{r}.png?apikey={apikey}', {
+      attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      apikey: 'd4bf4b9119c54964bac529246362d8b4',
+      maxZoom: 22
+    }).addTo(map);
+
+    map.on('click', function(e) {
+      var lat = e.latlng.lat;
+      var lng = e.latlng.lng;
+      document.querySelector('#latitude').value = lat;
+      document.querySelector('#longitude').value = lng;
+      L.marker([lat, lng]).addTo(map).bindPopup("Coordonée Inserer avec succées").openPopup();
+    });
+    // remove the marker when clicked
+    map.on('popupclose', function(e) {
+      var marker = e.popup._source;
+      map.removeLayer(marker);
+    });
+
+
+  </script>
+
+  <script src="js/script.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>

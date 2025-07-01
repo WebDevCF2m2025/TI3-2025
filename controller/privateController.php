@@ -9,7 +9,29 @@ if (isset($_GET['pg'])) {
       header("Location: ./");
     exit();
   } elseif ($_GET['pg'] === "admin") {
-    $markers = getAllMarkers($db);
+    # PAGINATION
+
+    if(
+      isset($_GET[PAGINATION_GET])
+      &&ctype_digit($_GET[PAGINATION_GET])
+      &&!empty($_GET[PAGINATION_GET])
+    ){
+      $page = (int) $_GET[PAGINATION_GET];
+    } else {
+      $page = 1;
+    }
+
+// compte total marqueurs
+    $nbMarkers = countMarkers($db);
+
+# on récupère la pagination
+    $pagination = pagination($nbMarkers, PAGINATION_GET, $page, PAGINATION_NB);
+// offset pour la requête SQL
+    $offset = ($page - 1) * PAGINATION_NB;
+// récupération des marqueurs
+    $marks = getMarkerPagination($db, $offset, PAGINATION_NB);
+
+
     require_once "../view/private/admin.homepage.html.php";
   } elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
     // convertit le string en int
@@ -64,4 +86,4 @@ if (isset($_GET['pg'])) {
   require_once "../view/public/homepage.html.php";
 
 }
-echo "Hello from PrivateController!";
+echo "Hello from PrivateCon @troller!";

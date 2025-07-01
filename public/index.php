@@ -29,20 +29,25 @@ if (isset($_SESSION['idutilisateurs'])) {
 }
 
 // Si nous sommes en mode développement, afficher la barre de débogage
-if (APP_MODE == "dev") :
-  echo '<div class="bg-white p-4 rounded shadow-sm mb-5"><hr><h3>Barre de débogage</h3><hr>';
-  echo '<h4>session_id() ou SID</h4>';
-  var_dump(session_id());
-  echo '<h4>$_GET</h4>';
-  var_dump($_GET);
-  echo '<h4>$_SESSION</h4>';
-  var_dump($_SESSION);
-  echo '<h3>$_POST</h3>';
-  var_dump($_POST);
-  echo "<h4>COOKS</h4>";
-  var_dump(updateMarkerById($db, 1, "Nouveau Nom", "Nouvelle Adresse", "75000", "Paris", 10, 48.8566, 2.3522));
-  echo '</div>';
-endif;
+//if (APP_MODE == "dev") :
+//  echo '<div class="bg-white p-4 rounded shadow-sm mb-5"><hr><h3>Barre de débogage</h3><hr>';
+//  echo '<h4>session_id() ou SID</h4>';
+//  var_dump(session_id());
+//  echo '<h4>$_GET</h4>';
+//  var_dump($_GET);
+//  echo '<h4>$_SESSION</h4>';
+//  var_dump($_SESSION);
+//  echo '<h3>$_POST</h3>';
+//  var_dump($_POST);
+//  echo "<h4>COOKS</h4>";
+//  var_dump(updateMarkerById($db, 1, "Nouveau Nom", "Nouvelle Adresse", "75000", "Paris", 10, 48.8566, 2.3522));
+//  echo '</div>';
+//endif;
+
+
+
+
+
 
 //  fermeture de la connexion à la base de données
 $db = null;

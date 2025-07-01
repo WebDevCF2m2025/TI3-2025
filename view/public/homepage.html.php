@@ -35,7 +35,7 @@
 </div>
 
 <div class="main-page">
-  <div class="map-container" >
+  <div class="map-container" style="width: 1000px" >
     <div id="map" ></div>
   </div>
 
@@ -49,8 +49,13 @@
 
       foreach ($markers as $marker) {
 
-          echo "<li >{$marker['nom']}  | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
+          echo "<li id='point-list'>{$marker['nom']}  | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
           // zoom on the marker when clicked
+          echo "<script>
+                  document.querySelector('#points-list').lastChild.addEventListener('click', function() {
+                      map.flyTo([{$marker['latitude']}, {$marker['longitude']}], 15);
+                  });
+                </script>";
 
       }
       ?>
@@ -76,6 +81,7 @@
       });
 
   <?php endforeach; ?>
+
 
 </script>
 </body>
