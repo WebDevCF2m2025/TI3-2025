@@ -20,3 +20,11 @@ function selectAllFromLocalisations(PDO $db): array
         die($e->getMessage());
     }
 }
+
+function insertLocalisation(PDO $db, $nom, $adresse, $codepostal, $ville, $latitude, $longitude)
+{
+    $sql = "INSERT INTO localisations (nom, adresse, codepostal, ville, latitude, longitude)
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$nom, $adresse, $codepostal, $ville, $latitude, $longitude]);
+}
