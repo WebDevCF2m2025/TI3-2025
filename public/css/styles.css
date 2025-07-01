@@ -1,91 +1,91 @@
-        .container  {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 0;
-        }
+.container  {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+}
 
-        #map {
-            width: 100%;
-            min-height: 320px;
-            height: 400px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            margin-bottom: 1rem;
-        }
+#map {
+    width: 100%;
+    min-height: 320px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 1rem;
+}
 
-        .table-zone  {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            padding: 1rem;
-            overflow-x: auto;
-        }
+.table-zone  {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 1rem;
+    overflow-x: auto;
+}
 
-        .table-zone  table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
+.table-zone  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
 
-        .table-zone  th, .table-zone  td {
-            padding: 0.5rem 0.7rem;
-            border: 1px solid #dee2e6;
-            text-align: left;
-        }
+.table-zone  th, .table-zone  td {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
 
-        .table-zone  th {
-            background: #f8f9fa;
-            font-weight: 600;
-            color: #1976d2;
-        }
+.table-zone  th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #1976d2;
+}
 
-        .main-title, .main-subtitle {
-            text-align: center;
-            margin-top: 1.5rem;
-            color: #1976d2;
-        }
+.main-title, .main-subtitle {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #1976d2;
+}
 
-        .btn {
-            display: block;
-            margin: 1.5rem auto 0 auto;
-            padding: 0.6rem 2rem;
-            width: 200px;
-            background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600px;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(33,150,243,0.10);
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: 0.2s, box-shadow 0.2s, transform 0.1s;
-        }
-        .btn:hover {
-            background: linear-gradient(90deg, #1565c0 0%, #64b5f6 100%);
-            box-shadow: 0 4px 16px rgba(33,150,243,0.18);
-            transform: translateY(-2px) scale(1.03);
-        }
+.btn {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    padding: 0.6rem 2rem;
+    width: 200px;
+    background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.btn:hover {
+    background: linear-gradient(90deg, #1565c0 0%, #64b5f6 100%);
+    box-shadow: 0 4px 16px rgba(33,150,243,0.18);
+    transform: translateY(-2px) scale(1.03);
+}
 
-        /* Адаптивность для публичной части */
-        @media (min-width: 641px) {
-            .container  {
-                flex-direction: row;
-                align-items: stretch;
-            }
-            #map, .table-zone  {
-                flex: 1 1 50%;
-                max-width: 50%;
-                height: 400px;
-            }
-        }
+       
+@media (min-width: 641px) {
+    .container  {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    #map, .table-zone  {
+        flex: 1 1 50%;
+        max-width: 50%;
+        height: 400px;
+    }
+}
 
-        body {
+body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
