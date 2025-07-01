@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadParkings() {
-    fetch('http://omer-ti3-2025/public/?json')
+    fetch('https://2025.webdev-cf2m.be/omer/TI-3/public/?json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erreur de réseau');
@@ -68,7 +68,7 @@ function loadParkings() {
 
                 // Bonus: interaction liste -> carte
                 li.addEventListener('click', () => {
-                    map.flyTo([latitude, longitude], 16);
+                    map.flyTo([latitude, longitude], 18);
                     marqueur.openPopup();
                 });
 

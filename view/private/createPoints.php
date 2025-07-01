@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 
 <body>
-    <?php require_once "/../public/nav.php"; ?>
+    <?php require_once "../view/public/nav.php"; ?>
     <div class="container mt-5">
         <h1>Ajouter un point</h1>
         <form method="post" action="">

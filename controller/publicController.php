@@ -18,7 +18,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
         $password = $_POST['password'];
 
         if (authentificateActivedUser($db, $login, $password)) {
-            header("Location: ../controller/privateController.php");
+            header("Location: ./?page=admin");
             exit;
         } else {
             $error = "Login failed  try again.";

@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <link rel="stylesheet" href="../public/css/public.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style></style>
 </head>
 
 <body>
@@ -25,7 +30,7 @@
                 <div id="carte"></div>
             </div>
             <div id="list">
-                <h3>Liste des parkings</h3>
+                <h3>Liste </h3>
                 <ul class="point-list" id="pointList">
                     <div class="loading">Chargement des parkings...</div>
                 </ul>

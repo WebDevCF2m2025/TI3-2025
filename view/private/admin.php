@@ -48,7 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <main class="container">
         <div class="mb-4">
-            <a href="/controller/privateController.php?page=create" class="btn btn-success">
+            <a href="./?page=create" class="btn btn-success">
                 <i class="bi bi-plus-circle"></i> Add a point
             </a>
         </div>
@@ -81,11 +81,11 @@ if (session_status() === PHP_SESSION_NONE) {
                                     <td><?= htmlspecialchars($loc['latitude']) ?></td>
                                     <td><?= htmlspecialchars($loc['longitude']) ?></td>
                                     <td>
-                                        <a href="/controller/privateController.php?page=update&id=<?= $loc['id'] ?>"
+                                        <a href="/omer/TI-3/controller/privateController.php?page=update&id=<?= $loc['id'] ?>"
                                             class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i> Update
                                         </a>
-                                        <a href="/controller/privateController.php?page=delete&id=<?= $loc['id'] ?>"
+                                        <a href="/omer/TI-3/controller/privateController.php?page=delete&id=<?= $loc['id'] ?>"
                                             class="btn btn-danger btn-sm mt-2"
                                             onclick="return confirm('Are you sure you want to delete this point?');">
                                             <i class="bi bi-trash"></i> Delete

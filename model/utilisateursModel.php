@@ -64,6 +64,8 @@ function disUser(): bool
         );
     }
 
+
+
     // Finalement, on détruit le fichier texte de la session côté serveur.
     session_destroy();
 
