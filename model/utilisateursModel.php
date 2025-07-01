@@ -13,7 +13,8 @@ function authentificateActivedUser(PDO $connect, string $login, string $pass): b
 
     try {
         $stmt->execute([$login]);
-        if ($stmt->rowCount() === 0) return false;
+        if ($stmt->rowCount() === 0)
+            return false;
         $utilisateur = $stmt->fetch();
         // bonne pratique
         $stmt->closeCursor();
@@ -22,8 +23,6 @@ function authentificateActivedUser(PDO $connect, string $login, string $pass): b
         if (password_verify($userpwd, $utilisateur['passwd'])) {
             // création de la session active
             $_SESSION = $utilisateur;
-            // suppression du mot de passe
-            unset($_SESSION['passwd']);
             return true;
         } else {
             return false;

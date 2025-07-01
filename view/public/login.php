@@ -20,11 +20,8 @@
       <label for="exampleInputPassword1">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1" name="password">
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
   </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -33,8 +30,13 @@
 </body>
 
 </html>
-
+<?php if (isset($error)): ?>
+  <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+<?php endif; ?>
 <?php
+
+
+
 echo '<div class="bg-light py-4 mt-auto">
    <h3> débogage</h3>';
 echo '<h4>session_id() ou SID</h4>';
