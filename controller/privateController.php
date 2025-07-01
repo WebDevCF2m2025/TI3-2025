@@ -20,6 +20,7 @@ if (isset($_GET['pg'])) {
 
     } elseif ($_GET['pg'] === "adminR") {
         //chargement des articles pour l'administration
+        $lists = getListPublished($db);
 
         // appel de la vue
         require_once "../view/private/adminR.php";

@@ -31,7 +31,7 @@
         
     </div>
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="box">
             <div class="container">
                 <div class="rounded-4" id="carte"></div>

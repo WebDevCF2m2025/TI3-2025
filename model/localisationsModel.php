@@ -96,33 +96,7 @@ function getListPublished(PDO $connect): array
     }
 }
 
-/**
- * @param PDO $connect
- * @return array
- * Récupère les articles pour l'administration
- * par publication ascendante et
- * date de publication descendante
- */
-function getAllArticles(PDO $connect): array
-{
-    // requête préparée (non obligatoire, car pas d'entrée utilisateur)
-    $request = $connect->prepare("
-    SELECT a.`idarticle`, a.`title`, a.`slug`, SUBSTRING(a.`articletext`,1,100) AS `articletext`, a.`articlepublished`, a.`articledatepublished`, u.`login`, u.`username`
-    FROM `article` a 
-        INNER JOIN `user` u 
-            ON a.`user_iduser`= u.`iduser`
-    ORDER BY a.`articlepublished` ASC,
-             a.`articledatepublished` DESC ;
-");
-    try {
-        $request->execute();
-        $results = $request->fetchAll();
-        $request->closeCursor();
-        return $results;
-    } catch (Exception $e) {
-        die($e->getMessage());
-    }
-}
+
 
 /**
  * @param PDO $connect
