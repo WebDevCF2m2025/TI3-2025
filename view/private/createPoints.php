@@ -10,6 +10,10 @@
 </head>
 
 <body>
+
+    <?php
+    require_once "../view/public/nav.php";
+    ?>
     <h1>Create point</h1>
     <form class="container mt-5 w-25" method="post" action="">
         <div class="form-group">

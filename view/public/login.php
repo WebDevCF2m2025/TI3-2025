@@ -10,6 +10,9 @@
 </head>
 
 <body>
+  <?php
+  require_once "../view/public/nav.php";
+  ?>
   <form class="container mt-5 w-25" method="post" action="">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
