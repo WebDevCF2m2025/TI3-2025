@@ -3,6 +3,9 @@
     list-style: none ;
     padding-left: 0 ;
     margin-left: 0 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
     ul.list-unstyled {
@@ -17,46 +20,64 @@
     }
 
     .connex{
-        color: green;
+        color: white;
         margin-top: 2rem;
+        background-color: green;
+        padding: 10px;
+        border-radius: 10px;
+        opacity: 0.65;
     }
     .decco{
-        color: red;
+          color: white;
         margin-top: 2rem;
+        background-color: red;
+        padding: 10px;
+        border-radius: 10px;
+        opacity: 0.65;
     }
-    .acc{
-        color: blue;
+ 
+    .admi{
+          color: white;
         margin-top: 2rem;
+        background-color: green;
+        padding: 10px;
+        border-radius: 10px;
+        opacity: 0.65;
+      
     }
 
-    .admi{
-        color: green;
-        margin-top: 2rem;
+    ul li a:hover {
+    opacity: 1 ;
+
+    }
+
+    ul li.nav-item {
+margin: 0 auto;
     }
 </style>
 
 
 
 <ul class="navbar-nav list-unstyled nav me-auto ps-lg-5 mb-2 mb-lg-0">
-    <li class="nav-item"><a class="nav-link acc scroll-link " aria-current="page" href="./">Accueil</a></li>
-      <br>
-     
+       
    
     <?php
     // si connecté
     if(isset($_SESSION['username'])):
     ?>
         <li class="nav-item"><a class="nav-link scroll-link admi " href="./?pg=admin">Administration</a></li>
-          <br>
-        <hr>
+          
+        <br>
+        <br>
+        
      
         <li class="nav-item"><a class="nav-link decco scroll-link" href="./?pg=disconnect">Déconnexion de <?=$_SESSION['username']?></a></li>
     <?php
     // pas connecté
     else:
     ?>
-       <br>
-        <hr>
+    
+        
     <li class="nav-item"><a class="nav-link text connex scroll-link" href="./?pg=login">Connexion</a></li>
     <?php
     endif;

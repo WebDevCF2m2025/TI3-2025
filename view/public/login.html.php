@@ -144,7 +144,7 @@ body::before {
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="row">
                     <div class="col-lg-12">
-                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Connexion</h1>
+                                <h1 class="hero-title text-center mb-3" data-aos="fade-up" data-aos-delay="100">Connexion</h1>
                                 <div class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">
                                             <form class="<?=$displayForm?>" id="contactForm" method="post">
                                                 <div class="row gap-3 mb-3">
@@ -157,8 +157,10 @@ body::before {
                                                         <input class="form-control" id="email" type="password" name="userpwd" required="">
                                                     </div>
                                                 </div>
-
-                                                <button class="btn btn-primary fw-semibold" type="submit">Connexion</button>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="btn  bg-success  fw-semibold" type="submit">Connexion</button>
+                                                    </div>
+                                                
                                             </form>
                                             <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci de vous être connecté !</div>
                                             <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Login et/ou mot de passe incorrecte !</div>

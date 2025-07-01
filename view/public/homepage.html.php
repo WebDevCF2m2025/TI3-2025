@@ -70,6 +70,29 @@ body::before {
     overflow-y: scroll; /* active le scroll vertical */
 }
 
+.liste {
+    opacity: 0.75;
+}
+.liste ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.liste li {
+    padding: 0.5rem 1rem;
+    transition: background 0.2s;
+}
+.liste li:nth-child(even) {
+    background: #f2f2f2;
+}
+.liste li:nth-child(odd) {
+    background: #fff;
+}
+.liste li:hover {
+    background: #d1e7fd;
+    cursor: pointer;
+}
+
 @media (min-width: 639px) {
   .view {
     display: flex;
@@ -107,11 +130,13 @@ body::before {
 <div class="cart" id="carte"></div>
 <div class="liste">
 <ul>
-<?php foreach($localisations as $local) :  ?>
+<?php foreach($localisations as $index => $local) :  ?>
 <li class="adresse-item"
     data-lat="<?= $local['latitude'] ?>"
-    data-lng="<?= $local['longitude'] ?>">
-    <?= $local['rue'] ?> | <?= $local['codepostal'] ?> | <?= $local['ville'] ?>
+    data-lng="<?= $local['longitude'] ?>"
+    data-index="<?= $index ?>">
+    <?= $local['rue'] ?> | <?= $local['codepostal'] ?> | <?= $local['ville'] ?> 
+    <a href="https://www.google.com/maps/search/?api=1&query=<?= urlencode($local['latitude']) ?>,<?= urlencode($local['longitude']) ?>" target="_blank" rel="noopener noreferrer">  (Voir une autre carte)</a>
 </li>
 <br>
 <hr>
@@ -150,6 +175,8 @@ body::before {
                let marqueurPositions = [];
                // Création d'un ClusterGroup
                let markers = L.markerClusterGroup();
+               // Tableau pour stocker les références des marqueurs
+               let markerRefs = [];
                // On passe en revue tous les éléments du tableau
                data.forEach((item, index) => {
                    let rue = item.rue;
@@ -159,9 +186,15 @@ body::before {
                    let longitude = parseFloat(item.longitude);
                    if (!isNaN(latitude) && !isNaN(longitude)) {
                        let marqueur = L.marker([latitude,longitude])
-                           .bindPopup(`<h3>${rue}</h3><p>${codepostal}</p><p>${ville}</p>`);
+                           .bindPopup(
+                               `<h3>${rue}</h3>
+                                <p>${codepostal}</p>
+                                <p>${ville}</p>
+                                <a href=\"https://www.google.com/maps/@50.8137261,4.3492155,13z?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D\" target=\"_blank\" rel=\"noopener noreferrer\">\nVoir plus\n</a>`
+                           );
                        marqueurPositions.push([latitude, longitude]);
                        markers.addLayer(marqueur);
+                       markerRefs[index] = marqueur;
                    }
                });
                // Calculer les limites de la carte et ajuster la vue
@@ -171,6 +204,8 @@ body::before {
                }
                // Ajouter le clusterGroup à la carte
                map.addLayer(markers);
+               // Appeler la fonction de setup avec les références de marqueurs
+               setupFlyToOnList(map, markerRefs);
            })
            .catch(error => {
                console.error('Erreur:', error);
@@ -179,21 +214,24 @@ body::before {
        testfetch();
 
        // Fonction pour activer le flyTo sur clic d'une adresse
-       function setupFlyToOnList(map) {
+       function setupFlyToOnList(map, markerRefs) {
            document.querySelectorAll('.adresse-item').forEach(function(item) {
                item.addEventListener('click', function() {
                    const lat = parseFloat(this.getAttribute('data-lat'));
                    const lng = parseFloat(this.getAttribute('data-lng'));
+                   const index = parseInt(this.getAttribute('data-index'));
                    if (!isNaN(lat) && !isNaN(lng)) {
                        map.flyTo([lat, lng], 18, { animate: true, duration: 1.5 });
+                       if (markerRefs[index]) {
+                           setTimeout(() => {
+                               markerRefs[index].openPopup();
+                           }, 1500); // attend la fin de l'animation flyTo
+                       }
                    }
                });
            });
        }
-       // Appelle la fonction après le chargement du DOM
-       document.addEventListener('DOMContentLoaded', function() {
-           setupFlyToOnList(map);
-       });
+       // Appelle testfetch() au chargement, plus besoin d'appeler setupFlyToOnList séparément
 </script>
 </body>
 </html>
