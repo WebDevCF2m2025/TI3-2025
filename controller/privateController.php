@@ -4,6 +4,12 @@
 // Dépendances
 require "../model/utilisateursModel.php";
 require "../model/localisationsModel.php";
+if (isset($_GET['json'])) {
+    $points = getLocalisations($db);
+    header('Content-Type: application/json');
+    echo json_encode($points);
+    exit();
+}
 
 if (isset($_GET['pg'])) {
     if ($_GET['pg'] === 'logout') {

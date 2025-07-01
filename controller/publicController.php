@@ -30,8 +30,11 @@ if (isset($_GET['pg'])) {
 } else {
     $points = getLocalisations($db);
     // Si on veut récupérer les articles en json
-    if(isset($_GET['json'])){
+    if (isset($_GET['json'])) {
+        header('Content-Type: application/json');
         echo json_encode($points);
+        exit();
+
     } else {
         // Chargement des localisations pour l'accueil
         require_once "../view/public/homepage.html.php";
