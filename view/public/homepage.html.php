@@ -26,7 +26,7 @@ body::before {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.2; /* ajuste ici l’opacité (0 = transparent, 1 = opaque) */
+    opacity: 0.2; *
     z-index: -1;
     pointer-events: none;
 }
@@ -95,7 +95,7 @@ body::before {
 <body>
     
 <h1>Carte interactive</h1>
-<h2>Parcours BD à Bruxelles</h2>
+<h2>Les bornes à Bruxelles</h2>
 <div class="navv">
                     <?php
                     include "_menu.html.php";
