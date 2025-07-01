@@ -23,7 +23,7 @@
             <label for="passwd" class="form-label-custom">Mot de passe</label>
             <input type="password" class="form-control-custom" id="passwd" name="passwd" required>
         </div>
-        <button type="submit" class="btn-custom">Se connecter</button>
+        <button type="submit" class="btn">Se connecter</button>
     </form>
     <?php if(isset($jsRedirect)) echo $jsRedirect; ?>
 </div>

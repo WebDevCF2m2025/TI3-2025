@@ -10,7 +10,7 @@
     <header class="admin-header">
         <h1 class="main-title">Ajouter une localisation</h1>
         <div class="admin-nav">
-            <a href="./?action=list" class="btn-custom">Retour à la liste</a>
+            <a href="./?action=list" class="btn">Retour à la liste</a>
         </div>
     </header>
  
@@ -86,8 +86,8 @@
             </div>
  
             <div class="form-actions">
-                <button type="submit" class="btn-custom btn-primary">Ajouter la localisation</button>
-                <a href="./?action=list" class="btn-custom btn-secondary">Annuler</a>
+                <button type="submit" class="btn btn-primary">Ajouter la localisation</button>
+                <a href="./?action=list" class="btn btn-secondary">Annuler</a>
             </div>
         </form>
  

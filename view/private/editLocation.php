@@ -19,7 +19,7 @@
     <div class="admin-container">
        
         <div class="breadcrumb">
-            <a href="./?action=list">← Retour à la liste</a>
+            <a class="btn" href="./?action=list">← Retour à la liste</a>
         </div>
 
         
@@ -96,8 +96,8 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn-custom">Modifier</button>
-                    <a href="./?action=list" class="btn-secondary">Annuler</a>
+                    <button type="submit" class="btn">Modifier</button>
+                    <a href="./?action=list" class="btn btn-secondary">Annuler</a>
                 </div>
             </form>
         </div>
@@ -106,6 +106,7 @@
         <div class="info-box">
             <h4>Informations actuelles</h4>
             <p><strong>ID:</strong> <?= htmlspecialchars($location['id']) ?></p>
+            
         </div>       
     </div>
 </body>

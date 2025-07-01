@@ -63,6 +63,7 @@
             box-shadow: 0 2px 8px rgba(33,150,243,0.10);
             cursor: pointer;
             text-align: center;
+            text-decoration: none;
             transition: 0.2s, box-shadow 0.2s, transform 0.1s;
         }
         .btn:hover {

@@ -17,7 +17,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === "username") {
             $jsRedirect = "<script>
                 setTimeout(() => {
                     window.location.href = './';
-                }, 3000);
+                }, 2000);
             </script>";
         } else {
             $displayError = "";
