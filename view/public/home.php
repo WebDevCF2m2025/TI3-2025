@@ -20,6 +20,10 @@ require_once "../model/localisationsModel.php";
 </head>
 
 <body>
+
+    <?php
+    require_once "../view/public/nav.php"
+        ?>
     <div id="center">
 
         <h1>Carte Interactive</h1>

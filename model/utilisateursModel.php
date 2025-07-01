@@ -43,14 +43,30 @@ function authentificateActivedUser(PDO $connect, string $login, string $pass): b
 
 # Déconnexion de l'administrateur
 
-function deconnecterUtilisateur(): void
+function disUser(): bool
 {
-    // Pokreni sesiju ako već nije pokrenuta
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+    // bonne pratique, suppression des variables de session
+    // méthode tableau : $_SESSION = [];
+    session_unset();
+
+    // Si vous voulez détruire complètement la session, effacez également
+    // le cookie de session.
+    if (ini_get("session.use_cookies")) { // existence cookie
+        $params = session_get_cookie_params(); // si oui, on récupère ses paramètres
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000, // on recrée un cookie qui porte le même non (PHPSESSID par défaut), on le met loin dans le passé (+-11h)
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"] // on garde les mêmes propriétés
+        );
     }
-    // Uništi sve podatke iz sesije
-    $_SESSION = [];
-    // Uništi sesiju na serveru
+
+    // Finalement, on détruit le fichier texte de la session côté serveur.
     session_destroy();
+
+    // envoi du booléen
+    return true;
 }

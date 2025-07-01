@@ -12,7 +12,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
             header("Location: ../controller/privateController.php");
             exit;
         } else {
-            $error = "Login failed. Please try again.";
+            $error = "Login failed  try again.";
         }
     }
     require_once "../view/public/login.php";
