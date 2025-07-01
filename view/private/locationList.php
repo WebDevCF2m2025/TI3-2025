@@ -11,17 +11,17 @@
         <h1 class="main-title">Administration - Localisations</h1>
         <div class="admin-nav">
             <span>Bonjour, <?= $_SESSION['username'] ?></span>
-            <a href="./?action=logout" class="btn-custom btn-logout">Déconnexion</a>
+            <a href="./?action=logout" class="btn-logout">Déconnexion</a>
         </div>
     </header>
  
     <div class="admin-container">
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] == '1'): ?>
-            <div class="alert-success-custom">Localisation supprimée avec succès!</div>
+            <div class="alert-success ">Localisation supprimée avec succès!</div>
         <?php endif; ?>
         
         <?php if (isset($_GET['error']) && $_GET['error'] == '1'): ?>
-            <div class="alert-danger-custom">Erreur lors de la suppression!</div>
+            <div class="alert-danger ">Erreur lors de la suppression!</div>
         <?php endif; ?>
  
         <div class="admin-actions">

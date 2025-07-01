@@ -14,9 +14,9 @@
     <h1 class="main-title">Carte interactive</h1>
     <h3 class="main-subtitle">Parcours BD à Bruxelles</h3>
     <a href="./?pg=username" class="btn">Se connecter</a>
-    <div class="container-custom">
+    <div class="container ">
       <div id="map"></div>  
-      <div class="table-zone-custom">        
+      <div class="table-zone ">        
         <table>
             <tr>                
                 <th>Nom</th>

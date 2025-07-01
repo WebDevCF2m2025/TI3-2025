@@ -1,4 +1,4 @@
-        .container-custom {
+        .container  {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -16,7 +16,7 @@
             margin-bottom: 1rem;
         }
 
-        .table-zone-custom {
+        .table-zone  {
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -24,19 +24,19 @@
             overflow-x: auto;
         }
 
-        .table-zone-custom table {
+        .table-zone  table {
             width: 100%;
             border-collapse: collapse;
             font-size: 1rem;
         }
 
-        .table-zone-custom th, .table-zone-custom td {
+        .table-zone  th, .table-zone  td {
             padding: 0.5rem 0.7rem;
             border: 1px solid #dee2e6;
             text-align: left;
         }
 
-        .table-zone-custom th {
+        .table-zone  th {
             background: #f8f9fa;
             font-weight: 600;
             color: #1976d2;
@@ -74,11 +74,11 @@
 
         /* Адаптивность для публичной части */
         @media (min-width: 641px) {
-            .container-custom {
+            .container  {
                 flex-direction: row;
                 align-items: stretch;
             }
-            #map, .table-zone-custom {
+            #map, .table-zone  {
                 flex: 1 1 50%;
                 max-width: 50%;
                 height: 400px;
@@ -168,8 +168,8 @@
     margin-bottom: 2rem;
 }
 .form-group { margin-bottom: 1.5rem; }
-.form-label-custom { display: block; margin-bottom: 0.3rem; font-weight: 500; }
-.form-control-custom {
+.form-label  { display: block; margin-bottom: 0.3rem; font-weight: 500; }
+.form-control  {
     width: 100%;
     padding: 0.4rem 0.7rem;
     border: 1px solid #ccc;
@@ -179,15 +179,15 @@
 }
 .form-actions { display: flex; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dee2e6; }
 
-.alert-success-custom, .alert-danger-custom {
+.alert-success , .alert-danger  {
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 0.95rem;
     text-align: center;
 }
-.alert-success-custom { background: #e6ffed; color: #218838; border: 1px solid #b7f5c7; }
-.alert-danger-custom { background: #ffeaea; color: #c82333; border: 1px solid #f5b7b7; }
+.alert-success  { background: #e6ffed; color: #218838; border: 1px solid #b7f5c7; }
+.alert-danger  { background: #ffeaea; color: #c82333; border: 1px solid #f5b7b7; }
 
 .d-none { display: none !important; }
 
