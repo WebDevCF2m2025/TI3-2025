@@ -21,7 +21,6 @@ function selectAllLocalisation(PDO $connect): array
 function selectOneLocalisatoinById(PDO $connect, int $idLocalisation): array | bool
 
 {
-
     $sql = "SELECT * FROM `localisations` WHERE `id` = ?";
 
     $prepare = $connect->prepare($sql);
@@ -44,7 +43,7 @@ function selectOneLocalisatoinById(PDO $connect, int $idLocalisation): array | b
 
 
 
-function updateLocalisationById(PDO $connection, array $datas, int $idLocalisation):bool
+function updateLocalisationById(PDO $connection, array $datas, int $idLocalisation): bool
 {
 
     if ($datas['idLocalisation'] != $idLocalisation) die("Attaque !");

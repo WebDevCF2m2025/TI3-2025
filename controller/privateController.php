@@ -6,8 +6,9 @@ require_once "../model/utilisateursModel.php";
 if (isset($_GET['pg']) && $_GET['pg'] === 'admin') {
 
     $localisations = selectAllLocalisation($db);
+
     require_once "../view/private/admin.php";
-    
+
 } elseif (isset($_GET['pg']) && $_GET['pg'] === 'creation') {
 
 
@@ -19,7 +20,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === 'admin') {
             header('Location: ./?pg=admin');
             exit();
         } else {
-            echo "error";
+            $errorCreate="Les champs du formulaires ne sont pas valides ou ne sont pas remplis";
         }
     }
 
@@ -38,6 +39,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === 'admin') {
         header("Location: ./?pg=admin");
         exit();
     }
+
 }elseif ($_GET['pg'] === "update" && isset($_GET['idLocalisation']) && ctype_digit($_GET['idLocalisation'])) {
         $idLocalisation = (int)$_GET['idLocalisation'];
 
@@ -53,7 +55,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === 'admin') {
                 header("Location: ./?pg=admin");
                 exit();
             }else{
-                echo "error";
+                $errorUpdate ="Les champs du formulaires ne sont pas valides ou ne sont pas remplis";
             }
         }
 
