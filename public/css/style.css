@@ -5,7 +5,7 @@
 }
 
 :root {
-    font-size: 16px;
+    font-size: 11px;
     font-family: 'Roboto', sans-serif;
     padding: 20px;
 }
@@ -21,6 +21,12 @@ main {
 
 h1, .container p {
     margin: 20px;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: dodgerblue;
 }
 
 
@@ -36,20 +42,32 @@ h1, .container p {
     transition: 0.3s;
 }
 
-a:hover {
+#connect-btn:hover {
     background: green;
 }
+
+.titles {
+    padding-bottom: 20px;
+}
+
+
+.location {
+    text-align: left;
+}
+
+
 
 /*Map Layout*/
 .map-layout {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 /*Map container*/
 
 #carte {
+    border-radius: 10px;
     width: 1000px;
     height: 700px;
 }
@@ -62,5 +80,20 @@ a:hover {
 
 .list-container {
     text-align: center;
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 640px) {
+    .map-layout {
+        flex-direction: column;
+    }
+    #carte {
+        width: 90vw;
+        height: 400px;
+    }
+    .location {
+        margin-left: 20px;
+    }
 }
 
