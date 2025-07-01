@@ -19,7 +19,6 @@ function addLoc(PDO $connect, array $datas): bool
     $adresse = htmlspecialchars(trim(strip_tags($datas["adresse"])));
     $ville = htmlspecialchars(trim(strip_tags($datas["ville"])));
     $numero = htmlspecialchars(trim(strip_tags($datas['numero'])));
-
     $codepostal = trim($datas["codepostal"]);
     $latitude = (float)$datas["latitude"];
     $longitude = (float)$datas["longitude"];
@@ -72,7 +71,7 @@ function addLoc(PDO $connect, array $datas): bool
 // Fonction pour récupérer les localisations
 function getLocalisations(PDO $connect): array
 {
-    $sql  = " SELECT * FROM localisations ";
+    $sql  = " SELECT * FROM localisations ORDER BY nom ASC  ";
     try{
         $query = $connect->query($sql);
         $result = $query->fetchAll();
@@ -105,9 +104,71 @@ function getOneLocById(PDO $connect, int $id): array|false
 }
 
 /*
+ * UPDATE
+ */
+/**
+ * @param PDO $connect
+ * @param array $datas
+ * @return bool
+ */
+function updateLocById(PDO $connect, array $datas): bool
+{
+    // Vérifications
+    $nom = htmlspecialchars(trim(strip_tags($datas["nom"])));
+    $adresse = htmlspecialchars(trim(strip_tags($datas["adresse"])));
+    $ville = htmlspecialchars(trim(strip_tags($datas["ville"])));
+    $numero = htmlspecialchars(trim(strip_tags($datas['numero'])));
+    $codepostal = trim($datas["codepostal"]);
+    $latitude = (float)$datas["latitude"];
+    $longitude = (float)$datas["longitude"];
+    $idLoc = (int)$datas["id"];
+
+
+
+    // Vérification de la présence
+    if (empty($idLoc) || empty($nom) || empty($adresse) || empty($ville)  || empty($numero) || empty($codepostal))
+        return false;
+
+    if (!isset($datas["latitude"]) || !isset($datas["longitude"]) || !is_numeric($datas["latitude"]) || !is_numeric($datas["longitude"])) {
+        return false;
+    }
+
+    // Vérification des longueurs maximum selon la DB
+    if (
+        strlen($nom) > 30 ||
+        strlen($adresse) > 100 ||
+        strlen($numero) > 10 ||
+        strlen($ville) > 20 ||
+        strlen($codepostal) > 4
+    ) {
+        return false;
+    }
+
+    // Vérifications minimum/maximum (latitude-longitude)
+    if ($latitude < -90 || $latitude > 90 || $longitude < -180 || $longitude > 180) {
+        return false;
+    }
+
+    $sql = "UPDATE localisations SET nom = ?, adresse = ?, ville = ?, numero = ?, codepostal = ?, latitude = ?, longitude = ? WHERE id = ?";
+    $prepare = $connect -> prepare($sql);
+
+    try{
+        $prepare->execute([$nom, $adresse, $ville, $numero, $codepostal, $latitude, $longitude, $idLoc]);
+        $prepare->closeCursor();
+        return true;
+    }catch (Exception $e){
+        die($e->getMessage());
+    }
+}
+
+/*
  * DELETE
  */
-
+/**
+ * @param PDO $connect
+ * @param int $idLoc
+ * @return bool
+ */
 // Fonction pour supprimer une localisation
 function deleteLocById(PDO $connect, int $idLoc): bool
 {
@@ -120,4 +181,24 @@ function deleteLocById(PDO $connect, int $idLoc): bool
     } catch (Exception $e) {
         die($e->getMessage());
     }
+}
+
+/*
+ * PAGINATION
+ */
+/**
+ * @param PDO $db
+ * @return int
+ */
+function countLocalisations(PDO $db): int {
+    $stmt = $db->query("SELECT COUNT(*) FROM localisations");
+    return (int)$stmt->fetchColumn();
+}
+
+function getLocalisationsByPage(PDO $db, int $start, int $limit): array {
+    $stmt = $db->prepare("SELECT * FROM localisations ORDER BY nom ASC LIMIT :start, :limit");
+    $stmt->bindValue(':start', $start, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
 }

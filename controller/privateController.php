@@ -1,5 +1,9 @@
 <?php
 # TI3-2025-Sam/controller/privateController.php
+if (!isset($_SESSION['username'])) {
+    header("Location: ../public/index.php");
+    exit();
+}
 
 // Dépendances
 require "../model/utilisateursModel.php";
@@ -12,6 +16,8 @@ if (isset($_GET['json'])) {
 }
 
 if (isset($_GET['pg'])) {
+
+    // Déconnexion
     if ($_GET['pg'] === 'logout') {
         // appel de la fonction de déconnexion qui doit nous envoyer un booléen
         if (disconnectUser()) {
@@ -23,8 +29,14 @@ if (isset($_GET['pg'])) {
     // Accueil de l'administration
     } elseif ($_GET['pg'] === 'admin') {
         // Chargement des localisations pour l'administration
-        $points = getLocalisations($db);
-        // Appel de la page d'administration
+        // (BONUS PAGINATION)
+        $itemsPerPage = 8;
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+        $totalLoc = countLocalisations($db);
+        $totalPages = (int) ceil($totalLoc / $itemsPerPage);
+        $start = ($page - 1) * $itemsPerPage;
+        $points = getLocalisationsByPage($db, $start, $itemsPerPage);
+
         require_once "../view/private/admin.homepage.html.php";
 
     // On souhaite afficher la page de confirmation avant suppression
@@ -36,10 +48,13 @@ if (isset($_GET['pg'])) {
         $point = getOneLocById($db, $idLoc);
 
         if (!$point) {
-            die("Lieu introuvable.");
+            $error = "Lieu introuvable.";
+            require_once "../view/private/admin.delete.html.php";
+            exit();
+
         }
 
-        include "../view/private/admin.delete.html.php";
+        require_once "../view/private/admin.delete.html.php";
         exit();
 
     // On souhaite supprimer une localisation
@@ -54,7 +69,7 @@ if (isset($_GET['pg'])) {
         // Suppression d'une localisation
         if (deleteLocById($db, $idLoc)) {
             $deletionSuccess = true;
-            include "../view/private/admin.delete.html.php";
+            require_once "../view/private/admin.delete.html.php";
             exit();
         }
 
@@ -73,6 +88,7 @@ if (isset($_GET['pg'])) {
                 }
             }
         }
+
         // Appel de la page d'insertion
         require_once "../view/private/admin.insert.html.php";
 
@@ -80,21 +96,25 @@ if (isset($_GET['pg'])) {
     } elseif ($_GET['pg'] === 'update'
         && isset($_GET['id'])
         && ctype_digit($_GET['id'])) {
-        $displayForm = "";
         // On convertit l'id en entier
         $idLoc = (int)$_GET['id'];
-        $localisation = getOneLocById($db, $idLoc);
+        $point = getOneLocById($db, $idLoc);
 
-        if ($localisation === false) $error = "Localisation introuvable";
+        if ($point === false) {
+            $error = "Localisation introuvable";
+            require_once "../view/private/admin.update.html.php";
+            exit();
+
+        }
+
 
         // Si les variables de type post attendues sont là
-        if (isset($_POST['nom'], $_POST['adresse'], $_POST['numero'], $_POST['codepostal'], $_POST['ville'])) {
+        if (isset($_POST['nom'], $_POST['adresse'], $_POST['numero'], $_POST['codepostal'], $_POST['ville'],$_POST['latitude'], $_POST['longitude'])) {
             $update = updateLocById($db, $_POST);
             if ($update === true) {
                 $thanks = true;
-                $displayForm = "d-none";
             } else {
-                $error = "Erreur lors de la modification d'une localisation";
+                $error = true;
             }
         }
         // Appel de la page de modification

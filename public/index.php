@@ -52,5 +52,7 @@ if(isset($_SESSION['username'])) {
 
 
 
+
+
 // Bonne pratique
 $db = null;

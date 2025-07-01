@@ -19,7 +19,7 @@ include "_menu.html.php";
         <?php
         if(isset($thanks)):
             ?>
-            <h4 class="alert alert-success">Votre lieu a bien été mise à jour !</h4>
+            <h4 class="alert alert-success text-center">Votre lieu a bien été mis à jour !</h4>
             <script>
                 setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
             </script>
@@ -30,12 +30,12 @@ include "_menu.html.php";
         <div class="container">
             <div class="bg-white p-4 rounded shadow mb-5">
                 <!-- on affiche l'erreur -->
-                <?php if (isset($probleme)): ?>
-                    <div class="alert alert-danger">Erreur lors de l'insertion d'un article</div>
-                    <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
+                <?php if (isset($error)): ?>
+                    <div class="alert alert-danger text-center">Erreur lors de la modification d'un lieu</div>
                     <hr>
                 <?php endif; ?>
                 <form action="" method="post" name="localisation">
+                    <input type="hidden" name="id" value="<?= $point['id'] ?>">
                     <div class="mb-3">
                         <label for="nom" class="form-label">Lieu</label>
                         <input type="text" class="form-control" id="nom" name="nom" value="<?=$point['nom'] ?>" required>

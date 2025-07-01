@@ -13,7 +13,7 @@ include "_menu.html.php";
 ?>
 <h1 class="mb-4 text-center">Carte interactive | Accueil de l'administration</h1>
 <div class="container">
-    <div class="bg-white p-4 rounded shadow mb-5">
+    <div class="bg-white p-4 rounded shadow mb-3">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=addLoc">Ajouter une localisation</a></h4>
         <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr>
         <h2 class="mb-3 text-center mb-3">Gestion des localisations</h2>
@@ -25,7 +25,7 @@ include "_menu.html.php";
         else:
             $nbLoc = count($points);;
             $pluriel = $nbLoc>1? "s":"";
-            $h4 = "Il y a $nbLoc localisation$pluriel";
+            $h4 = "Il y a $totalLoc localisation$pluriel";
         endif;
         ?>
         <h4 class="text-secondary text-center small mb-3"><?=$h4?></h4>
@@ -100,6 +100,29 @@ include "_menu.html.php";
         </div>
     </div>
 </div>
+
+<!-- Pagination -->
+<?php if ($totalPages > 1): ?>
+    <nav aria-label="Pagination" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <!-- Bouton précedent -->
+            <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                <a class="page-link" href="?pg=admin&page=<?= $page - 1 ?>" tabindex="-1">Précédent</a>
+            </li>
+            <!-- Liens vers chaque page -->
+            <?php for($p=1; $p<=$totalPages; $p++): ?>
+                <li class="page-item <?= $page === $p ? 'active' : '' ?>">
+                    <a class="page-link" href="?pg=admin&page=<?= $p ?>"><?= $p ?></a>
+                </li>
+            <?php endfor; ?>
+            <!-- Bouton suivant -->
+            <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
+                <a class="page-link" href="?pg=admin&page=<?= $page + 1 ?>">Suivant</a>
+            </li>
+        </ul>
+    </nav>
+<?php endif; ?>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
