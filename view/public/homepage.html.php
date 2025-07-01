@@ -39,51 +39,18 @@
     <div id="map" ></div>
   </div>
 
-  <div>
+  <div class="points">
     <div style="text-align: center">liste des Points</div>
     <p style="text-align: center">Cliquez sur un element ci-dessous pour le situer sur la carte.</p>
     <hr>
-    <ul id="points-list">
-      <?php
-      // On affiche la liste des points
-
-      foreach ($markers as $marker) {
-
-          echo "<li id='point-list'>{$marker['nom']}  | {$marker['adresse']} - {$marker['codepostal']}  {$marker['ville']}</li>";
-          // zoom on the marker when clicked
-          echo "<script>
-                  document.querySelector('#points-list').lastChild.addEventListener('click', function() {
-                      map.flyTo([{$marker['latitude']}, {$marker['longitude']}], 15);
-                  });
-                </script>";
-
-      }
-      ?>
+    <div class="point">
+    <ul id="loc-list"></ul>
+    </div>
   </div>
 </div>
 
 <!-- Script File -->
   <script src="js/script.js"></script>
-<script>
-  // Ajout des marqueurs
-  <?php foreach ($markers as $marker): ?>
-    L.marker([<?= $marker['latitude'] ?>, <?= $marker['longitude'] ?>])
-        .addTo(map)
-      .bindPopup(` <ul>
-      <li> <?= addslashes($marker['adresse']) ?>  </li>
-      <li> <?= addslashes($marker['codepostal']) ?> <?= addslashes($marker['ville']) ?> </li>
-      <li> <?= addslashes($marker['nb_velos']) ?> </li>
-      </ul> `)
-
-      // FlyTO
-      .on('click', function() {
-          map.flyTo([<?= $marker['latitude'] ?>, <?= $marker['longitude'] ?>], 15);
-      });
-
-  <?php endforeach; ?>
-
-
-</script>
 </body>
 </html>
 

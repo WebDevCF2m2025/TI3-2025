@@ -3,6 +3,13 @@
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
+if (isset($_GET['getjson'])) {
+  $markers = getAllMarkers($db);
+  header('Content-Type: application/json');
+  echo json_encode($markers);
+  exit();
+}
+
 if (isset($_GET['pg'])) {
   if ($_GET['pg'] === "logout") {
     if (disconnectUser())
@@ -33,12 +40,28 @@ if (isset($_GET['pg'])) {
 
 
     require_once "../view/private/admin.homepage.html.php";
-  } elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
-    // convertit le string en int
+
+  }elseif ($_GET['pg'] === "confirm"){
+    isset($_GET['id'])
+    &&ctype_digit($_GET['id']);
+
+    $getOneMarker = getOneMarkerById($db, (int)$_GET['id']);
+
+    require_once "../view/private/admin.delete.html.php";
+
+  }
+
+  elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $idmarker = (int)$_GET['id'];
-    // suppression d'un marqueur
-    if (deleteMarkerById($db, $idmarker)) {
-      header("Location: ./?pg=admin");
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (deleteMarkerById($db, $idmarker)) {
+        $deletionSuccess = true;
+      }
+      require_once "../view/private/admin.delete.html.php";
+      exit();
+    } else {
+      $marker = getOneMarkerById($db, $idmarker);
+      require_once "../view/private/admin.delete.html.php";
       exit();
     }
   } elseif ($_GET['pg'] === "addMarker") {

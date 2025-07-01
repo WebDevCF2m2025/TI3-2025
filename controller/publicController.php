@@ -33,8 +33,11 @@ if(isset($_GET['pg'])){
   // chargement du marqueur pour la carte
   $markers = getAllMarkers($db);
   // si on veut récupérer les marqueurs en json
-  if(isset($_GET['getjson'])){
-    echo json_encode($markers );
+  if (isset($_GET['getjson'])) {
+    $markers = getAllMarkers($db);
+    header('Content-Type: application/json');
+    echo json_encode($markers);
+    exit();
   }else {
     require_once "../view/public/homepage.html.php";
   }

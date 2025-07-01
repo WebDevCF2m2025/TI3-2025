@@ -27,9 +27,22 @@
 ?>
 <h1 class="mb-4 text-center">MVC-CRUD-Procedural | Connexion</h1>
 <div class="container">
-  <div class="bg-white p-4 rounded shadow-sm mb-5">
+  <div class="bg-secondary bg-opacity-50 p-4 rounded shadow-sm mb-5">
     <h1>ADMIN</h1>
     <h4 class="mb-3 text-left mb-3"><a href="?pg=addMarker">Inserer un marqueur</a></h4>
+    <?php
+    $countmarks = countMarkers($db);
+    if(empty($countmarks)):
+    ?>
+    <h4 class="alert alert-danger">Aucun marqueur n'a été trouvé !</h4>
+    <?php
+    else:
+    $pluriel = $countmarks > 1 ? 's' : '';
+      ?>
+    <h5 class="mb-3 text-left mb-3 text-dark">Il y'a <?=$countmarks?> Marqueur<?=$pluriel ?></h5>
+    <?php
+    endif;
+    ?>
 </div>
   <div class="table-responsive d-none d-md-block">
     <table class="table table-hover align-middle bg-white rounded">
@@ -72,12 +85,12 @@
           <?=$marker['longitude'] ?>
         </td>
         <td>
-          <a href="?pg=update&id=<?= $marker['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
+          <a href="?pg=update&id=<?= $marker['id']?>" class="btn btn-warning btn-sm">Modifier</a>
         </td>
         <td>
-          <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $marker['adresse']?>')? document.location
-            .href='?pg=delete&id=<?= $marker['id']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
+          <a href="?pg=delete&id=<?= $marker['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
         </td>
+
         <?php endforeach; ?>
       </tbody>
     </table>
