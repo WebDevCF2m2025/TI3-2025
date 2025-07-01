@@ -18,7 +18,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ajouter un nouvel adresse</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ajouter un nouvel adresse</h3> <a href="./?pg=admin">Retour à l'administration </a></div>
                                     <div class="card-body">
                                         <form method="post">
                                             <div class="row mb-3">
@@ -72,14 +72,10 @@
             </div>
             <div id="layoutAuthentication_footer">
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                     <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center text-center justify-content-between small">
+                            <div class="text-center">Copyright &copy; CF2M | TI3-2025 </div>
+                            
                         </div>
                     </div>
                 </footer>

@@ -20,8 +20,8 @@
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    
+                    
                 </div>
             </form>
             <!-- Navbar-->
@@ -40,14 +40,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Accueil
-
-                            </a>
-                            
-                            <div class="sb-sidenav-menu-heading">Interface</div>
+                           
                             
                            
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -64,7 +57,7 @@
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             
-                                            <a class="nav-link" href="./?pg=new">Ajouter un nouvel adresse</a>
+                                            <a class="nav-link"  href="./?pg=new">Ajouter un nouvel localisation</a>
                                             
                                         </nav>
                                     </div>
@@ -74,44 +67,39 @@
                            
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+                    
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <?php
+                                  <?php
                 // on compte le nombre d'articles
-                $nbArticles = count( $localisations);
+                $nblocalisations = count( $localisations);
                 // si pas d'articles
                 if(empty($nblocalisations)):
                     $h3 = "Pas encore d'article";
                 else:
                     // si on plus d'un article
                     $pluriel = $nblocalisations >1 ? "s": "";
-                    $h3 = "Il y a $nblocalisations article$pluriel";
+                    $h3 = "Il y a $nblocalisations localisation$pluriel";
                 endif;
                 ?>
+                        <h1 class="mt-4"><?=$h3?></h1>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                               
+                                <a target="_blank" href="?pg=new">Ajouter un nouvel localisation </a>
+                                
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Tableau des localisations
+                            </div>
+                  
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -152,8 +140,8 @@
                                             <td><?=$localisation['codepostal']?></td>
                                             <td><?=$localisation['latitude']?></td>
                                             <td><?=$localisation['longitude']?></td>
-                                            <td><a class="text-decoration-none" href="?pg=update&idlocalisation=<?=$localisation['id']?>"><p class="bg-success p-2 rounded ">Modifier</p></a></td>
-                                            <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'article : \n <?=addslashes(html_entity_decode($localisation['adresse'])); // pour mettre des slashs devant les "'" ?>')? window.location.href='./?pg=delete&idlocalisation=<?=$localisation['id']?>' :'';" class="bg-danger p-2 rounded">Supprimer</p></td>
+                                            <td><a class="text-decoration-none" href="?pg=update&idlocalisation=<?=$localisation['id']?>"><p class="bg-success p-2 text-center text-white  rounded ">Modifier</p></a></td>
+                                            <td><p onclick="confirm('Voulez-vous vraiment supprimer la localisation : \n <?=addslashes(html_entity_decode($localisation['nom'])); // pour mettre des slashs devant les "'" ?>')? window.location.href='./?pg=delete&idlocalisation=<?=$localisation['id']?>' :'';" class="bg-danger text-white text-center p-2 rounded">Supprimer</p></td>
                                         </tr>
                                           <?php
                     endforeach;
@@ -168,13 +156,9 @@
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                        <div class="d-flex align-items-center text-center justify-content-between small">
+                            <div class="text-center">Copyright &copy; CF2M | TI3-2025 </div>
+                            
                         </div>
                     </div>
                 </footer>

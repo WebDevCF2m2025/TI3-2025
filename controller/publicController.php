@@ -39,7 +39,7 @@ if (!isset($_GET['pg'])) {
             $connect = authentificateUtilisateurs($db, $_POST['login'], $_POST['userpwd']);
             if ($connect=== true) {
 
-                  header("Location: ./?pg=admin");
+                 
                 // affichage du bloc de succès
                 $displaySucces = "";
                 // on cache le formulaire
@@ -47,7 +47,7 @@ if (!isset($_GET['pg'])) {
                 // création d'un javascript
                 $jsRedirect = "<script>
     setTimeout(() => {
-  window.location.href = './';
+  window.location.href = './?pg=admin';
 }, 3000); // Redirects after 3 seconds
 </script>";
             } else

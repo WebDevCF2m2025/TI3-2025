@@ -45,6 +45,5 @@ echo '<h3>$_POST</h3>';
 var_dump($_POST);
 echo '</div>';
 
-
 // bonne pratique
 $db = null;
