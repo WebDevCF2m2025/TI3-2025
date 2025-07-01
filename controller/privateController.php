@@ -1,13 +1,15 @@
 <?php
 # controller/privateController.php
-
+ 
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
+ 
 
 $action = $_GET['action'] ?? 'list';
-
+ 
 switch ($action) {
     case 'list':
+        
         $locations = getAllLocations($db);
         require_once "../view/private/locationList.php";
         break;
@@ -42,6 +44,7 @@ switch ($action) {
             }
         }
         
+        require_once "../view/private/addLocation.php";
         break;
         
     case 'edit':
@@ -98,13 +101,18 @@ switch ($action) {
         }
         exit;
         
+        
     case 'logout':
-        disconnectUser();
-        header("Location: ./");
-        exit;
+        
+        if (disconnectUser()) {
+            header("Location: ./");
+            exit;
+        }
+        break;
         
     default:
+      
         $locations = getAllLocations($db);
-        require_once "../view/private/locationList.php";
+        require_once "../view/private/locationsList.php";
         break;
 }
