@@ -18,7 +18,8 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ajouter un nouvel adresse</h3> <a href="./?pg=admin">Retour à l'administration </a></div>
+                                    <a href="./?pg=admin" class="btn btn-primary">Retour à l'administration</a>
+                                    <div class="card-header"> <h3 class="text-center font-weight-light my-4">Ajouter un nouvel adresse</h3> </div>
                                     <div class="card-body">
                                         <form method="post">
                                             <div class="row mb-3">
