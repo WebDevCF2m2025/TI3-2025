@@ -10,10 +10,11 @@
 
 body {
   padding: 1em;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #8D0914, #6F080E, #550409, #3C0103);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  font-family: "impact Strive";
+  animation: gradient 8s ease infinite;
+  font-family: "impact Strive", ui-serif;
+  color: white;
 }
 
 @keyframes gradient {
@@ -43,7 +44,25 @@ body {
   justify-content: space-around;
 }
 
+.map-container {
+  width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 1150px) {
+  .map-container{
+    width: 800px;
+  }
+  .main-page {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 #map{
+  resize: none;
     height: 500px;
     width: 100%;
 }

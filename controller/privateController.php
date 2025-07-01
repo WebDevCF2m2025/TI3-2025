@@ -42,13 +42,14 @@ if (isset($_GET['pg'])) {
     if ($marker === false) $error = "Ce marqueur n'existe plus";
 
     // si les variables de type post attendues sont là
-    if (isset($_POST['nom'], $_POST['adresse'], $_POST['codepostal'], $_POST['ville'], $_POST['nb_velos'] ,
+    if (isset($_POST['id'],$_POST['nom'], $_POST['adresse'], $_POST['codepostal'], $_POST['ville'], $_POST['nb_velos'] ,
       $_POST['latitude'], $_POST['longitude'])) {
       // on met à jour le marqueur
-      $update = updateMarkerById($db, $_POST);
+      $update = updateMarkerById($db, $_POST['id'], $_POST['nom'], $_POST['adresse'], $_POST['codepostal'], $_POST['ville'], $_POST['nb_velos'],
+        $_POST['latitude'], $_POST['longitude']);
       if ($update === true) {
+        header("Location: ./?pg=admin");
         $merci = true;
-        echo "ok";
         $displayForm = "d-none"; // on cache le formulaire
       } else {
         $error = "Erreur lors de la modification d'un article";
@@ -59,7 +60,7 @@ if (isset($_GET['pg'])) {
   }
 } else {
 
-  //$marker = getMarkers($db);
+  // $marker = getAllMarkers($db);
   require_once "../view/public/homepage.html.php";
 
 }

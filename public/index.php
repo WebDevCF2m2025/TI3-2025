@@ -20,7 +20,7 @@ try {
 }
 
 // Vérifier si l'utilisateur est connecté
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['idutilisateurs'])) {
   // Si l'utilisateur est connecté, charger le contrôleur privé
   require_once "../controller/PrivateController.php";
 } else {
@@ -39,8 +39,9 @@ if (APP_MODE == "dev") :
   var_dump($_SESSION);
   echo '<h3>$_POST</h3>';
   var_dump($_POST);
+  echo "<h4>COOKS</h4>";
+  var_dump(updateMarkerById($db, 1, "Nouveau Nom", "Nouvelle Adresse", "75000", "Paris", 10, 48.8566, 2.3522));
   echo '</div>';
-  var_dump(updateMarkerById($db, (array)1, "Nouveau Nom", "Nouvelle Adresse", "75000", "Paris", 10, 48.8566, 2.3522));
 endif;
 
 //  fermeture de la connexion à la base de données

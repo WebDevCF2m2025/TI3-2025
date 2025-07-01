@@ -37,24 +37,23 @@ function deleteMarkerById(PDO $db, int $id): bool {
 
 // Modifier un marqueur/ information
 
-function updateMarkerById(PDO $db,array $datas): bool
+function updateMarkerById(PDO $db,$id,$nom, $adresse, $codepostal, $ville, $nb_velos, $latitude, $longitude): bool|string
 {
-  // verification des champs
-  $nom = trim($datas['nom']);
-  $adresse = trim($datas['adresse']);
-  $codepostal = trim($datas['codepostal']);
-  $ville = trim($datas['ville']);
-  $nb_velos = trim($datas['nb_velos']);
-  $latitude = trim($datas['latitude']);
-  $longitude = trim($datas['longitude']);
-  $id = (int)$datas['id'];
-
-
-  if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($nb_velos) || empty($latitude) ||
-    empty($longitude) || empty($id)) {
-    return false;
-  } elseif (strlen($nom) > 30 || strlen($adresse) > 100 || strlen($ville) > 20 || strlen($codepostal) > 4)  {
-    return false;
+  // Sécurisation des données utilisateurs
+  $nom = htmlspecialchars(strip_tags(trim($nom)), ENT_QUOTES);
+  $adresse = htmlspecialchars(strip_tags(trim($adresse)), ENT_QUOTES);
+  $codepostal = htmlspecialchars(strip_tags(trim($codepostal)), ENT_QUOTES);
+  $ville = htmlspecialchars(strip_tags(trim($ville)), ENT_QUOTES);
+  $nb_velos = (int) $nb_velos;
+  $latitude = (float) $latitude;
+  $longitude = (float) $longitude;
+  // Vérification des champs
+  if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($latitude) ||
+    empty($longitude)) {
+    return "a";
+  }
+  if (strlen($nom) > 30 || strlen($adresse) > 100 || strlen($ville) > 20 || strlen($codepostal) > 4) {
+    return "b";
   }
 
   $sql = "UPDATE localisations SET
@@ -68,11 +67,22 @@ function updateMarkerById(PDO $db,array $datas): bool
                     WHERE `id` = ?";
 
 
-  $prepare = $db->prepare($sql);
+  $request = $db->prepare($sql);
 
   try{
-    $prepare->execute([$nom, $adresse, $codepostal, $ville, $nb_velos, $latitude, $longitude, $id]);
-    $prepare->closeCursor();
+    $request->execute(
+      [
+        $nom,
+        $adresse,
+        $codepostal,
+        $ville,
+        $nb_velos,
+        $latitude,
+        $longitude,
+        $id
+      ]
+    );
+    $request->closeCursor();
     return true;
   }catch (Exception $e){
     die($e->getMessage());
@@ -80,7 +90,7 @@ function updateMarkerById(PDO $db,array $datas): bool
 
 }
 
-function getOneMarkerById(PDO $db, int $id): array|false
+function getOneMarkerById(PDO $db, int $id): array|bool
 {
   $sql = "SELECT * FROM localisations WHERE `id` = ?";
   $request = $db->prepare($sql);
@@ -98,13 +108,13 @@ function getOneMarkerById(PDO $db, int $id): array|false
 function addMarker(PDO $db, array $datas): bool
 {
   // verification des champs
-  $nom = trim($datas['nom']);
-  $adresse = trim($datas['adresse']);
-  $codepostal = trim($datas['codepostal']);
-  $ville = trim($datas['ville']);
-  $nb_velos = trim($datas['nb_velos']);
-  $latitude = trim($datas['latitude']);
-  $longitude = trim($datas['longitude']);
+  $nom = $datas['nom'];
+  $adresse = $datas['adresse'];
+  $codepostal = $datas['codepostal'];
+  $ville = $datas['ville'];
+  $nb_velos = $datas['nb_velos'];
+  $latitude = $datas['latitude'];
+  $longitude = $datas['longitude'];
 
   if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($nb_velos) || empty($latitude) ||
     empty($longitude)) {

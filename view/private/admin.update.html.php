@@ -53,7 +53,7 @@ include "menu.html.php";
           </div>
           <div class="mb-3">
             <label for="postal" class="form-label">Code Postal</label>
-            <input type="text" class="form-control" id="postal" name="postal" maxlength="165" required
+            <input type="text" class="form-control" id="postal" name="codepostal" maxlength="165" required
                    placeholder="code Postal" value="<?=$marker['codepostal']?>">
           </div>
           <div class="mb-3">
@@ -63,7 +63,7 @@ include "menu.html.php";
           </div>
           <div class="mb-3">
             <label for="velos" class="form-label">Nombre de vélo</label>
-            <input type="text" class="form-control" id="velos" name="velos" maxlength="165" required
+            <input type="text" class="form-control" id="velos" name="nb_velos" maxlength="165" required
                    placeholder="Nombre de vélos" value="<?=$marker['nb_velos']?>">
           </div>
           <div class="mb-3">

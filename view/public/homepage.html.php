@@ -35,7 +35,10 @@
 </div>
 
 <div class="main-page">
-    <div id="map" style="width: 50%" ></div>
+  <div class="map-container" >
+    <div id="map" ></div>
+  </div>
+
   <div>
     <div style="text-align: center">liste des Points</div>
     <p style="text-align: center">Cliquez sur un element ci-dessous pour le situer sur la carte.</p>
@@ -51,7 +54,6 @@
 
       }
       ?>
-
   </div>
 </div>
 

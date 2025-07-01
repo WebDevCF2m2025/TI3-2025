@@ -36,7 +36,7 @@ include "menu.html.php";
         <!-- on affiche l'erreur -->
         <?php if (isset($error)): ?>
           <div class="alert alert-danger"><?=$error?></div>
-          <a href="javascript:history.go(-1);">Revenir sur les informations du marqueurs et les modifier</a>
+          <a href="javascript:history.go(-1);">Revenir sur les informations des marqueurs et les modifier</a>
           <hr>
         <?php endif; ?>
         <form class="<?=$displayForm?>" action="" method="post">
@@ -53,7 +53,7 @@ include "menu.html.php";
           </div>
           <div class="mb-3">
             <label for="postal" class="form-label">Code Postal</label>
-            <input type="text" class="form-control" id="postal" name="postal" maxlength="165" required
+            <input type="text" class="form-control" id="postal" name="codepostal" maxlength="165" required
                    placeholder="code Postal">
           </div>
           <div class="mb-3">
@@ -63,7 +63,7 @@ include "menu.html.php";
           </div>
           <div class="mb-3">
             <label for="velos" class="form-label">Nombre de vélo</label>
-            <input type="text" class="form-control" id="velos" name="velos" maxlength="165" required
+            <input type="text" class="form-control" id="velos" name="nb_velos" maxlength="165" required
                    placeholder="Nombre de vélos" >
           </div>
           <div class="mb-3">
