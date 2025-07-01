@@ -1,0 +1,70 @@
+
+
+@font-face {
+  font-family: 'impact Strive';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/impact Strive.otf") format("opentype");
+}
+
+
+body {
+  padding: 1em;
+  background: linear-gradient(-45deg, #8D0914, #6F080E, #550409, #3C0103);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+  font-family: "impact Strive", ui-serif;
+  color: white;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.top-page {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.top-page button{
+  padding: 5px 10px;
+  width: 150px;
+}
+.main-page{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.map-container {
+  width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 1150px) {
+  .map-container{
+    width: 800px;
+  }
+  .main-page {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#map{
+  resize: none;
+    height: 550px;
+    width: 100%;
+    border-radius: 10px;
+  margin-top: 80px;
+}
