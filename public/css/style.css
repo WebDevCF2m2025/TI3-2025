@@ -10,6 +10,10 @@
     padding: 20px;
 }
 
+ul {
+    list-style: none;
+}
+
 main {
     grid-template-columns: auto auto;
     justify-content: center;
@@ -31,7 +35,7 @@ a {
 
 
 #connect-btn {
-    background-color: #f24331;
+    background-color: #353535;
     color: white;
     padding: 14px 25px;
     margin-bottom: 20px;
@@ -43,7 +47,7 @@ a {
 }
 
 #connect-btn:hover {
-    background: green;
+    background: dodgerblue;
 }
 
 .titles {
@@ -61,6 +65,7 @@ a {
 .map-layout {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 40px;
 }
 

@@ -3,10 +3,16 @@ let carte = L.map('carte');
 
 /* définir sur quelle position est centrée la carte */
 /* latitude, longitude ainsi que le zoom */
-carte.setView([50.8467139,4.3525151], 14);
+carte.setView([50.8467139,4.3525151], 13);
+
+
 
 /* choisir le fond de carte et l'ajouter à la carte */
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(carte);
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
+    minZoom: 0,
+    attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    ext: 'png'
+}).addTo(carte);
 
 
 const loc = [
@@ -57,64 +63,19 @@ const loc = [
 ];
 
 
-
-
 loc.forEach(loc => {
     L.marker([loc.latitude, loc.longitude])
         .addTo(carte)
-        .bindPopup(loc.nom);
+        .bindPopup(loc.nom)
+        .bindPopup('Bruxelles : </br>' + loc.adresse)
+        .openPopup();
 });
 
-/* Ajouter un panneau de contrôle qui indique l'échelle de la carte */
-/*L.control.scale({
-    position: "bottomleft",
-    maxWidth:200,
-    metric:true,
-    imperial:false
-}).addTo(carte);*/
 
-/*const geocoderControl = new L.Control.Geocoder().addTo(carte);
+const linkLoc = document.getElementById('link-loc');
 
-const icone = L.icon({
-    iconUrl: '../img/pin.png',
-    iconSize: [64, 64],
-    iconAnchor: [32, 64],
-    popupAnchor: [0, -64],
-});*/
+linkLoc.addEventListener('click', showLoc);
 
-/* Ajouter un marqueur déplaçable */
-let marqueurDeplacable = L.marker(carte.getCenter(), {draggable:true, icon:icone}).addTo(carte);
-
-/* A la fin du déplacement du marqueur, on détecte les nouvelles caractéristiques */
-marqueurDeplacable.on('dragend', function(e){
-    console.log(e);
-    /* récupérer les coordonnées de l'endroit où on a laché le marqueur */
-    let nouvellePosition = L.latLng(e.target._latlng);
-
-    /* transmettre la position */
-    let adresse = trouverAdresse(nouvellePosition);
-
-});
-
-function trouverAdresse(position) {
-    console.log(position);
-
-    let latitude = position.lat;
-    let longitude = position.lng;
-
-    fetch(`https://nominatim.openstreetmap.org/reverse.php?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18`)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-            console.log(response.display_name);
-
-            /* ajouter un popup pour indiquer cette position */
-            marqueurDeplacable.bindPopup(`<p>lat:${latitude}<br>lng:${longitude}</p><p>${response.display_name}</p>`);
-
-            document.getElementById("adresse").innerHTML = response.display_name;
-        })
-        .catch(error => {
-            console.log(error);
-        });
+function showLoc() {
 
 }
