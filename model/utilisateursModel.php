@@ -12,27 +12,17 @@ function connectUser(PDO $con, string $userLogin, string $userPwd): bool
     $request = $con->prepare("SELECT * FROM `utilisateurs` WHERE `username`= ?");
     try{
         $request->execute([$userLogin]);
-        // on a récupéré personne
-      
         if($request->rowCount()===0) return false;
-        // on a donc UN utilisateur (champ unique),
-        // transformation en tableau associatif
-       
-        // bonne pratique
-  
-        $request->closeCursor();
-        // on va vérifier son mot de passe
-        // entre celui passé par le formulaire et celui venant de la DB
-       
-        if(password_verify($userPwd,$result['passwd'])){
-            // on met en session tout ce qu'on a été récupéré de la requête
-            // tableau associatif = tableau associatif
-          
-            $_SESSION = $result;
 
-            // suppression du mot de passe
-            // удаляем пароль
+        // Получаем данные пользователя
+        $result = $request->fetch(PDO::FETCH_ASSOC);
+
+        $request->closeCursor();
+
+        if(password_verify($userPwd, $result['passwd'])){
+            $_SESSION = $result;
             unset($_SESSION['passwd']);
+            $_SESSION['login'] = true;
             return true;
         }else{
             return false;
