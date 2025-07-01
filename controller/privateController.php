@@ -30,28 +30,32 @@ if (isset($_GET['pg'])) {
       }
     }
     // appel de la vue
-    require_once "../view/admin.insert.html.php";
+    require_once "../view/private/admin.insert.html.php";
 
   } elseif ($_GET['pg'] === "update" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $displayForm = ""; // le formulaire est affiché
     // convertir l'id en entier
     $idmarker = (int)$_GET['id'];
+    // on récupère le marqueur
     $marker = getOneMarkerById($db, $idmarker);
 
     if ($marker === false) $error = "Ce marqueur n'existe plus";
 
     // si les variables de type post attendues sont là
-    if (isset($_POST['title'], $_POST['description'], $_POST['latitude'], $_POST['longitude'])) {
+    if (isset($_POST['nom'], $_POST['adresse'], $_POST['codepostal'], $_POST['ville'], $_POST['nb_velos'] ,
+      $_POST['latitude'], $_POST['longitude'])) {
+      // on met à jour le marqueur
       $update = updateMarkerById($db, $_POST);
       if ($update === true) {
         $merci = true;
+        echo "ok";
         $displayForm = "d-none"; // on cache le formulaire
       } else {
         $error = "Erreur lors de la modification d'un article";
       }
     }
     // appel de la vue
-    require_once "../view/admin.update.html.php";
+    require_once "../view/private/admin.update.html.php";
   }
 } else {
 

@@ -17,6 +17,7 @@
 <div class="container">
   <div class="bg-white p-4 rounded shadow-sm mb-5">
     <h1>ADMIN</h1>
+    <h4 class="mb-3 text-left mb-3"><a href="?pg=addMarker">Inserer un marqueur</a></h4>
 </div>
   <div class="table-responsive d-none d-md-block">
     <table class="table table-hover align-middle bg-white rounded">
