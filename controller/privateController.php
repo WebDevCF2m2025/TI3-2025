@@ -31,7 +31,7 @@ if (!isset($_GET['page'])) {
     require_once "../config.php";
     $db = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST)) {
         $nom = $_POST['nom'] ?? '';
         $adresse = $_POST['adresse'] ?? '';
         $codepostal = $_POST['codepostal'] ?? '';
