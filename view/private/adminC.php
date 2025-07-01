@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MVC-CRUD-Procedural | Administration | Nouvel article</title>
+    <title>Nouvelle Adresse</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png"/>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -16,7 +16,7 @@
 <?php
 include_once "../view/menu.php"; 
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Nouvel article</h1>
+<h1 class="mb-4 text-center">Nouvelle Adresse</h1>
 <div class="container">
     <div class="bg-white p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a href="?pg=adminR">Retour à l'administration</a></h4>
@@ -27,7 +27,7 @@ include_once "../view/menu.php";
         ?>
         <h4 class="alert alert-success">Merci pour votre article !</h4>
         <script>
-            setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
+            setTimeout(function(){ window.location.href="./?pg=admin"; },1500);
         </script>
         <?php
         endif;
@@ -38,29 +38,46 @@ include_once "../view/menu.php";
                     <!-- on affiche l'erreur -->
                     <?php if (isset($probleme)): ?>
                         <div class="alert alert-danger">Erreur lors de l'insertion d'un article</div>
-                    <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
-                    <hr>
+                        <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
+                        <hr>
                     <?php endif; ?>
-                    <form action="" method="post" name="article">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Titre</label>
-                            <input type="text" class="form-control" id="title" name="title" maxlength="160" required placeholder="Titre de l'article">
+                    <form action="" method="post" name="list">
+                        <div class="container d-flex justify-content-between">
+                            <div class="mb-3  col-lg-5">
+                                <label for="nom" class="form-label">nom</label>
+                                <input type="text" class="form-control" id="nom" name="nom" maxlength="160" required placeholder="nom">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="ville" class="form-label">ville</label>
+                                <input type="text" class="form-control" id="ville" name="ville" maxlength="160" required placeholder="ville">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="articletext" class="form-label">Texte</label>
-                            <textarea class="form-control" id="articletext" name="articletext" rows="6" required placeholder="Votre texte"></textarea>
+                        <div class="container d-flex justify-content-between">
+                            
+                            <div class="mb-3 col-lg-5">
+                                <label for="adresse" class="form-label">adresse</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" maxlength="160" required placeholder="adresse">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="codepostal" class="form-label">codepostal</label>
+                                <input type="text" class="form-control" id="codepostal" name="codepostal" maxlength="160" required placeholder="codepostal">
+                            </div>
                         </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="articlepublished" name="articlepublished" value="1">
-                            <label class="form-check-label" for="articlepublished">Publier ?</label>
-                        </div>
-                        <div id="dateContainer" class="mb-3 d-none">
-                            <label class="form-label fw-semibold">Date et heure de publication :</label>
-                            <input type="datetime-local" name="articledatepublished" class="form-control">
-                        </div>
-                        <input type="hidden" name="iduser" value="<?=$_SESSION['iduser']?>">
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
 
+                        <div class="container d-flex justify-content-between">
+                            <div class="mb-3 col-lg-5">
+                                <label for="latitude" class="form-label">latitude</label>
+                                <input type="text" class="form-control" id="latitude" name="latitude" maxlength="160" required placeholder="latitude">
+                            </div>
+                            <div class="mb-3 col-lg-5">
+                                <label for="longitude" class="form-label">longitude</label>
+                                <input type="text" class="form-control" id="longitude" name="longitude" maxlength="160" required placeholder="longitude">
+                            </div>
+                        </div>
+                        <div class="container">
+                            <input type="hidden" name="iduser" value="<?=$_SESSION['idutilisateurs']?>">
+                            <button type="submit" class="btn btn-primary col-lg-12">Envoyer</button>
+                        </div>
                     </form>
                 </div>
             </div>

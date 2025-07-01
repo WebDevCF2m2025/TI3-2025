@@ -10,59 +10,49 @@ echo "_lm";
  * CREATE
  */
 
-/**
- * Insertion d'un article en base de donnée
- * @param PDO $connect
- * @param array $datas
- * @return bool
- * @throws \Random\RandomException
- */
-function addArticle(PDO $connect, array $datas): bool
+// Insertion d'un article en base de donnée
+
+function addAdresse(PDO $connect, array $datas): bool
 {
     // on va vérifier si l'article est bien écrit par l'utilisateur
     // connecté
-    if (!isset($datas['iduser']) || $datas['iduser'] != $_SESSION['iduser'])
-        return false;
 
-    $iduser = (int)$datas['iduser'];
-
-    // vérification du titre
-    $title = trim(strip_tags($datas['title']));
-    if (empty($title)) return false;
-
-    // création du slug
-    $slug = createSlug($title);
-
-    // encodage du titre
-    $title = htmlspecialchars($title);
-
-    if (strlen($title) > 160 || strlen($slug) > 165) return false;
 
     // encodage du texte
-    $text = htmlspecialchars(trim(strip_tags($datas['articletext'])));
-    if (empty($text) || strlen($text) > 65000) return false;
+    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])));
+    if (empty($nom) || strlen($nom) > 200) return false;
 
-    $sql = "INSERT INTO `article` (`title`, `slug`, `articletext`, `articlepublished`, `articledatepublished`, `user_iduser`) VALUES (:title, :slug, :text, :published, :date, :iduser);";
+        // encodage du texte
+    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])));
+    if (empty($adresse) || strlen($adresse) > 200) return false;
 
-    // si on a coché 'articlepublished'
-    if (isset($datas['articlepublished'])) {
-        $isPublished = 1;
-        $datePublished = empty($datas['articledatepublished']) ? date("Y-m-d H:i:s") : $datas['articledatepublished'];
-    } else {
-        $isPublished = 0;
-        $datePublished = null;
-    }
+    $codepostal = (int)$datas['codepostal'];
+    if (empty($codepostal) || $codepostal > 9000) return false;
+
+    $ville = htmlspecialchars(trim(strip_tags($datas['ville'])));
+    if (empty($ville) || strlen($ville) > 100) return false;
+
+    $latitude = (float)$datas['latitude'];
+    if (empty($latitude) ) return false;
+
+    $longitude = (float)$datas['longitude'];
+    if (empty($longitude) ) return false;
+
+
+
+
+    $sql = "INSERT INTO `localisations` (`nom`, `adresse`, `codepostal`, `ville`, `latitude`, `longitude`) VALUES (:nom, :adresse, :codepostal, :ville, :latitude, :longitude);";
 
     $prepare = $connect->prepare($sql);
 
     try {
         $prepare->execute([
-            "iduser" => $iduser,
-            "slug" => $slug,
-            "title" => $title,
-            "text" => $text,
-            "published" => $isPublished,
-            "date" => $datePublished,
+            "nom" => $nom,
+            "adresse" => $adresse,
+            "codepostal" => $codepostal,
+            "ville" => $ville,
+            "latitude" => $latitude,
+            "longitude" => $longitude,
         ]);
         $prepare->closeCursor();
         return true;

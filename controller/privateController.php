@@ -40,8 +40,8 @@ if (isset($_GET['pg'])) {
         // on souhaite ajouter un article
     } elseif ($_GET['pg'] === "adminC") {
         // si les variables de type post attendues sont là
-        if (isset($_POST['title'], $_POST['articletext'])) {
-            $insert = addArticle($db, $_POST);
+        if (isset($_POST['latitude'], $_POST['longitude'])) {
+            $insert = addAdresse($db, $_POST);
             if ($insert === true) {
                 $merci = true;
             } else {
