@@ -18,7 +18,17 @@
     <header>
         <h1>Carte interactive </h1>
         <h2>Parcours BD à Bruxelles</h2>
+        <?php
+        if(isset($_SESSION['idutilisateurs'])):
+        ?>
+        <a href="./?pg=disconnect" class="admin-link">Déconnexion de l'administration</a>
+        <?php
+        else:
+        ?>
         <a href="./?pg=login" class="admin-link">Connexion à l'administration</a>
+        <?php
+        endif;
+        ?>
     </header>
  
     <div class="container">
