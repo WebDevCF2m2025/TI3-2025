@@ -27,6 +27,9 @@ function getLocationById(PDO $connect, int $id): array|false {
     }
 }
 
+//VERIFICATION function()
+
+
 // C
 function addLocation(PDO $connect, string $nom, string $adresse, string $codepostal, float $latitude, float $longitude): bool {
     $stmt = $connect->prepare("
