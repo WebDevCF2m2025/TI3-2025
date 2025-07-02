@@ -16,8 +16,7 @@ if (isset($_GET['pg']) && $_GET['pg'] === 'login') {
     if (isset($_POST['login'], $_POST['userpwd'])) {
         $connect = connectUser($db, $_POST['login'], $_POST['userpwd']);
         if ($connect === true) {
-            header("Location: ./");
-            exit();
+            $success = true;
         } else {
             $error = "Login et/ou mot de passe incorrect";
         }

@@ -19,6 +19,11 @@
             <div class="login-card rounded shadow p-4 p-md-5">
                 <?php if (isset($error)) : ?>
                     <div class="alert text-center mb-4"><?= htmlspecialchars($error) ?></div>
+                <?php elseif (isset($success)) : ?>
+                    <div class="alert alert-success text-center mb-4">Connexion réussie ! Redirection en cours... </div>
+                    <script>
+                        setTimeout(function(){ window.location.href="./?pg=admin"; },2000);
+                    </script>
                 <?php endif; ?>
                 <form action="" name="login" method="post" autocomplete="off">
                     <div class="mb-3">
