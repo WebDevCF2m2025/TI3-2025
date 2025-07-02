@@ -12,14 +12,10 @@ if (isset($_GET['pg'])) {
         }
         exit();
 
-        // Page à propos
-    } elseif ($_GET['pg'] === "about") {
-        require_once "../view/about.html.php";
-
         // Accueil de l'administration
     } elseif ($_GET['pg'] === "admin") {
         $localisations = getAllLocalisations($db);
-        require_once "../view/admin.homepage.html.php";
+        require_once "../view/private/adminAccueil.html.php";
 
         // Suppression d'une localisation
     } elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
@@ -39,7 +35,7 @@ if (isset($_GET['pg'])) {
                 $probleme = true;
             }
         }
-        require_once "../view/admin.insert.html.php";
+        require_once "../view/private/adminInsert.html.php";
 
         // Mise à jour d'une localisation
     } elseif ($_GET['pg'] === "update" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
@@ -59,7 +55,7 @@ if (isset($_GET['pg'])) {
                 $error = "Erreur lors de la modification de la localisation";
             }
         }
-        require_once "../view/admin.update.html.php";
+        require_once "../view/private/adminUpdate.html.php";
     }
 } else {
     // Chargement des localisations pour l'accueil

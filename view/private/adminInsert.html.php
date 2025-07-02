@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="bg-light">
-    <?php include "_menu.html.php"; ?>
+    <?php include "menu.html.php"; ?>
 
     <div class="container">
         <h1 class="mb-4 text-center">Administration | Nouvelle Localisation</h1>
