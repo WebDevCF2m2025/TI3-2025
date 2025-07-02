@@ -11,7 +11,7 @@
 </head>
 <body class="bg-dark">
 <h1 class="text-brand">Carte interactive | Accueil</h1>
-<h2 class="text-secondary">Parcours BD à Bruxelles</h2>
+<h2 class="text-secondary">Les stations Cambio à Bruxelles</h2>
 
 <?php if(isset($_SESSION['username'])): ?>
     <div class="actions-bar">
