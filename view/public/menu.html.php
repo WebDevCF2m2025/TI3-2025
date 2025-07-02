@@ -20,17 +20,7 @@
         ?>
         <div class="collapse navbar-collapse" id="mainNavbar">
             <div class="navbar-nav ms-auto">
-                <a class="nav-link <?php echo $activeHome; ?>" href="./?pg=../public/homePage.html.php">Accueil</a>
-                <?php
-                // Si nous sommes connectés
-                if (isset($_SESSION['login'])) :
-                ?>
-                    <span class="nav-link small"> | <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                    <a class="nav-link <?php echo $activeAdmin; ?>" href="./?pg=admin">Administration</a>
-                    <a class="nav-link" href="./?pg=logout">Déconnexion</a>
-                <?php
-                endif;
-                ?>
+                    <a class="nav-link <?php echo $activeLogin; ?>" href="./?pg=login">Connexion</a>
             </div>
         </div>
     </div>

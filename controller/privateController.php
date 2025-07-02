@@ -60,5 +60,5 @@ if (isset($_GET['pg'])) {
 } else {
     // Chargement des localisations pour l'accueil
     $localisations = getAllLocalisations($db);
-    require_once "../view/public/homePage.html.php";
+    require_once "../view/private/adminAccueil.html.php";
 }
