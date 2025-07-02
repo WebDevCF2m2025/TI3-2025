@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carte interactive | Accueil de l'administration</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Thème Bootstrap dark via Bootswatch -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.admin.css">
 </head>
-<body class="bg-light">
-<?php
-include "_menu.html.php";
-?>
-<h1 class="mb-4 text-center">Carte interactive | Accueil de l'administration</h1>
+<body class="bg-dark" data-bs-theme="dark">
+<?php include "_menu.html.php"; ?>
+<h1 class="mb-4 text-center text-light">Carte interactive | Accueil de l'administration</h1>
 <div class="container">
-    <div class="bg-white p-4 rounded shadow mb-3">
-        <h4 class="mb-3 text-left mb-3"><a href="?pg=addLoc">Ajouter une localisation</a></h4>
-        <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr>
-        <h2 class="mb-3 text-center mb-3">Gestion des localisations</h2>
+    <div class="bg-dark p-4 rounded shadow mb-3 text-light">
+        <h4 class="mb-3 text-left"><a href="?pg=addLoc" class="text-info">Ajouter une localisation</a></h4>
+        <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr class="border-secondary">
+        <h2 class="mb-3 text-center">Gestion des localisations</h2>
 
         <?php
         // pas de localisation publiée
         if(empty($points)):
             $h4 = "Pas encore de lieu";
         else:
-            $nbLoc = count($points);;
+            $nbLoc = count($points);
             $pluriel = $nbLoc>1? "s":"";
             $h4 = "Il y a $totalLoc localisation$pluriel dans la base de données";
         endif;
         ?>
-        <h4 class="text-secondary text-center small mb-3"><?=$h4?></h4>
+        <h4 class="text-light text-center small mb-3"><?=$h4?></h4>
 
         <!-- Affichage pour desktop -->
         <div class="table-responsive d-none d-lg-block">
-            <table class="table table-hover align-middle bg-white rounded">
-                <thead class="table-light">
+            <table class="table table-hover align-middle rounded table-dark">
+                <caption>Liste des localisations</caption>
+                <thead class="table-secondary">
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Adresse</th>
                     <th scope="col">Numéro</th>
@@ -46,38 +48,41 @@ include "_menu.html.php";
                     <th scope="col">Supprimer</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                 <?php foreach ($points as $point): ?>
-                <tr>
-                    <td>
-                        <?= $point['nom'] ?>
-                    </td>
-                    <td>
-                        <?= $point['adresse'] ?>
-                    </td>
-                    <td>
-                        <?= $point['numero'] ?>
-                    </td>
-                    <td>
-                        <?= $point['ville'] ?>
-                    </td>
-                    <td>
-                        <?=$point['codepostal'] ?>
-                    </td>
-                    <td>
-                        <?=$point['latitude'] ?>
-                    </td>
-                    <td>
-                        <?=$point['longitude'] ?>
-                    </td>
-                    <td>
-                        <a href="?pg=update&id=<?= $point['id']?>" class="btn btn-warning btn-sm">Modifier</a>
-                    </td>
-                    <td>
-                        <a href="?pg=confirm_delete&id=<?= $point['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
-                    </td>
-                </tr>
-                    <?php endforeach; ?>
+                    <tr>
+                        <td>
+                            <?= $point['id'] ?>
+                        </td>
+                        <td>
+                            <?= $point['nom'] ?>
+                        </td>
+                        <td>
+                            <?= $point['adresse'] ?>
+                        </td>
+                        <td>
+                            <?= $point['numero'] ?>
+                        </td>
+                        <td>
+                            <?= $point['ville'] ?>
+                        </td>
+                        <td>
+                            <?=$point['codepostal'] ?>
+                        </td>
+                        <td>
+                            <?=$point['latitude'] ?>
+                        </td>
+                        <td>
+                            <?=$point['longitude'] ?>
+                        </td>
+                        <td>
+                            <a href="?pg=update&id=<?= $point['id']?>" class="btn btn-warning btn-sm">Modifier</a>
+                        </td>
+                        <td>
+                            <a href="?pg=confirm_delete&id=<?= $point['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -85,7 +90,7 @@ include "_menu.html.php";
         <!-- Affichage carte mobile (md uniquement) -->
         <div class="d-block d-lg-none">
             <?php foreach ($points as $point): ?>
-                <div class="card mb-3">
+                <div class="card mb-3 bg-dark text-light border-secondary">
                     <div class="card-body">
                         <h5 class="card-title"><?= $point['nom'] ?></h5>
                         <p class="mb-1"><strong>Adresse :</strong> <?= $point['adresse'] ?> <?= $point['numero'] ?></p>
@@ -106,7 +111,7 @@ include "_menu.html.php";
 <?php if ($totalPages > 1): ?>
     <nav aria-label="Pagination" class="mt-4">
         <ul class="pagination justify-content-center">
-            <!-- Bouton précedent -->
+            <!-- Bouton précédent -->
             <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
                 <a class="page-link" href="?pg=admin&page=<?= $page - 1 ?>" tabindex="-1">Précédent</a>
             </li>

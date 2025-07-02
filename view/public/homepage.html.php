@@ -9,35 +9,30 @@
           crossorigin=""/>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<h1>Carte interactive</h1>
-<h2>Parcours BD à Bruxelles</h2>
-<?php
-if(isset($_SESSION['username'])):
-    ?>
-    <div>
-        <a class="btn" href="./?pg=logout">Déconnexion de l'administration</a>
-        <a class="btn" href="./?pg=admin">Aller sur la page de l'administration</a>
+<body class="bg-dark">
+<h1 class="text-brand">Carte interactive | Accueil</h1>
+<h2 class="text-secondary">Parcours BD à Bruxelles</h2>
+
+<?php if(isset($_SESSION['username'])): ?>
+    <div class="actions-bar">
+        <a class="btn btn-outline" href="./?pg=logout">Déconnexion de l'administration</a>
+        <a class="btn btn-outline" href="./?pg=admin">Aller sur la page de l'administration</a>
     </div>
-<?php
-else:
-    ?>
-    <a class="btn" href="./?pg=login">Connexion à l'administration</a>
-<?php
-endif;
-?>
+<?php else: ?>
+    <div class="actions-bar">
+        <a class="btn btn-primary" href="./?pg=login">Connexion à l'administration</a>
+    </div>
+<?php endif; ?>
 
 <div class="container">
     <!-- Carte -->
-    <div id="map"></div>
+    <div id="map" class="card"></div>
 
     <!-- Liste des points -->
-    <div id="points">
-        <h2>Liste des points</h2>
-        <p>Cliquez sur un élément dans la liste ci-dessous pour le situer sur la carte</p>
-        <br>
+    <div id="points" class="card">
+        <h2 class="text-secondary">Liste des points</h2>
+        <p class="muted">Cliquez sur un élément dans la liste ci-dessous pour le situer sur la carte</p>
         <hr>
-        <br>
         <div class="point">
             <ul id="loc-list"></ul>
         </div>

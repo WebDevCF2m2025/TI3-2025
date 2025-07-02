@@ -204,4 +204,5 @@ function getLocalisationsByPage(PDO $db, int $start, int $limit): array
     $request->bindValue(':limit', $limit, PDO::PARAM_INT);
     $request->execute();
     return $request->fetchAll();
+
 }

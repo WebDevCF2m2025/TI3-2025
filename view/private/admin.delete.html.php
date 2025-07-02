@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirmer la suppression</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Thème sombre Bootswatch Darkly -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.admin.css">
 </head>
-<body class="bg-light">
+<body class="bg-dark" data-bs-theme="dark">
 <div class="container py-5">
     <div class="card shadow-sm p-4">
         <h2 class="text-danger">⚠️ Confirmation de suppression</h2>
@@ -17,7 +19,7 @@
                 setTimeout(function(){ window.location.href="./?pg=admin"; }, 3000);
             </script>
         <?php elseif(isset($point) && !empty($point['id'])): ?>
-            <p>Es-tu sûr(e) de vouloir supprimer le lieu :
+            <p>Es-tu sûr(e) de vouloir supprimer le lieu&nbsp;:
                 <strong><?= $point['nom'] ?></strong> ?
             </p>
             <p class="text-muted">
@@ -38,5 +40,6 @@
         <?php endif; ?>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

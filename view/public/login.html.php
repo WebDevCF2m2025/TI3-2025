@@ -2,27 +2,25 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carte interactive | Connexion</title>
-    <!-- CDN Bootstrap  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/logo.png"/>
+    <!-- Thème Bootswatch darkly -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.admin.css">
 </head>
-<body>
+<body class="bg-dark" data-bs-theme="dark">
+<?php include "_menu.public.html.php"; ?>
 
-<?php
-include "_menu.public.html.php";
-?>
-
-<h1 class="mb-3 text-center">Carte interactive | Connexion à l'administration</h1>
-<div class="container">
+<div class="container py-5">
+    <h1 class="mb-4 text-center text-light">Connexion à l'administration</h1>
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="bg-white rounded shadow p-4">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="login-card rounded shadow p-4 p-md-5">
                 <?php if (isset($error)) : ?>
-                    <div class="alert alert-danger text-center"><?=$error?></div>
+                    <div class="alert text-center mb-4"><?= htmlspecialchars($error) ?></div>
                 <?php endif; ?>
-                <form action="" name="login" method="post">
+                <form action="" name="login" method="post" autocomplete="off">
                     <div class="mb-3">
                         <label for="login" class="form-label">Login</label>
                         <input type="text" class="form-control" id="login" name="login" placeholder="Votre login" required autofocus>
@@ -31,13 +29,12 @@ include "_menu.public.html.php";
                         <label for="userpwd" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Votre mot de passe" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Se connecter</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
