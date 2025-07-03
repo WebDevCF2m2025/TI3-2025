@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des localisations</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 <body>
-    <header class="admin-header">
-        <h1 class="main-title">Administration - Localisations</h1>
-        <div class="admin-nav">
-            <span>Bonjour, <?= $_SESSION['username'] ?></span>
-            <a href="./?action=logout" class="btn-logout">Déconnexion</a>
+    <header>
+        <div class="navbar bg-primary">
+            <span class="h4 text-white m-3">Bonjour, <?= $_SESSION['username'] ?></span>
+            <a href="./?action=logout" class="btn btn-danger m-3">Déconnexion</a>
         </div>
+        <div class="container"></div>
+        <h1 class="h1 text-center mt-3">Administration - Localisations</h1>
+        
     </header>
  
     <div class="admin-container">
@@ -24,12 +26,12 @@
             <div class="alert-danger ">Erreur lors de la suppression!</div>
         <?php endif; ?>
  
-        <div class="admin-actions">
-            <a href="./?action=add" class="btn btn-add">+ Ajouter une localisation</a>
-                </div>
+        <div class="container">
+            <a href="./?action=add" class="btn btn-primary">+ Ajouter une localisation</a>
+                
  
-        <div class="table-responsive">
-            <table class="admin-table">
+        <div class="">
+            <table class="table table-striped mt-3">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -43,17 +45,17 @@
                 </thead>
                 <tbody>
                     <?php foreach ($locations as $location): ?>
-                    <tr>
+                    <tr class="">
                         <td><?= htmlspecialchars($location['id']) ?></td>
                         <td><?= htmlspecialchars($location['nom']) ?></td>
                         <td><?= htmlspecialchars($location['adresse']) ?></td>
                         <td><?= htmlspecialchars($location['codepostal']) ?></td>
                         <td><?= htmlspecialchars($location['latitude']) ?></td>
                         <td><?= htmlspecialchars($location['longitude']) ?></td>
-                        <td class="actions-cell">
-                            <a href="./?action=edit&id=<?= $location['id'] ?>" class="btn-edit">Modifier</a>
-                            <a href="./?action=delete&id=<?= $location['id'] ?>"
-                               class="btn-delete"
+                        <td class="">
+                            <a class="btn btn-warning me-2" href="./?action=edit&id=<?= $location['id'] ?>" >Modifier</a>
+                            <a class="btn btn-danger" href="./?action=delete&id=<?= $location['id'] ?>"
+                               
                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette localisation?')">
                                Supprimer
                             </a>
@@ -63,6 +65,8 @@
                 </tbody>
             </table>
         </div>
+        </div>
     </div>
+   
 </body>
 </html>
