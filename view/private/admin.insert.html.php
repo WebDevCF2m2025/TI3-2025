@@ -8,6 +8,7 @@
     <!-- Thème Bootstrap dark via Bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.html.php"; ?>
@@ -15,7 +16,7 @@
 <div class="container">
     <div class="bg-dark p-4 rounded shadow mb-4 text-light">
         <h4 class="mb-3 text-left">
-            <a href="?pg=admin" class="text-info">&larr; Retour à l'administration</a>
+            <a href="?pg=admin" class="btn btn-pagination">&larr; Retour à l'administration</a>
         </h4>
         <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p>
         <hr class="border-secondary">

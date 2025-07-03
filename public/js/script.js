@@ -1,7 +1,7 @@
 
 
 const map = L.map('map').setView([50.8603396, 4.3557103], 12);
-L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
 
 const markers = [];
 const list = document.getElementById('loc-list'); // Liste HTML

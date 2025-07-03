@@ -1,6 +1,7 @@
 /* ========================= CSS GÉNÉRAL ==================== */
 body, .bg-dark {
     background-color: #18191a !important;
+    font-family: 'Space Grotesk', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
 /* ==================== FONDS PRINCIPAUX ==================== */
@@ -39,9 +40,13 @@ body, .bg-dark {
     color: #f8f9fa !important;
     border-width: 3px !important;
     border-style: solid !important;
-    border-color: #dc3545 !important;
+    border-color: #66bfff !important;
     border-radius: .75rem !important;
     box-shadow: 0 0 12px 2px rgba(220,53,69,0.12), 0 0.5rem 1rem rgba(0,0,0, .25) !important;
+}
+
+.card.card_del {
+    border-color: #dc3545 !important;
 }
 
 /* ========================= LIENS ========================== */

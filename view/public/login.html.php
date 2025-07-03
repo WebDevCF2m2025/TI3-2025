@@ -8,6 +8,7 @@
     <!-- Thème Bootswatch darkly -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.public.html.php"; ?>

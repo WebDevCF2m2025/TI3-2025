@@ -6,10 +6,11 @@
     <!-- Thème sombre Bootswatch Darkly -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <div class="container py-5">
-    <div class="card shadow-sm p-4">
+    <div class="card card_del shadow-sm p-4">
         <h2 class="text-danger">⚠️ Confirmation de suppression</h2>
         <?php if (isset($deletionSuccess)): ?>
             <div class="alert alert-success text-center mt-5">

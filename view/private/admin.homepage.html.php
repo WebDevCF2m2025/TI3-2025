@@ -8,13 +8,14 @@
     <!-- Thème Bootstrap dark via Bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.html.php"; ?>
 <h1 class="mb-4 text-center text-light">Carte interactive | Accueil de l'administration</h1>
 <div class="container">
     <div class="bg-dark p-4 rounded shadow mb-3 text-light">
-        <h4 class="mb-3 text-left"><a href="?pg=addLoc" class="text-info">Ajouter une localisation</a></h4>
+        <a class="btn btn-pagination mb-3" href="?pg=addLoc">Ajouter une localisation</a>
         <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr class="border-secondary">
         <h2 class="mb-3 text-center">Gestion des localisations</h2>
 
@@ -93,7 +94,9 @@
                 <div class="card mb-3 bg-dark text-light border-secondary">
                     <div class="card-body">
                         <h5 class="card-title"><?= $point['nom'] ?></h5>
-                        <p class="mb-1"><strong>Adresse :</strong> <?= $point['adresse'] ?> <?= $point['numero'] ?></p>
+                        <p class="mb-1"><strong>ID :</strong> <?= $point['id'] ?></p>
+                        <p class="mb-1"><strong>Adresse :</strong> <?= $point['adresse'] ?></p>
+                        <p class="mb-1"><strong>Numéro :<?= $point['numero'] ?></p>
                         <p class="mb-1"><strong>Ville :</strong> <?= $point['ville'] ?></p>
                         <p class="mb-1"><strong>Code postal :</strong> <?= $point['codepostal'] ?></p>
                         <p class="mb-1"><strong>Latitude :</strong> <?= $point['latitude'] ?></p>
