@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 
 <body>
-    <?php include "menu.html.php"; ?>
+    <nav>
+        <a href="?pg=login">connexion</a>
+        <a href="?pg=about">À propos</a>
+    </nav>
     <div>
         <h1>Carte interactive.</h1>
         <h2>Parcours Salle de sports à Bruxelles</h2>
-        <!-- <button onclick="window.location.href='?pg=login'">Connexion à l'administration</button> -->
         <br>
         <div class="grille">
             <div class="map">
@@ -58,10 +58,6 @@
                 .bindPopup("<?php echo $localisation['nom']; ?>");
         <?php endforeach; ?>
     </script>
-        <!-- Bootstrap JS et dépendances -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

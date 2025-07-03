@@ -1,6 +1,7 @@
 <!-- TI3-2025/view/private/adminInsert.html.php -->
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body class="bg-light">
     <?php include "menu.html.php"; ?>
 
     <div class="container">
-        <h1 class="mb-4 text-center">Administration | Nouvelle Localisation</h1>
-        <div class="bg-white p-4 rounded shadow-sm mb-5">
+        <div class="bg-white p-4 rounded shadow-sm my-2">
             <h4 class="mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
             <p>Bienvenue sur votre espace d'administration, <?php echo htmlspecialchars($_SESSION['username']); ?></p>
             <hr>
@@ -22,7 +23,9 @@
             <?php if (isset($merci)): ?>
                 <div class="alert alert-success">Merci pour votre ajout !</div>
                 <script>
-                    setTimeout(function() { window.location.href = "./?pg=admin"; }, 3000);
+                    setTimeout(function() {
+                        window.location.href = "./?pg=admin";
+                    }, 3000);
                 </script>
             <?php endif; ?>
 
@@ -78,4 +81,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -12,6 +12,11 @@ if (isset($_GET['pg'])) {
         }
         exit();
 
+                // Accueil de l'administration
+    } elseif ($_GET['pg'] === "accueil") {
+        $localisations = getAllLocalisations($db);
+        require_once "../view/public/homePage.html.php";
+
         // Accueil de l'administration
     } elseif ($_GET['pg'] === "admin") {
         $localisations = getAllLocalisations($db);

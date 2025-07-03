@@ -12,7 +12,7 @@
     <?php include "menu.html.php"; ?>
 
     <div class="container">
-        <h1 class="mb-4 text-center">Administration | Modification</h1>
+        <h1 class="mb-4 text-center"></h1>
         <div class="bg-white p-4 rounded shadow-sm mb-5">
             <h4 class="mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
             <p>Bienvenue sur votre espace d'administration, <?php echo htmlspecialchars($_SESSION['username']); ?></p>
