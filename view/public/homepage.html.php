@@ -9,6 +9,7 @@
 <!-- CSS de markerCluster -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Ma CSS -->
 <style>
 body {
@@ -156,8 +157,8 @@ footer {
 </div>
 
 <footer>
-<p>© 2025 - C'etait compliquer mais heureusement qu'on a eu 2 jour! merci. Ce site à été réalisé par <strong>Vahagn</strong></p>
-<p>Dirigé par <a target="_blank"   href="https://www.cf2m.be/home">CF2M</a></p>
+<p>© 2025 - C'était compliqué mais heureusement qu'on a eu 2 jours! merci. <i class="fa-solid fa-heart"></i> Fait par <strong>Vahagn</strong></p>
+<p>Distribué par <a target="_blank"   href="https://www.cf2m.be/home">CF2M</a></p>
 </footer>
 
 <!-- JS de Leaflet -->
@@ -245,7 +246,7 @@ footer {
                });
            });
        }
-       // Appelle testfetch() au chargement, plus besoin d'appeler setupFlyToOnList séparément
+
 </script>
 </body>
 </html>

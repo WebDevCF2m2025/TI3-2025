@@ -174,7 +174,7 @@ body::before {
                 else:
                     // si on plus d'un article
                     $pluriel = $nbArticles>1 ? "s": "";
-                    $h3 = "Il y a $nbArticles localisation d'adresse$pluriel";
+                    $h3 = "Il y a $nbArticles localisation$pluriel d'adresse$pluriel";
                 endif;
                 ?>
                         <h3 class=" h3 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0"><?=$h3?></h3>
@@ -193,23 +193,42 @@ body::before {
                     </thead>
                     <tbody>
                     <?php
-                    foreach($localisations as $article):
-                        ?>
-                    <tr>
-                        <td><?=$article['id']?></td>
-                        <td><?=$article['rue']?></td>
-                        <td><?=$article['codepostal']?></td>
-                        <td><?=$article['ville']?></td>
-                        <td><?=$article['latitude']?></td>
-                        <td><?=$article['longitude']?></td>
-                        <td><a class="text-decoration-none" href="?pg=update&idarticle=<?=$article['id']?>"><p class="bg-success text-center text-white p-2 rounded ">Modifier</p></a></td>
-                        <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'adresse : \n <?=addslashes(html_entity_decode($article['rue'])); // pour mettre des slashs devant les "'" ?>')? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger text-center text-white p-2 rounded">Supprimer</p></td>
-                    </tr>
-                        <?php
-                    endforeach;
-                        ?>
+                    // Pagination pour le tableau des localisations
+$perPage = 10;
+$total = count($localisations);
+$totalPages = ceil($total / $perPage);
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
+if ($page > $totalPages) $page = $totalPages;
+$offset = ($page - 1) * $perPage;
+$localisationsPage = array_slice($localisations, $offset, $perPage);
+
+foreach($localisationsPage as $article):
+?>
+<tr>
+    <td><?=$article['id']?></td>
+    <td><?=$article['rue']?></td>
+    <td><?=$article['codepostal']?></td>
+    <td><?=$article['ville']?></td>
+    <td><?=$article['latitude']?></td>
+    <td><?=$article['longitude']?></td>
+    <td><a class="text-decoration-none" href="?pg=update&idarticle=<?=$article['id']?>"><p class="bg-success text-center text-white p-2 rounded ">Modifier</p></a></td>
+    <td><p onclick="confirm('Voulez-vous vraiment supprimer l\'adresse : \n <?=addslashes(html_entity_decode($article['rue']));?>')? window.location.href='./?pg=delete&idarticle=<?=$article['id']?>' :'';" class="bg-danger text-center text-white p-2 rounded">Supprimer</p></td>
+</tr>
+<?php
+endforeach;
+?>
                     </tbody>
                 </table>
+<nav>
+  <ul class="pagination justify-content-center">
+    <?php for($i = 1; $i <= $totalPages; $i++): ?>
+      <li class="page-item<?= $i == $page ? ' active' : '' ?>">
+        <a class="page-link" href="?pg=admin&page=<?= $i ?>"><?= $i ?></a>
+      </li>
+    <?php endfor; ?>
+  </ul>
+</nav>
                     </div>
 
 
@@ -229,9 +248,9 @@ body::before {
                         =>>> Buy the pro version, which includes a functional PHP/AJAX contact form and many additional features.: https://freebootstrap.net/template/vertex-pro-bootstrap-website-template-for-portfolio/ <<<=
                         -->
                         &copy;
-                        <script>document.write(new Date().getFullYear());</script> C'etait compliquer mais heureusement qu'on a eu 2 jour! merci <i class="bi bi-heart-fill text-danger"> </i> Fait par <a href="#">Vahagn</a>
+                        <script>document.write(new Date().getFullYear());</script> C'était compliqué mais heureusement qu'on a eu 2 jours! merci <i class="bi bi-heart-fill text-danger"> </i> Fait par <a href="#">Vahagn</a>
                     </div>
-                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distribuer par<a href="https://www.cf2m.be/home" target="_blank">CF2M</a></div>
+                    <div class="col-xl-4 justify-content-start justify-content-xl-end quick-links d-flex flex-column flex-xl-row text-center text-xl-start gap-1">Distribué par<a href="https://www.cf2m.be/home" target="_blank">CF2M</a></div>
                 </div>
             </div>
         </footer>

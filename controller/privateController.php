@@ -63,6 +63,21 @@ if (!isset($_GET['pg'])) {
         )){
 
             $updateForm = updateLocalisationById($db,$_POST,$idarticle);
+                        if ($updateForm) {
+                // affichage du bloc de succès
+                $displaySucces = "";
+                // on cache le formulaire
+                $displayForm = "d-none";
+                // création d'un javascript
+                $jsRedirect = "<script>
+    setTimeout(() => {
+  window.location.href = './?pg=admin';
+}, 3000); // Redirects after 3 seconds
+</script>";
+            } else {
+                $displayError = "";
+            }
+
         }
 
     
