@@ -43,33 +43,33 @@ include_once "../view/menu.php";
                         <div class="container d-flex justify-content-between">
                             <div class="mb-3  col-lg-5">
                                 <label for="nom" class="form-label">nom</label>
-                                <input type="text" class="form-control" id="nom" name="nom" maxlength="160" required placeholder="nom">
+                                <input type="text" class="form-control" id="nom" name="nom" maxlength="160" required placeholder="nom" value="<?= $adresseU['nom'];?>">
                             </div>
                             <div class="mb-3 col-lg-5">
                                 <label for="ville" class="form-label">ville</label>
-                                <input type="text" class="form-control" id="ville" name="ville" maxlength="160" required placeholder="ville">
+                                <input type="text" class="form-control" id="ville" name="ville" maxlength="160" required placeholder="ville" value="<?= $adresseU['ville'];?>">
                             </div>
                         </div>
                         <div class="container d-flex justify-content-between">
                             
                             <div class="mb-3 col-lg-5">
                                 <label for="adresse" class="form-label">adresse</label>
-                                <input type="text" class="form-control" id="adresse" name="adresse" maxlength="160" required placeholder="adresse">
+                                <input type="text" class="form-control" id="adresse" name="adresse" maxlength="160" required placeholder="adresse" value="<?= $adresseU['adresse'];?>">
                             </div>
                             <div class="mb-3 col-lg-5">
                                 <label for="codepostal" class="form-label">codepostal</label>
-                                <input type="text" class="form-control" id="codepostal" name="codepostal" maxlength="160" required placeholder="codepostal">
+                                <input type="text" class="form-control" id="codepostal" name="codepostal" maxlength="160" required placeholder="codepostal" value="<?= $adresseU['codepostal'];?>">
                             </div>
                         </div>
 
                         <div class="container d-flex justify-content-between">
                             <div class="mb-3 col-lg-5">
                                 <label for="latitude" class="form-label">latitude</label>
-                                <input type="text" class="form-control" id="latitude" name="latitude" maxlength="160" required placeholder="latitude">
+                                <input type="text" class="form-control" id="latitude" name="latitude" maxlength="160" required placeholder="latitude" value="<?= $adresseU['latitude'];?>">
                             </div>
                             <div class="mb-3 col-lg-5">
                                 <label for="longitude" class="form-label">longitude</label>
-                                <input type="text" class="form-control" id="longitude" name="longitude" maxlength="160" required placeholder="longitude">
+                                <input type="text" class="form-control" id="longitude" name="longitude" maxlength="160" required placeholder="longitude" value="<?= $adresseU['longitude'];?>">
                             </div>
                         </div>
                         <div class="container">

@@ -52,7 +52,13 @@ if (isset($_GET['pg'])) {
         // on souhaite modifier un article qu'on récupère grâce à
         // son identifiant qui doit être un string contenant que des entiers [0-9]+
     } elseif ($_GET['pg'] === "adminU" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
-            
+       
+        $displayForm = ""; // le formulaire est affiché
+        // on va convertir l'id en entier
+        $idadresse = (int) $_GET['id'];
+        $adresseU = getOneAdresseById($db, $idadresse);
+
+        if($article===false) $error = "Cet article n'existe plus";
 
         // si les variables de type post attendues sont là
         if (isset($_POST['nom'], $_POST['adresse'])) {

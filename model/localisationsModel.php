@@ -88,6 +88,24 @@ function getListPublished(PDO $connect): array
  * UPDATE
  */
 
+function getOneAdresseById(PDO $connect, int $id): array|bool
+{
+    // requête préparée obligatoire, ca entrée utilisateur
+    $request = $connect->prepare("SELECT *  FROM `localisations` WHERE `id` = ?;");
+    try {
+        $request->execute([$id]);
+        // pas d'articles
+        if ($request->rowCount() === 0) return false;
+        $results = $request->fetch();
+        $request->closeCursor();
+        // 1 article au format FETCH_ASSOC
+        return $results;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
+
+
 
 function updateAdresseById(PDO $connect, array $datas): bool
 {
