@@ -18,17 +18,17 @@
     <div class="alert alert-success mt-2 <?=$displaySucces?>" id="successMessage">Merci de vous être connecté ! Redirection en cours ...</div>
     <div class="alert alert-danger mt-2 <?=$displayError?>" id="errorMessage">Login et/ou mot de passe incorrecte !</div>
 
-    <form class="col-4 bg-white border rounded form <?=$displayForm?>" action="" name="login" method="post">
+    <form class="col-3 bg-white border rounded form border border-secondary mt-5<?=$displayForm?>" action="" name="login" method="post">
         <div class="form-group">
             
 
             <h3 class="login-subtitle h3 my-3">Veuillez-vous connecter</h3>
-            <label for="username" class="form-label fw-bold">Login</label>
-            <input type="text" class="form-control mb-3" id="username" name="username" required autofocus>
+            <label for="username" class="form-label fw-bold ">Login</label>
+            <input type="text" class="form-control bg-secondary-subtle border border-secondary mb-3" id="username" name="username" required autofocus>
         </div>
         <div class="form-group">
             <label for="passwd" class="form-label fw-bold">Mot de passe</label>
-            <input type="password" class="form-control " id="passwd" name="passwd" required>
+            <input type="password" class="form-control bg-secondary-subtle border border-secondary" id="passwd" name="passwd" required>
         </div>
         <button type="submit" class="btn btn-primary m-3 px-5">Se connecter</button>
     </form>
