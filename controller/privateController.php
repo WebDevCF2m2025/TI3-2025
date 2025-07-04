@@ -25,17 +25,27 @@ if (!isset($_GET['page'])) {
     $localisations = selectAllFromLocalisations($db);
     require_once "../view/private/admin.php";
 } elseif ($_GET['page'] === 'create') {
+    $displaySucces = "d-none";
+    $displayError = "d-none";
+    $displayForm = "";
 
-    $db = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
 
     if (!empty($_POST)) {
 
+        if (insertLocalisation($db, $_POST)) {
 
-        insertLocalisation($db, $_POST);
 
+            $displayForm = "d-none";
+            $jsRedirect = "<script>
+            setTimeout(() => {
+         window.location.href = './?page=admin';
+        }, 2000); // Redirects after 2 seconds
+        </script>";
 
-        header("Location: ./?page=admin");
-        exit;
+        }
+
+        // header("Location: ./?page=admin");
+        // exit;
     }
 
     require_once "../view/private/createPoints.php";
@@ -47,13 +57,21 @@ if (!isset($_GET['page'])) {
     header("Location: ./?page=admin");
     exit;
 } elseif ($_GET['page'] === 'update' && isset($_GET['id']) && ctype_digit($_GET['id'])) {
-
+    $displaySucces = "d-none";
+    $displayError = "d-none";
+    $displayForm = "";
     $id = (int) $_GET['id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         updateLocalisationById($db, $_POST, $id);
-        header("Location: ./?page=admin");
-        exit;
+
+        $displayForm = "d-none";
+        $jsRedirect = "<script>
+            setTimeout(() => {
+         window.location.href = './?page=admin';
+        }, 2000); // Redirects after 2 seconds
+        </script>";
+        require_once "../view/private/updatePoint.php";
     } else {
         $localisation = selectLocalisationById($db, $id);
         require_once "../view/private/updatePoint.php";

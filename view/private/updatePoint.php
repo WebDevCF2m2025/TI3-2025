@@ -14,7 +14,7 @@
     <?php require_once "../view/public/nav.php"; ?>
     <div class="container mt-5">
         <h1>Update point</h1>
-        <form method="post" action="">
+        <form class="<?= $displayForm ?>" method="post" action="">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom" required
@@ -47,6 +47,11 @@
             </div>
             <button type="submit" class="btn btn-success">Update</button>
         </form>
+        <?php if (isset($jsRedirect)):
+            echo $jsRedirect ?>
+            <div class="alert alert-success">✅ Vouz avez bien modifié... un instant... </div>
+
+        <?php endif; ?>
     </div>
 </body>
 

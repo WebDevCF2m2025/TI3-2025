@@ -83,9 +83,10 @@
                                             <i class="bi bi-pencil"></i> Update
                                         </a>
                                         <a href="./?page=delete&id=<?= $loc['id'] ?>" class="btn btn-danger btn-sm mt-2"
-                                            onclick="return confirm('Are you sure you want to delete this point?');">
+                                            onclick="return confirm('Vous êtes sûr de vouloir supprimer <?= $loc['nom'] ?> ?');">
                                             <i class="bi bi-trash"></i> Delete
                                         </a>
+
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -27,7 +27,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
             $jsRedirect = "<script>
     setTimeout(() => {
   window.location.href = './?pg=admin';
-}, 3000); // Redirects after 3 seconds
+}, 2000); // Redirects after 2 seconds
 </script>";
             // header("Location: ./?page=admin");
 
