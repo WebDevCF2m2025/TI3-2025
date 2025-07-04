@@ -26,10 +26,11 @@ background-color: rgb(42, 42, 42);
 
 #container1 {
     margin-top: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding:30px;
   
   }
   
@@ -45,26 +46,40 @@ background-color: rgb(42, 42, 42);
    
 
   }
-  button{
+
+  button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding:13px;
+
+    font-size: 16px;
+    background-color: rgb(227, 223, 223);
+    color: rgb(0, 0, 0) ;
+    border-radius: 15px;
+    width: 210px;
+  }
+
+  button:hover{
     padding:13px;
     font-size: 16px;
-    background-color: white;
-    color: rgb(0, 0, 0) ;
-    border-radius: 10%;
-    width: 250px;
+    background-color: rgb(137, 137, 137);
+    color: rgb(243, 243, 243) ;
+
+    width: 210px;
   }
 
   li{
     list-style-type: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New sRoman', serif;
   }
 
 
   #liste {
     flex: 1;
+    font-size: 18px;
     min-width: 45%;
     background-color: #f4f4f4;
-    padding: 15px;
+    padding-left:100px;
+    padding-top:35px;
     border-radius: 8px;
     height: 600px;
     overflow-y: auto;
@@ -74,6 +89,7 @@ background-color: rgb(42, 42, 42);
   flex: 1;
   min-width: 50%;
   height: 500px;
+  margin-top: -30px;
   border-radius: 8%;
 }
 

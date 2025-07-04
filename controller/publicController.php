@@ -4,6 +4,14 @@
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
+
+
+$listes = getLocalisationsPublished($db);
+if (isset($_GET['listjs'])){
+  echo json_encode($listes); 
+  exit();
+}
+
 if(isset($_GET['pg'])){
     if($_GET['pg']==="username"){
         // création des variables qui affichent le succès/ erreur de connexion
@@ -43,7 +51,6 @@ if(isset($_GET['pg'])){
    // if(isset($_GET['getjson'])){
     //    echo json_encode($localisation);
     //}else {
-        $liste = getLocalisationsPublished($db);
         require_once "../view/public/accueil.html.php";
    // }
 }

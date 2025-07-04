@@ -21,21 +21,11 @@ include "../view/_menu.html.php";
 <h1 class="mb-4 text-center">Administration</h1>
 <div class="container">
     <div class="bg-secondary p-4 rounded shadow-sm mb-5">
-        <h4 class="mb-3 text-left mb-3"><a href="?pg=addArticle">Ajouter un article</a></h4>
-<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Gestion des articles</h3>
+        <h4 class="mb-3 text-left mb-3"><a class="text-white link-offset-2 link-underline link-underline-opacity-0" href="?pg=addMarker">Ajouter un lieu</a></h4>
+        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
+        <!-- <h3 class="mb-3 text-left mb-3">Gestion des articles</h3> -->
 
-        <?php
-        // pas d'articles publiés
-        if(empty($articles)):
-            $h4 = "Pas encore d'articles";
-        else:
-            $nbArticles = count($articles);
-            $pluriel = $nbArticles>1? "s":"";
-            $h4 = "Il y a $nbArticles article$pluriel";
-        endif;
-        ?>
-    <h4 class="text-dark text-left mb-3"><?=$h4?></h4>
+  
 
         <!-- Affichage pour desktop -->
         <div class="table-responsive d-none d-md-block">
@@ -44,38 +34,39 @@ include "../view/_menu.html.php";
                 <tr>
                     <th scope="col">Nom</th>
                     <th scope="col">Adresse</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Publié</th>
+                    <th scope="col">latitude</th>
+                    <th scope="col">Longitude</th>
                     <th scope="col" class="text-center">Modifier</th>
                     <th scope="col" class="text-center">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($listes as $liste): ?>
-                    <tr>
-                                <td>
-                                    <?= $listes['nom'] ?>
-                                </td>
-                                <td>
 
-                                    <?= cutTheText($listes['adresse']) ?>
-                                </td>
-                                <td>
-                                    <?= $listes['username'] ?>
-                                </td>
-                        <td>
-                            <?= $article['localisationsdatepublished'] ?>
-                        </td>
-                                <td class="text-center">
-                                  <?=$article['localisationspublished']===1?  '✅':'❌' ?>
-                                </td>
-                                <td>
-                                    <a href="?pg=update&id=<?= $article['idarticle']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
-                                </td>
-                        <td>
-                            <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $article['slug']?>')? document.location.href='?pg=delete&id=<?= $article['idarticle']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
-                        </td>
-                <?php endforeach; ?>
+                <?php 
+                foreach ($listes as $liste): ?>
+                        <tr>
+                            <td>
+                                <?php echo $liste['nom'] ?>
+                            </td>
+                            <td>
+                                <?php echo ($liste['adresse']) ?>
+                            </td>
+                            <td>
+                                <?php $liste['latitude'] ?>
+                            </td>
+                            <td class="text-center">
+                                <?php $liste['longitude'] ?>
+                            </td>
+                            <td>
+                                <a href="?pg=update&id=<?= $liste['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
+                            </td>
+                            <td>
+                                <span onclick="confirm('Voulez-vous vraiment supprimer la localisation \n<?= $liste['nom']?>')? document.location.href='?pg=delete&id=<?= $liste['id']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+
                 </tbody>
             </table>
         </div>
@@ -92,16 +83,16 @@ include "../view/_menu.html.php";
                             <?= $article['articlepublished'] ? '<span class="badge bg-success">Publié</span>' : '<span class="badge bg-secondary">Non publié</span>' ?>
                         </div>
                         <div class="d-flex gap-2">
-                            <a href="?pg=update&id=<?= $article['idarticle']?>" class="badge bg-warning">Modifier</a>
+                            <a href="?pg=update&id=<?= $liste['id']?>" class="badge bg-warning">Modifier</a>
                         </div>
                         <div class="d-flex gap-2">
-                        <a href="" onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $article['slug']?>')? document.location.href='?pg=delete&id=<?= $article['idarticle']?>': ''" class="badge bg-danger">Supprimer</a>
+                        <a href="" onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $liste['slug']?>')? document.location.href='?pg=delete&id=<?= $liste['id']?>': ''" class="badge bg-danger">Supprimer</a>
                         </div>
                         </div>
                 </div>
             <?php endforeach; ?>
         </div>
-
+                
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>

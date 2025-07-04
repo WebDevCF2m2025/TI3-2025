@@ -30,8 +30,7 @@
     <body>
                 <div id="container1">
                     <h2>CARTE INTERACTIVE</h2>
-                    <h4>Parcours BD à Bruxelles</h4>
-                    <a href="?pg=username"><button>Se connecter</button></a>
+                    <h4>Les bornes wifi publiques</h4>
                 </div>
 
             <div id="general">
@@ -42,21 +41,10 @@
                 </script>
                
 
-                <script src="carte.js"></script>  
 
-                <script>
-                    
-                    let carte = L.map('carte');
+          
 
-                    carte.setView([ 50.847205, 4.35068], 12
-                    );
-
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(carte);
-
-
-                </script>
-
-                <script>
+                 <!--  <script>
 
                     const localisations = [
                     { adresse: 'Place Maurice Van Meenen - 1060 Saint Gilles', latitude: 50.824993, longitude: 4.345397 },
@@ -109,19 +97,19 @@
                     ];
 
 
-
                     localisations.forEach(loc => {
                         L.marker([loc.latitude, loc.longitude])
                         .addTo(carte)
                         .bindPopup(loc.nom);
-                    });
+                    }); 
+                  
 
 
                         /* Définir un tableau de marqueurs */
                     let listeMarqueurs = [];
 
                     /* Utiliser une boucle pour lire le contenu de la liste */
-                    liste.forEach(function(element,index){
+                    localisations.forEach(function(element,index){
                     console.log(element);
                     console.log(index);
 
@@ -139,6 +127,8 @@
 
                     /* Ajouter ce marqueur à mon tableau */
                     listeMarqueurs.push(marqueur);
+
+                 
                 });
 
                 document.getElementById('commentaire').innerHTML = "Il y a actuellement dans ma liste : " + listeMarqueurs.length + " éléments.";
@@ -152,7 +142,7 @@
                 map.fitBounds(groupe.getBounds());
 
 
-                </script>
+                </script> -->
             </div>
         
 
@@ -162,17 +152,38 @@
                 <h3>Liste des localisations</h3>
                     <?php
                 
-                    foreach($liste as $listes):
+                    foreach($listes as $liste):
                     ?>
                         <li>
-                            <a><?php echo $listes['nom']. "| ". $listes['adresse']; ?></a>
+                            <a><?php echo $liste['nom']. "| ". $liste['adresse']; ?></a>
+                            <span id="lat">
+                             <?php 
+
+                            echo $liste["latitude"];
+                           
+
+                            
+                            ?>
+                            </span>
+
+                            <span id="long">
+                             <?php 
+
+                          
+                            echo $liste["longitude"];
+
+                            
+                            ?>
+                            </span>
                         </li>
                     <?php
                     endforeach;
                     ?>
                 </ul>
             </div>
-        </div>  
+        </div> 
+        <script src="js/carte.js"></script>  
+ 
     </body>
 
 <html>
