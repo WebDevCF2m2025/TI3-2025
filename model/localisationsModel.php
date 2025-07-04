@@ -1,5 +1,5 @@
 <?php
-echo "_lm";
+
 
 # model/ArticleModel.php
 /*

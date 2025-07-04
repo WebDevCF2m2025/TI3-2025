@@ -6,7 +6,7 @@ session_start();
 // configuration de la connexion à la base de données
 require_once "../config.php";
 
-echo "index";
+
 // notre connexion PDO
 try{
     // instanciation de PDO
@@ -25,6 +25,16 @@ try{
     
 }
 
+if(isset($_GET['loadDatas'])){
+    require_once "../model/localisationsModel.php";
+    echo json_encode(getListPublished($db));
+    $db = null;
+    exit();
+}
+
+
+
+
 // Si nous sommes connectés
 if(isset($_SESSION['idutilisateurs'])){
     require_once "../controller/privateController.php";
@@ -32,6 +42,8 @@ if(isset($_SESSION['idutilisateurs'])){
     // sinon
     require_once "../controller/publicController.php";
 }
+
+
 
 
 $db = null;

@@ -32,30 +32,17 @@
     </div>
 
     <div class="container mb-5">
-        <div class="box">
-            <div class="container">
-                <div class="rounded-4" id="carte"></div>
-                <div class="tableau"></div>
-            </div>
-
-
-            <div>
-                <ul>
-                    <?php
-
-                    foreach($lists as $list):
-                    ?>
-                        <li>
-                            <a><?php echo $list['nom']. "| ". $list['adresse']. "| ". $list['codepostal']. "| ". $list['ville']; ?></a>
-                        </li>
-                    <?php
-                    endforeach;
-                    ?>
-                </ul>
-            </div>
+        <div class="content">
+    <h2>Nos datas</h2>
+    <h1>Récupération de données via JSON et PHP</h1>
+    <div id="resultats">
+        <div id="carte"></div>
+        <div id="liste"></div>
+    </div>
+</div>
         </div>
     </div>
-
+   
     
     <script src="js/map.js"></script>
 </body>
