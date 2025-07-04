@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 # Connexion de l'administrateur en utilisant password_verify
 function authentificateActivedUser(PDO $connect, string $login, string $pass): bool
@@ -25,9 +23,7 @@ function authentificateActivedUser(PDO $connect, string $login, string $pass): b
         // avec celui haché dans la DB
 
         if (password_verify($userpwd, $utilisateur['passwd'])) {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
+
             $_SESSION['login'] = $utilisateur['username'];
             $_SESSION['id'] = $utilisateur['idutilisateurs'];
             return true;

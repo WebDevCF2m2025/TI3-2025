@@ -10,16 +10,14 @@ if (isset($_GET['json'])) {
     exit();
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 if (!isset($_GET['page'])) {
     require_once "../view/public/home.php";
 } elseif ($_GET['page'] === 'dec') {
 
     disUser();
-    header("Location: ../");
+    header("Location: ./");
     exit();
 } elseif ($_GET['page'] === 'admin') {
 
@@ -31,15 +29,9 @@ if (!isset($_GET['page'])) {
     $db = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
 
     if (!empty($_POST)) {
-        $nom = $_POST['nom'] ?? '';
-        $adresse = $_POST['adresse'] ?? '';
-        $codepostal = $_POST['codepostal'] ?? '';
-        $ville = $_POST['ville'] ?? '';
-        $latitude = $_POST['latitude'] ?? '';
-        $longitude = $_POST['longitude'] ?? '';
 
 
-        insertLocalisation($db, $nom, $adresse, $codepostal, $ville, $latitude, $longitude);
+        insertLocalisation($db, $_POST);
 
 
         header("Location: ./?page=admin");
@@ -54,22 +46,16 @@ if (!isset($_GET['page'])) {
     deleteLocalisationById($db, $_GET['id']);
     header("Location: ./?page=admin");
     exit;
-} elseif ($_GET['page'] === 'update' && isset($_GET['id'])) {
+} elseif ($_GET['page'] === 'update' && isset($_GET['id']) && ctype_digit($_GET['id'])) {
 
-    $db = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
+    $id = (int) $_GET['id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nom = $_POST['nom'] ?? '';
-        $adresse = $_POST['adresse'] ?? '';
-        $codepostal = $_POST['codepostal'] ?? '';
-        $ville = $_POST['ville'] ?? '';
-        $latitude = $_POST['latitude'] ?? '';
-        $longitude = $_POST['longitude'] ?? '';
-        updateLocalisationById($db, $_GET['id'], $nom, $adresse, $codepostal, $ville, $latitude, $longitude);
+        updateLocalisationById($db, $_POST, $id);
         header("Location: ./?page=admin");
         exit;
     } else {
-        $localisation = selectLocalisationById($db, $_GET['id']);
+        $localisation = selectLocalisationById($db, $id);
         require_once "../view/private/updatePoint.php";
         exit;
     }

@@ -12,14 +12,25 @@ if (isset($_GET['json'])) {
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'login') {
+
+    $displaySucces = "d-none";
+    $displayError = "d-none";
+    $displayForm = "";
     $error = null;
     if (isset($_POST['login']) && isset($_POST['password'])) {
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $conected = authentificateActivedUser($db, $login, $password);
 
-        if (authentificateActivedUser($db, $login, $password)) {
-            header("Location: ./?page=admin");
-            exit;
+        if ($conected === true) {
+            $displayForm = "d-none";
+            $jsRedirect = "<script>
+    setTimeout(() => {
+  window.location.href = './?pg=admin';
+}, 3000); // Redirects after 3 seconds
+</script>";
+            // header("Location: ./?page=admin");
+
         } else {
             $error = "Login failed  try again.";
         }
