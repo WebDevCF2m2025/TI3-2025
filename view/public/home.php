@@ -26,7 +26,7 @@
                 <th>longitude</th>
             </tr>
             <?php foreach ($locations as $loc): ?>
-                <tr>            
+                <tr class="location-row" data-lat="<?=$loc['latitude']?>" data-lng="<?=$loc['longitude']?>">          
                     <td><?= htmlspecialchars($loc['nom']) ?></td>
                     <td><?= htmlspecialchars($loc['adresse']) ?></td>
                     <td><?= htmlspecialchars($loc['codepostal']) ?></td>
@@ -53,8 +53,14 @@
             L.marker([loc.latitude, loc.longitude])
             .addTo(map)
             .bindPopup(popupContent);
+
+            map.on('click', function(e){
+
+            })
         });
+
+
     </script>
-    <script src="../public/js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

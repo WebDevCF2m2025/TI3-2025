@@ -68,6 +68,7 @@
                            id="latitude"
                            name="latitude"
                            value="<?= htmlspecialchars($_POST['latitude'] ?? '') ?>"
+                           step="0.000001"
                            required>
                 </div>
  
@@ -78,6 +79,7 @@
                            id="longitude"
                            name="longitude"
                            value="<?= htmlspecialchars($_POST['longitude'] ?? '') ?>"
+                           step="0.000001"
                            required>
                 </div>
             </div>

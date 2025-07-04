@@ -71,7 +71,8 @@
                                class="form-control " 
                                id="latitude" 
                                name="latitude" 
-                               value="<?= htmlspecialchars($_POST['latitude'] ?? $location['latitude']) ?>" 
+                               value="<?= htmlspecialchars($_POST['latitude'] ?? $location['latitude']) ?>"
+                               step="0.000001"
                                required>
                     </div>
 
@@ -81,7 +82,8 @@
                                class="form-control " 
                                id="longitude" 
                                name="longitude" 
-                               value="<?= htmlspecialchars($_POST['longitude'] ?? $location['longitude']) ?>" 
+                               value="<?= htmlspecialchars($_POST['longitude'] ?? $location['longitude']) ?>"
+                               step="0.000001"
                                required>
                     </div>
                 </div>

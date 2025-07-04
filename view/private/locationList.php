@@ -19,7 +19,7 @@
  
     <div class="admin-container">
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] == '1'): ?>
-            <div class="alert-success ">Localisation supprimée avec succès!</div>
+            <div class=" alert alert-success ">Localisation supprimée avec succès!</div>
         <?php endif; ?>
         
         <?php if (isset($_GET['error']) && $_GET['error'] == '1'): ?>

@@ -4,6 +4,11 @@
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
  
+$ret = "<script>
+                setTimeout(() => {
+                    window.location.href = './?action=list';
+                }, 2000);
+            </script>";
 
 $action = $_GET['action'] ?? 'list';
  
@@ -20,11 +25,11 @@ switch ($action) {
         $success = "";
         
         if ($_POST) {
-            $nom = trim($_POST['nom'] ?? '');
-            $adresse = trim($_POST['adresse'] ?? '');
-            $codepostal = trim($_POST['codepostal'] ?? '');
-            $latitude = trim($_POST['latitude'] ?? '');
-            $longitude = trim($_POST['longitude'] ?? '');
+            $nom = strip_tags(trim($_POST['nom'] ?? ''));
+            $adresse = strip_tags(trim($_POST['adresse'] ?? ''));
+            $codepostal = strip_tags(trim($_POST['codepostal'] ?? ''));
+            $latitude = strip_tags(trim($_POST['latitude'] ?? ''));
+            $longitude = strip_tags(trim($_POST['longitude'] ?? ''));
             
             
             if (empty($nom)) $errors[] = "Le nom est requis";
@@ -36,7 +41,7 @@ switch ($action) {
             if (empty($errors)) {
                 if (addLocation($db, $nom, $adresse, $codepostal, $latitude, $longitude)) {
                     $success = "Localisation ajoutée avec succès!";
-                    
+                    echo($ret);
                     $_POST = [];
                 } else {
                     $errors[] = "Erreur lors de l'ajout";
@@ -59,11 +64,11 @@ switch ($action) {
         }
         
         if ($_POST) {
-            $nom = trim($_POST['nom'] ?? '');
-            $adresse = trim($_POST['adresse'] ?? '');
-            $codepostal = trim($_POST['codepostal'] ?? '');
-            $latitude = trim($_POST['latitude'] ?? '');
-            $longitude = trim($_POST['longitude'] ?? '');
+            $nom = strip_tags(trim($_POST['nom'] ?? ''));
+            $adresse = strip_tags(trim($_POST['adresse'] ?? ''));
+            $codepostal = strip_tags(trim($_POST['codepostal'] ?? ''));
+            $latitude = strip_tags(trim($_POST['latitude'] ?? ''));
+            $longitude = strip_tags(trim($_POST['longitude'] ?? ''));
             
             
             if (empty($nom)) $errors[] = "Le nom est requis";
@@ -75,6 +80,7 @@ switch ($action) {
             if (empty($errors)) {
                 if (updateLocation($db, $id, $nom, $adresse, $codepostal, $latitude, $longitude)) {
                     $success = "Localisation modifiée avec succès!";
+                    echo($ret);
                 } else {
                     $errors[] = "Erreur lors de la modification";
                 }

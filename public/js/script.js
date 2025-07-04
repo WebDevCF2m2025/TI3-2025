@@ -32,3 +32,14 @@ document.querySelectorAll('.table-zone tbody tr').forEach((row, index) => {
         }
     });
 });
+
+document.querySelectorAll('.location-row').forEach(row =>{
+    row.addEventListener('click', function(){
+        const lat = parseFloat(this.dataset.lat);
+        const lng = parseFloat(this.dataset.lng);
+        map.flyTo([lat, lng], 15,{
+            animatr: true,
+            duration: 3
+        });
+    });
+});

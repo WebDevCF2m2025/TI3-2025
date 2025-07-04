@@ -24,7 +24,7 @@ try{
     die($e->getMessage());
 }
 if(isset($_SESSION['login'])){
-    require_once "../controller/PrivateController.php";
+    require_once "../controller/privateController.php";
 }else{
     // sinon
     if(isset($_GET['pg']) && $_GET['pg'] === 'username'){
@@ -35,7 +35,6 @@ if(isset($_SESSION['login'])){
     }
 }
 
-if(APP_MODE == "dev"):
 
 // Affichage de la barre de débogage
 
@@ -52,6 +51,5 @@ if(APP_MODE == "dev"):
 // var_dump($locations); 
 // var_dump($jlocations); 
 
-endif;
 
 $db = null;
