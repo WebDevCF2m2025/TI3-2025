@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadParkings() {
-    fetch('https://2025.webdev-cf2m.be/omer/TI-3/public/?json')
+    fetch('./?json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erreur de réseau');

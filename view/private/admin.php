@@ -73,20 +73,18 @@ if (session_status() === PHP_SESSION_NONE) {
                         <?php if (!empty($localisations)): ?>
                             <?php foreach ($localisations as $loc): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($loc['id']) ?></td>
-                                    <td><?= htmlspecialchars($loc['nom']) ?></td>
-                                    <td><?= htmlspecialchars($loc['adresse']) ?></td>
-                                    <td><?= htmlspecialchars($loc['codepostal']) ?></td>
-                                    <td><?= htmlspecialchars($loc['ville']) ?></td>
-                                    <td><?= htmlspecialchars($loc['latitude']) ?></td>
-                                    <td><?= htmlspecialchars($loc['longitude']) ?></td>
+                                    <td><?= $loc['id'] ?></td>
+                                    <td><?= $loc['nom'] ?></td>
+                                    <td><?= $loc['adresse'] ?></td>
+                                    <td><?= $loc['codepostal'] ?></td>
+                                    <td><?= $loc['ville'] ?></td>
+                                    <td><?= $loc['latitude'] ?></td>
+                                    <td><?= $loc['longitude'] ?></td>
                                     <td>
-                                        <a href="/omer/TI-3/controller/privateController.php?page=update&id=<?= $loc['id'] ?>"
-                                            class="btn btn-warning btn-sm">
+                                        <a href="./?page=update&id=<?= $loc['id'] ?>" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i> Update
                                         </a>
-                                        <a href="/omer/TI-3/controller/privateController.php?page=delete&id=<?= $loc['id'] ?>"
-                                            class="btn btn-danger btn-sm mt-2"
+                                        <a href="./?page=delete&id=<?= $loc['id'] ?>" class="btn btn-danger btn-sm mt-2"
                                             onclick="return confirm('Are you sure you want to delete this point?');">
                                             <i class="bi bi-trash"></i> Delete
                                         </a>

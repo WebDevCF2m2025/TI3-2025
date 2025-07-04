@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-        <a class="navbar-brand" href="/public/index.php">TI3-2025</a>
+        <a class="navbar-brand" href="./">TI3-2025</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
