@@ -72,26 +72,8 @@ include "../view/_menu.html.php";
         </div>
 
         <!-- Affichage carte mobile (sm uniquement) -->
-        <div class="d-block d-md-none">
-            <?php foreach ($articles as $article): ?>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $article['title'] ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted"><?= $article['username'] ?> — <?= $article['articledatepublished'] ?></h6>
-                        <p class="card-text"><?=cutTheText($article['articletext'])?></p>
-                        <div class="mb-2">
-                            <?= $article['articlepublished'] ? '<span class="badge bg-success">Publié</span>' : '<span class="badge bg-secondary">Non publié</span>' ?>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <a href="?pg=update&id=<?= $liste['id']?>" class="badge bg-warning">Modifier</a>
-                        </div>
-                        <div class="d-flex gap-2">
-                        <a href="" onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $liste['slug']?>')? document.location.href='?pg=delete&id=<?= $liste['id']?>': ''" class="badge bg-danger">Supprimer</a>
-                        </div>
-                        </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+        
+        
                 
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>

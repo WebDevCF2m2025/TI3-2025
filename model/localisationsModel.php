@@ -100,3 +100,48 @@ function updateAdresseById(PDO $connect, array $datas): bool
  
 }
 
+
+// ADD ADRESSE 
+
+
+function addAdresse(PDO $connect, array $datas): bool
+{
+    // on va vérifier si l'article est bien écrit par l'utilisateur
+    // connecté
+ 
+ 
+    // encodage du texte
+    $nom = htmlspecialchars(trim(strip_tags($datas['nom'])));
+    if (empty($nom) || strlen($nom) > 200) return false;
+ 
+        // encodage du texte
+    $adresse = htmlspecialchars(trim(strip_tags($datas['adresse'])));
+    if (empty($adresse) || strlen($adresse) > 200) return false;
+ 
+    $latitude = (float)$datas['latitude'];
+    if (empty($latitude) ) return false;
+ 
+    $longitude = (float)$datas['longitude'];
+    if (empty($longitude) ) return false;
+ 
+ 
+ 
+    $sql = "INSERT INTO `localisations` (`nom`, `adresse`,`latitude`, `longitude`) VALUES (:nom, :adresse, :latitude, :longitude);";
+ 
+    $prepare = $connect->prepare($sql);
+ 
+    try {
+        $prepare->execute([
+            "nom" => $nom,
+            "adresse" => $adresse,
+            "latitude" => $latitude,
+            "longitude" => $longitude,
+        ]);
+        $prepare->closeCursor();
+        return true;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+ 
+}
+ 

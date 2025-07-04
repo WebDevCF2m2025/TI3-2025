@@ -28,16 +28,17 @@ if (isset($_GET['pg'])) {
     }
   } elseif ($_GET['pg'] === "addMarker") {
     // si les variables de type post attendues sont là
-    if (isset($_POST['nom'], $_POST['adresse'], $_POST['latitude'], $_POST['longitude'])) {
-      $insert = addMarker($db, $_POST);
-      if ($insert === true) {
-        echo "ok";
-      } else {
-        $error = true;
-      }
+    if (isset($_POST['latitude'], $_POST['longitude'])) {
+        $insert = addAdresse($db, $_POST);
+        if ($insert === true) {
+            $merci = true;
+        } else {
+            $probleme = true;
+        }
     }
     // appel de la vue
     require_once "../view/private/admin.insert.html.php";
+
 
   } elseif ($_GET['pg'] === "update" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
             

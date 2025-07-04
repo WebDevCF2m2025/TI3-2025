@@ -52,10 +52,10 @@ fetch('./?listjs')
       carte.fitBounds(group.getBounds().pad(0.2));
     }
   })
-  .catch(error => {
-    alert("Impossible de charger les localisations");
-    console.error(error);
-  });
+ // .catch(error => {
+ //   alert("Impossible de charger les localisations");
+ //   console.error(error);
+ // });
 
 
 
