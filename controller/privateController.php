@@ -1,7 +1,7 @@
 <?php
 require_once "../model/utilisateursModel.php";
 require_once "../model/localisationsModel.php";
-require_once "../config-dev.php";
+require_once "../config.php";
 
 
 if (isset($_GET['json'])) {
