@@ -52,10 +52,10 @@ include "../view/_menu.html.php";
                                 <?php echo ($liste['adresse']) ?>
                             </td>
                             <td>
-                                <?php $liste['latitude'] ?>
+                                <?php echo ($liste['latitude']) ?>
                             </td>
                             <td class="text-center">
-                                <?php $liste['longitude'] ?>
+                                <?php echo ($liste['longitude']) ?>
                             </td>
                             <td>
                                 <a href="?pg=update&id=<?= $liste['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>

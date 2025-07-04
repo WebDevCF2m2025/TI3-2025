@@ -65,5 +65,5 @@ if (isset($_GET['pg'])) {
 }
 
 
-echo "SUR LE PRIVATE";
+
  
