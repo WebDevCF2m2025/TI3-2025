@@ -24,16 +24,14 @@ if (isset($_GET['pg'])) {
 
         // appel de la vue
         require_once "../view/private/adminR.php";
-    } elseif ($_GET['pg'] === "delete"
-        && isset($_GET['id'])
-        && ctype_digit($_GET['id'])) {
+    } elseif ($_GET['pg'] === "delete" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
 
         // on convertit le string en int
         // settype($_GET['id'],"integer");
 
 
         //suppression d'un article
-        if (deleteArticleById($db, $idarticle)) {
+        if (deleteArticleById($db, $_GET['id'])) {
             header("Location: ./?pg=adminR");
             exit();
         }
@@ -55,13 +53,6 @@ if (isset($_GET['pg'])) {
         // son identifiant qui doit être un string contenant que des entiers [0-9]+
     } elseif ($_GET['pg'] === "adminU" && isset($_GET['id']) && ctype_digit($_GET['id'])) {
             
-        $displayForm = ""; // le formulaire est affiché
-        // on va convertir l'id en entier
-        $id = (int)$_GET['id'];
-        
-    
-
-        if($adresseU===false) $error = "Cet article n'existe plus";
 
         // si les variables de type post attendues sont là
         if (isset($_POST['nom'], $_POST['adresse'])) {

@@ -66,13 +66,7 @@ function addAdresse(PDO $connect, array $datas): bool
  * READ
  */
 
-/**
- * @param PDO $connect
- * @return array
- * Récupère les articles publiés sur la
- * page d'accueil par date de publication descendante
- * Pas d'affichage des articles plus tard que la date actuelle
- */
+
 function getListPublished(PDO $connect): array
 {
     $request = $connect->prepare("SELECT * FROM `localisations`");
@@ -89,28 +83,6 @@ function getListPublished(PDO $connect): array
 
 
 
-function getOneArticleById(PDO $connect, int $id): array|bool
-{
-    // requête préparée obligatoire, ca entrée utilisateur
-    $request = $connect->prepare("
-    SELECT a.`idarticle`, a.`title`, a.`slug`, a.`articletext`, a.`articlepublished`, a.`articledatepublished`, u.`iduser`, u.`login`, u.`username`
-    FROM `article` a 
-        INNER JOIN `user` u 
-            ON a.`user_iduser`= u.`iduser`
-    WHERE a.`idarticle` = ?
-");
-    try {
-        $request->execute([$id]);
-        // pas d'articles
-        if ($request->rowCount() === 0) return false;
-        $results = $request->fetch();
-        $request->closeCursor();
-        // 1 article au format FETCH_ASSOC
-        return $results;
-    } catch (Exception $e) {
-        die($e->getMessage());
-    }
-}
 
 /*
  * UPDATE
@@ -141,10 +113,11 @@ function updateAdresseById(PDO $connect, array $datas): bool
     $longitude = (float)$datas['longitude'];
     if (empty($longitude) ) return false;
     
-    $id = (int)$datas['id'];
-    
+    $idAdresse = (int)$_GET['id'];
+    if (empty($idAdresse)) return false;
+  
 
-    $sql = "UPDATE `localisations` SET `nom` = ?, `adresse` = ?, `codepostal` = ?, `ville` = ?, `latitude` = ?, `longitude` = ? ;";
+    $sql = "UPDATE `localisations` SET `nom` = ?, `adresse` = ?, `codepostal` = ?, `ville` = ?, `latitude` = ?, `longitude` = ? where `id` = ?;";
 
     $prepare = $connect->prepare($sql);
 
@@ -156,6 +129,7 @@ function updateAdresseById(PDO $connect, array $datas): bool
             $ville,
             $latitude,
             $longitude,
+            $idAdresse
            
 
         
@@ -181,7 +155,8 @@ function updateAdresseById(PDO $connect, array $datas): bool
  */
 function deleteArticleById(PDO $connect, int $id): bool
 {
-    $sql = "DELETE FROM `article` WHERE `idarticle`=?";
+
+    $sql = "DELETE FROM `localisations` WHERE `id`=?;";
     $request = $connect->prepare($sql);
     try {
         $request->execute([$id]);

@@ -23,7 +23,7 @@ include_once "../view/menu.php";
 
         <?php
         // pas d'articles publiés
-        if(empty($mlists)):
+        if(empty($lists)):
             $h4 = "Pas encore d'articles";
         else:
             $nbAdresse = count($lists);
@@ -70,7 +70,7 @@ include_once "../view/menu.php";
                                 <a href="?pg=adminU&id=<?= $list['id']?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
                             </td>
                             <td>
-                                <span onclick="confirm('Voulez-vous vraiment supprimer l\'article \n<?= $list['slug']?>')? document.location.href='?pg=delete&id=<?= $list['idarticle']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
+                                <span onclick="confirm('Voulez-vous vraiment supprimer l\'adresse \n<?= $list['nom']?>')? document.location.href='?pg=delete&id=<?= $list['id']?>': ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
                             </td>
                         </tr>
                     <?php endforeach; ?>
