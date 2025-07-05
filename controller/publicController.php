@@ -2,7 +2,6 @@
 require_once('../model/utilisateursModel.php');
 require_once('../model/localisationsModel.php');
 
-
 if (isset($_GET['json'])) {
     $allLocation = getAllLocations($db);
     echo json_encode($allLocation);
@@ -11,12 +10,11 @@ if (isset($_GET['json'])) {
 
 if (!isset($_GET['page'])) {
     $locations = getAllLocations($db);
-    
 } else {
     if ($_GET['page'] === 'conn') {
         if (isset($_POST['login'], $_POST['password'])) {
-            $login = htmlspecialchars(strip_tags(trim($_POST['login'])));
-            $password = htmlspecialchars(strip_tags(trim($_POST['password'])));
+            $login = htmlspecialchars($_POST['login']);
+            $password = htmlspecialchars($_POST['password']);
 
             $user = authentificateAdminUser($db, $login, $password);
 
@@ -24,10 +22,12 @@ if (!isset($_GET['page'])) {
                 session_regenerate_id(true);
                 $_SESSION['iduser'] = $user['username'];
                 $_SESSION['login'] = $user['idutilisateurs'];
+                $_SESSION['success'] = "Bienvenue sur votre compte " . $user['username'];
+
                 header('Location: ./');
                 exit();
             } else {
-                $erreur = "Login ou mot de passe incorrect.";
+                $error = "Login ou mot de passe incorrect";
             }
         }
     } elseif ($_GET['page'] === 'admin') {

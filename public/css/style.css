@@ -113,7 +113,7 @@ h2 {
   display: flex;
   gap: 2vw;
   width: 90vw;
-  height: 70vh;
+  height: 60vh;
   align-items: center;
   padding: 1em;
   border: 1px solid black;
@@ -135,7 +135,7 @@ h2 {
 .scrollable-list {
   flex: 1;
   min-width: 30vw;
-  max-height: 90%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -193,4 +193,8 @@ h2 {
   .scrollable-list ul {
     padding-left: 1em;
   }
+}
+
+#spanErr {
+  margin-top: 10px;
 }

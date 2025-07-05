@@ -29,6 +29,28 @@ try {
     die($e->getMessage());
 }
 
+
+// Verification de notre position sur la page dans l'url et si la variable pg existe | ctype_digit = transforme les entrées numérique d'un string en integer
+if (isset($_GET[PAGINATION_GET]) && ctype_digit($_GET[PAGINATION_GET])) {
+    $page = (int) $_GET[PAGINATION_GET];
+} else {
+    // par defaut la page -> ?pg=1
+    $page = 1;
+}
+
+// recup le nombre total de msg dans une variable
+$nbTotMessage = getNbTotalLocation($db);
+
+// recuperation de la pagination dans une variable avec les parametres
+$pagination = pagination($nbTotMessage, PAGINATION_GET, $page, PAGINATION_NB);
+
+// affiche a partir l'offset, exemple $page=4 ? (4-1)*3=9 ====> affichera 3 message a partir du 10ieme de la bdd
+$offset = ($page - 1) * PAGINATION_NB;
+
+// recupere et stock les offset de la bdd
+$messages = getLocationPagination($db,  $offset, PAGINATION_NB);
+
+
 // Chargement du routeur
 if (isset($_SESSION['login'])) {
     require_once "../controller/privateController.php";
