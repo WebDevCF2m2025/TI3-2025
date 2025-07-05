@@ -10,3 +10,4 @@ const DB_CHARSET = "utf8mb4";
 
 const DB_DSN = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT.";charset=".DB_CHARSET;
 
+// echo "...";

@@ -1,14 +1,13 @@
 <?php
-
+// echo "_lM";
 
 # model/ArticleModel.php
-/*
- * CRUD
- */
 
-/*
- * CREATE
- */
+// CRUD
+ 
+
+// CREATE
+
 
 // Insertion d'un article en base de donnée
 

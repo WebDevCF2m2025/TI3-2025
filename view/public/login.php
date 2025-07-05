@@ -1,4 +1,4 @@
-<?= "/loginPage";?>
+<?php // "/loginPage";?>
 
 <!doctype html>
 <html lang="fr">

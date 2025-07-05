@@ -1,4 +1,4 @@
-<?="/adminU";?>
+<?php //"/adminU";?>
 
 <!doctype html>
 <html lang="fr">

@@ -1,4 +1,4 @@
-<?="/adminC";?>
+<?php //"/adminC";?>
 
 
 

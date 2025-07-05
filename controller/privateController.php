@@ -1,10 +1,10 @@
 <?php
-echo "/privateController";
+// echo "/privateController";
+
 
 # controller/PrivateController.php
 require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
-
 
 
 if (isset($_GET['pg'])) {

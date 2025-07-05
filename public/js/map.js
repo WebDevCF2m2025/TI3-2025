@@ -1,10 +1,10 @@
 /* Carte centrée sur la Grand'Place de Bruxelles */
-const carte = L.map('carte').setView([50.8467139,4.3525151], 16);
+const carte = L.map('carte').setView([50.840816,4.349019], 15);
 
 /* fond de carte */
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png', {
+  maxZoom: 20,
+  attribution: '&copy; <a href="https://stamen.com">Stamen</a>, &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
 }).addTo(carte);
 
 // Options pour le fetch() qui va récupérer les données
@@ -64,7 +64,7 @@ function afficheMarqueurs(pointsGeo){
     const groupe = new L.featureGroup(lesMarqueurs);
 
     /* adaptation des limites de la carte aux positions extrêmes des marqueurs */
-    carte.fitBounds(groupe.getBounds());
+  //  carte.fitBounds(groupe.getBounds());
 }
 
 /* Cette fonction sert à générer la liste des points à afficher à côté de la carte */
