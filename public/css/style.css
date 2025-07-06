@@ -1,6 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 
+#matrix{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background: rgba(0, 0, 0, 0);
+    display: grid;
+    grid-template-columns: 
+        1fr 1fr 1fr 1fr 1fr 
+        1fr 1fr 1fr 1fr 1fr 
+        1fr 1fr 1fr 1fr 1fr 
+        1fr 1fr 1fr 1fr 1fr 
+        1fr 1fr 1fr 1fr 1fr 
+    ;
+    gap: 5px;
+    overflow: hidden;
+    font: 16px/28px 'Share Tech Mono', monospace;
+}
+
+.matrixGrid{
+    color: rgb(0, 196, 0);
+    text-align: center;
+
+}
 
 
 .box {
@@ -29,8 +56,15 @@
     position: relative;
     z-index: 1000;
     background: radial-gradient(circle at 40% 40%, #00b31e91, #385503de 40%, #000000 80% 80%);
+    transition: 5s;
+}
 
-
+#carte:hover{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.3;
+    background: radial-gradient(circle at 40% 40%, #00b31e91, #385503de 40%, #000000 80% 80%);
 }
 
 #hub{
@@ -47,15 +81,18 @@
 
 }
 
+
+
 #content{
     margin: 5%;
     width: 90%;
     height: 70vh;
     
-    background: black;
-    
-
-    
+    background: #020a0083;
+    border-bottom: 5px solid green;
+    z-index: 500;
+    border-radius: 20px;
+    backdrop-filter: blur(7px); 
 }
 
 #boxCarte{
@@ -72,22 +109,130 @@ body{
 #resultats{
     display: flex;
     justify-content: center;
+    
 }
+
+
+
+
+
 
 #boxList{
     overflow: scroll;
-    scrollbar-color: rgb(0, 46, 0) black;
+    scrollbar-color: rgb(0, 139, 53) rgba(0, 0, 0, 0);
 
     width: 40%;
     height: 50vh; 
     margin-left: 10%;
 }
 
-li{
+.li{
     color: green;
     cursor: pointer;
     font-family: 'Share Tech Mono', monospace;
     margin-bottom: 20px;
+    border:2px solid rgba(0, 0, 0, 0.185);
+    border-radius: 5px;
+    padding: 3px;
+    transition: 2s;
+}
 
+
+
+
+.li:hover{
+    
+    border:2px solid rgba(0, 128, 0, 0.185);
+    border-radius: 5px;
+    padding: 3px;
+    color: rgb(0, 0, 0);
+    background: green;
+}
+
+
+.liSelect{
+    border:2px solid rgba(0, 128, 0, 0.185);
+    border-radius: 5px;
+    padding: 3px;
+    color: rgb(0, 0, 0);
+    background: rgb(0, 126, 0);
+    font-family: 'Share Tech Mono', monospace;
+    transition: 1s;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3{
+    position: relative;
+    text-align: center;
+    color: green;
+    cursor:no-drop;
+    font-family: 'Share Tech Mono', monospace;
+    margin: 20px;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0 0 40px 40px ;
+    padding: 15px;
+    z-index: 600;
+    backdrop-filter: blur(-100%); 
+
+    
+}
+
+a{
+    padding: 15px;
+    background: rgba(0, 126, 0, 0.973);
+    border-radius: 0 3px 20px 0;
+    font-family: 'Share Tech Mono', monospace;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: #0818a7;
+    transition: 2s;
+    border: solid 2px rgba(0, 82, 0, 0.719);
+    z-index: 600;
+    position: relative;
+    cursor: pointer;
+
+}
+
+a:hover{
+    padding: 15px;
+    background: #0818a7;
+    border-radius: 0 3px 20px 0;
+    font-family: 'Share Tech Mono', monospace;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: rgba(0, 126, 0, 0.849);
+
+}
+
+
+@media screen and (max-width: 850px) {
+    #resultats {
+        flex-direction: column;
+        align-items: center; /* Pour centrer en colonne */
+    }
+
+    #content{
+        margin: 5%;
+        width: 90%;
+        overflow: scroll;
+        background: #020a0083;
+        border-bottom: 5px solid green;
+        z-index: 500;
+        border-radius: 20px;
+        backdrop-filter: blur(7px); 
+        scrollbar-color: rgb(0, 139, 53) rgba(0, 0, 0, 0);
+    }
+
+    
+    #boxList{
+       overflow: scroll;
+       scrollbar-color: rgb(0, 139, 53) rgba(0, 0, 0, 0);
+
+       width: 100%;
+       height: 50vh; 
+       margin: 10%;
+    }
 
 }

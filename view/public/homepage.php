@@ -13,6 +13,37 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body class="bg-light">
+
+    <!-- matrix -->
+    <div id="matrix">
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+        <div class=" matrixGrid"></div>
+    </div>
+
 <?php
     if($navActive){
         include_once "../view/menu.php"; 
@@ -23,7 +54,7 @@
     <?php
     if(!$navActive):
     ?>
-    <a href="?pg=login"><button class="btn btn-success fw-bold rounded">Administration</button></a>
+    <a href="?pg=login">Administration</a>
     <?php
     endif;
     ?>
@@ -33,7 +64,7 @@
     <div id="content">
         <div class="content">
         <h2>Datas sauvegardées</h2>
-        <h1>Récupération de données via JSON et PHP</h1>
+        <h3>Récupération de données via JSON et PHP</h3>
         <div id="resultats">
 
             <div id="boxCarte">   
@@ -48,7 +79,7 @@
     </div>
 
    
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/map.js"></script>
 </body>
 </html>

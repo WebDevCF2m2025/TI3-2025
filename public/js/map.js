@@ -4,7 +4,6 @@ const carte = L.map('carte').setView([50.840816,4.349019], 15);
 /* fond de carte */
 L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png', {
   maxZoom: 20,
-  attribution: '&copy; <a href="https://stamen.com">Stamen</a>, &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
 }).addTo(carte);
 
 // Options pour le fetch() qui va récupérer les données
@@ -79,11 +78,12 @@ function afficheListe(donnees){
         // créer la balise <li> vide
         let LI = document.createElement("li");
         // ajouter son contenu
-        LI.innerHTML = `${item.nom} | ${item.adresse} | `;
+        LI.innerHTML = `${item.nom} <br/> ${item.adresse}, ${item.codepostal} ${item.ville} `;
         // ajouter des attributs spécifiques à chaque élément pour pouvoir les distinguer
         LI.setAttribute("lat",`${item.latitude}`);
         LI.setAttribute("lng",`${item.longitude}`);
         LI.setAttribute("id",`${item.id}`);
+        LI.setAttribute("class","li");
         // ajouter un écouteur d'événement pour savoir si on a cliqué sur cet élément
         LI.addEventListener('click', clicItem);
         // la relier à la liste
@@ -101,9 +101,80 @@ function clicItem() {
     let id= this.getAttribute('id');
     console.log(`${latitude} ${longitude}`);
 
+    document.querySelectorAll("li").forEach(function(li) {
+        li.setAttribute("class", "li");
+      });
+            
+    this.setAttribute("class","liSelect");
+
     let marqueur = lesMarqueurs[id];
 
     carte.flyTo([latitude,longitude],17);
 
     marqueur.togglePopup();
 }
+
+
+//clignotant
+$(document).ready(function() {
+    setInterval(function() {
+      $('#boxList').fadeTo(1000, 0.6).fadeTo(1000, 1);
+    }, 3000);
+});
+  
+$(document).ready(function() {
+    setInterval(function() {
+      $('#content').fadeTo(2000, 0.99).fadeTo(2000, 0.96);
+    }, 4000);
+});
+
+// matrix
+let matrix = document.getElementById("matrix");
+let matrixGrid = document.querySelectorAll(".matrixGrid")
+let leText = [">M",">I",">S",">I"," style='color:transparent' >a"," style='color:transparent' >a"," style='color:transparent' >a"," style='color:transparent' >a"," style='color:transparent' >a"," style='color:transparent' >a"];
+let leTextIndex = Math.floor(Math.random()* leText.length);
+let animTextIndex = 0;
+let animText = 0;
+
+
+
+
+function backMatrix(){
+    clearInterval(animText);
+    matrix.style.display = "grid";
+
+    for (let grid of matrixGrid){
+        grid.innerHTML = "<p> </p>" ;
+        grid.style.color = "rgba(0,196,0)";
+        
+    }
+    matrix.style.background= "rgba(0, 0, 0, 0);";
+    leText = [" class='mtx'>M"," class='mtx'>I"," class='mtx'>S"," class='mtx'>I"," class='mtx' style='color:transparent' >a"," class='mtx' style='color:transparent' >a"," class='mtx' style='color:transparent' >a"," class='mtx' style='color:transparent' >a"," class='mtx' style='color:transparent' >a"," class='mtx' style='color:transparent' >a"];
+    leTextIndex = Math.floor(Math.random()* leText.length);
+    animTextIndex = 0;
+    animText = 0;
+    animText = setInterval(function(){
+        for (let grid of matrixGrid){
+            leTextIndex = Math.floor(Math.random()* leText.length);
+            animTextIndex = leText[leTextIndex];
+            grid.innerHTML = "<p " + animTextIndex + "</p>" + grid.innerHTML ;  
+        }
+
+
+
+        let limite1 = window.innerHeight * 0.85;
+        let mtxs = document.querySelectorAll('.mtx');
+    
+        for (let mtx of mtxs) {
+            let hauteur = mtx.getBoundingClientRect();
+            if (hauteur.top >= limite1) {
+                mtx.remove(); 
+            }
+        }    
+
+        
+    
+    },100);
+}
+
+backMatrix()
