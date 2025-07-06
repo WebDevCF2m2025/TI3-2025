@@ -137,7 +137,7 @@ let animTextIndex = 0;
 let animText = 0;
 
 
-
+//Matrix 
 
 function backMatrix(){
     clearInterval(animText);
@@ -162,7 +162,7 @@ function backMatrix(){
 
 
 
-        let limite1 = window.innerHeight * 0.85;
+        let limite1 = window.innerHeight * 0.95;
         let mtxs = document.querySelectorAll('.mtx');
     
         for (let mtx of mtxs) {
@@ -177,4 +177,24 @@ function backMatrix(){
     },100);
 }
 
-backMatrix()
+//barre de chargement
+let loading = document.getElementById("loading")
+let charge = document.getElementById("charge");
+let vitesse = Math.floor(Math.random()* 20);
+let pourcentage = 0 ;
+
+let loadingPage = setInterval(function () {
+    if (pourcentage <= 250){
+        vitesse = Math.floor(Math.random()* 50);
+        pourcentage += vitesse;
+        charge.style.width = pourcentage + "px" ;
+
+    }else{
+        console.log(pourcentage)
+        loading.style.display= "none";
+        backMatrix();
+        clearInterval(loadingPage);
+    }
+    
+}, 200); 
+

@@ -13,6 +13,13 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body class="bg-light">
+<?php
+    if($navActive){
+        include_once "../view/menu.php"; 
+    }  
+    
+    include_once "loading.php";
+?>
 
     <!-- matrix -->
     <div id="matrix">
@@ -44,11 +51,7 @@
         <div class=" matrixGrid"></div>
     </div>
 
-<?php
-    if($navActive){
-        include_once "../view/menu.php"; 
-    }    
-?>
+
     <h1 class="mb-4 text-center">Cartographie des positions sauvegardées </h1>
     <div class="container d-flex justify-content-center">
     <?php
