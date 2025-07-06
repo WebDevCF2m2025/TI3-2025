@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-lg bg-white border-bottom shadow-sm mb-4">
+<div class="navbar navbar-expand-lg border-bottom border-dark shadow-sm mb-4" >
     <div class="container">
-        <a class="navbar-brand fw-bold" href="./">
+        <a class=" text-success navbar-brand fw-bold " href="./">
             MISI
         </a>
 
@@ -8,7 +8,7 @@
         if(isset($_SESSION['idutilisateurs'])):
         ?>    
             <div class="position-absolute start-50 translate-middle-x">
-                <span class="nav-brand  text-success fw-bold"> * Bonjour <?=$_SESSION['username']?> *</span>
+                <span class="nav-brand text-primary "> * Bonjour <?=$_SESSION['username']?> *</span>
             </div>    
 
 
@@ -23,11 +23,19 @@
 // par défaut, on peut appliquer une valeur à plusieurs variables
 $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
         if(!isset($_GET['pg'])){
-            $activeHome = "active text-primary";
+            $activeHome = "active text-success";
+            $activeAdmin = "text-secondary";
         }elseif($_GET['pg']==="adminR"){
-            $activeAdmin = "active text-primary";
+            $activeAdmin = "active text-success";
+            $activeHome = "text-secondary";
         }elseif($_GET['pg']==="login"){
-            $activeLogin = "active text-primary";
+            $activeLogin = "active text-success";
+            $activeHome = "text-secondary";
+            $activeAdmin = "text-secondary";
+        }else{
+            $activeLogin = "text-secondary";
+            $activeHome = "text-secondary";
+            $activeAdmin = "text-secondary";
         }
         ?>
 
@@ -42,7 +50,7 @@ $activeHome = $activeAbout = $activeLogin = $activeAdmin = "";
                 ?>
                     
                     <a class="nav-link  <?=$activeAdmin?>" href="./?pg=adminR">Administration</a>
-                    <a class="nav-link" href="./?pg=logout">Déconnexion</a>
+                    <a class="nav-link text-secondary" href="./?pg=logout">Déconnexion</a>
 
                 <?php else:
                 // nous ne sommes pas connecté 

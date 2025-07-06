@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Administration</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png"/>
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body class="bg-light">
+<body class="body" data-bs-theme="dark">
 <?php
 include_once "../view/menu.php"; 
 ?>
 <h1 class="mb-4 text-center">Administration</h1>
 <div class="container">
-    <div class="bg-white p-4 rounded shadow-sm mb-5">
-        <h4 class="mb-3 text-left mb-3"><a href="?pg=adminC">Ajouter un article</a></h4>
+    <div class="bg-dark p-4 rounded shadow-sm mb-5">
+        <h4 class="mb-3 text-left mb-3"><a  class="btn btn-success" href="?pg=adminC">Ajouter une adresse</a></h4>
 <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
         <h3 class="mb-3 text-left mb-3">Gestion des articles</h3>
 
@@ -36,8 +36,8 @@ include_once "../view/menu.php";
 
         <!-- Affichage pour desktop -->
         <div class="table-responsive d-none d-md-block">
-            <table class="table table-hover align-middle bg-white rounded">
-                <thead class="table-light">
+            <table class="table table-hover align-middle bg-dark rounded">
+                <thead class="table-success">
                     <tr>
                         <th scope="col">nom</th>
                         <th scope="col">adresse</th>

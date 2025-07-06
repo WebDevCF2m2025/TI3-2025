@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modification</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png"/>
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body class="bg-light">
+<body class="body" data-bs-theme="dark">
 <?php
 include_once "../view/menu.php"; 
 ?>
 <h1 class="mb-4 text-center">Modification</h1>
 <div class="container">
-    <div class="bg-white p-4 rounded shadow-sm mb-5">
-        <h4 class="mb-3 text-left mb-3"><a href="?pg=adminR">Retour à l'administration</a></h4>
-<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Formulaire d'update de l'article "<?=$article['title']?>"</h3>
+    <div class="bg-dark p-4 rounded shadow-sm mb-5">
+        <h4 class="mb-3 text-left mb-3"><a  class="btn btn-success" href="?pg=adminR">Retour à l'administration</a></h4>
+        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
+        <h3 class="mb-3 text-left mb-3">Modifier l'adresse "<?=$adresseU['nom']?>"</h3>
         <?php
         if(isset($merci)):
         ?>
@@ -31,12 +31,12 @@ include_once "../view/menu.php";
         endif;
         ?>
             <div class="container">
-                <div class="bg-white p-4 rounded shadow-sm mb-5">
-                    <h2 class="mb-3 text-center mb-5">Modification de l'article</h2>
+                <div class="bg-gradient p-4 rounded shadow-sm mb-5">
+                    <h2 class="mb-3 text-center mb-5">Modification de l'adresse</h2>
                     <!-- on affiche l'erreur -->
                     <?php if (isset($error)): ?>
                         <div class="alert alert-danger"><?=$error?></div>
-                    <a href="javascript:history.go(-1);">Revenir sur l'article et le corriger</a>
+                    <a href="javascript:history.go(-1);">Revenir sur l'adresse</a>
                     <hr>
                     <?php endif; ?>
                     <form action="" method="post" name="list">
@@ -74,7 +74,7 @@ include_once "../view/menu.php";
                         </div>
                         <div class="container">
                             <input type="hidden" name="iduser" value="<?=$_SESSION['idutilisateurs']?>">
-                            <button type="submit" class="btn btn-primary col-lg-12">Envoyer</button>
+                            <button type="submit" class="btn btn-success col-lg-12">Envoyer</button>
                         </div>
                     </form>
                 </div>

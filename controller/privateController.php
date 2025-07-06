@@ -58,7 +58,7 @@ if (isset($_GET['pg'])) {
         $idadresse = (int) $_GET['id'];
         $adresseU = getOneAdresseById($db, $idadresse);
 
-        if($article===false) $error = "Cet article n'existe plus";
+        if($adresseU===false) $error = "Cet article n'existe plus";
 
         // si les variables de type post attendues sont là
         if (isset($_POST['nom'], $_POST['adresse'])) {
