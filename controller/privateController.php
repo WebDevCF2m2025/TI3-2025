@@ -8,7 +8,7 @@ if (isset($_GET['pg'])) {
     // Déconnexion
     if ($_GET['pg'] === "logout") {
         if (disconnectUtilisateur()) {
-            header("Location: ./");
+            header("Location:./");
         }
         exit();
 

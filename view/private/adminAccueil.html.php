@@ -10,15 +10,14 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
+<body class="bg-light">
     <?php include "menu.html.php"; ?>
 
-    <div class="container-fluid p-0">
-        <div class="p-4 my-1">
-            <h1 class="my-2 text-center">Accueil de l'administration</h1>
-            <p>Bienvenue, vous êtes connecté en tant que : <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+    <div class="container-fluid">
+        <div class="p-4 my-3">
+            <h1 class="my-3 text-center">Accueil de l'administration</h1>
             <hr>
-            <h2 class="my-3">Gestion des localisations</h2>
+            <h3 class="my-3">Gestion des localisations</h3>
 
             <?php
             // Pas de localisations
@@ -31,42 +30,63 @@
             }
             ?>
             <h4 class="text-center my-3"><?php echo $h4; ?></h4>
-            <a class="text-light btn btn-primary my-3 w-100" href="?pg=addLocalisation">Ajouter une localisation</a>
+
             <!-- Affichage pour desktop -->
-            <div class="table-responsive d-block rounded">
-                <table class="table table-hover">
+            <div class="container table-responsive d-none d-md-block shadow rounded">
+                <a class="container btn btn-secondary my-3 w-100" href="?pg=addLocalisation">Ajouter une localisation</a>
+                <table class="table table-hover my-3">
                     <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Adresse</th>
-                            <th>CP</th>
+                            <th>Code Postal</th>
                             <th>Ville</th>
                             <th>Latitude</th>
                             <th>Longitude</th>
-                            <th class="text-center">Modifier</th>
-                            <th class="text-center">Supprimer</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($localisations as $localisation): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($localisation['nom']); ?></td>
-                                <td><?php echo htmlspecialchars($localisation['adresse']); ?></td>
-                                <td><?php echo htmlspecialchars($localisation['codepostal']); ?></td>
-                                <td><?php echo htmlspecialchars($localisation['ville']); ?></td>
-                                <td><?php echo htmlspecialchars($localisation['latitude']); ?></td>
-                                <td><?php echo htmlspecialchars($localisation['longitude']); ?></td>
+                                <td><?php echo ($localisation['nom']); ?></td>
+                                <td><?php echo ($localisation['adresse']); ?></td>
+                                <td><?php echo ($localisation['codepostal']); ?></td>
+                                <td><?php echo ($localisation['ville']); ?></td>
+                                <td><?php echo ($localisation['latitude']); ?></td>
+                                <td><?php echo ($localisation['longitude']); ?></td>
                                 <td class="text-center">
-                                    <a href="?pg=update&id=<?php echo $localisation['id']; ?>" class="btn btn-warning btn-sm mb-1">Modifier</a>
+                                    <a href="?pg=update&id=<?php echo $localisation['id']; ?>" class="btn btn-warning btn-sm w-100">Modifier</a>
                                 </td>
                                 <td class="text-center">
-                                    <span onclick="confirm('Voulez-vous vraiment supprimer la localisation \n<?php echo htmlspecialchars($localisation['nom']); ?>') ? document.location.href='?pg=delete&id=<?php echo $localisation['id']; ?>' : ''" class="btn btn-danger btn-sm mb-1">Supprimer</span>
+                                    <span onclick="confirm('Voulez-vous vraiment supprimer la localisation \n<?php echo htmlspecialchars($localisation['nom']); ?>') ? document.location.href='?pg=delete&id=<?php echo $localisation['id']; ?>' : ''" class="btn btn-danger btn-sm w-100">Supprimer</span>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
+
+            <!-- Affichage pour mobile -->
+            <div class="d-block d-md-none">
+                <a class="container btn btn-secondary my-3 w-100" href="?pg=addLocalisation">Ajouter une localisation</a>
+                <?php foreach ($localisations as $localisation): ?>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <p class="card-title fw-bold"><?php echo ($localisation['nom']); ?></p>
+                            <p class="card-text"><?php echo ($localisation['adresse']); ?></p>
+                            <p class="card-text"><?php echo ($localisation['codepostal'] . ' ' . $localisation['ville']); ?></p>
+                            <div class="d-flex gap-2 align-items-center">
+                                <a href="?pg=update&id=<?php echo $localisation['id']; ?>" class="btn btn-warning btn-sm w-100">Modifier</a>
+                                <a href="#" onclick="confirm('Voulez-vous vraiment supprimer la localisation \n<?php echo ($localisation['nom']); ?>') ? document.location.href='?pg=delete&id=<?php echo $localisation['id']; ?>' : ''" class="btn btn-danger btn-sm w-100">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>

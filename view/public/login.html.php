@@ -32,12 +32,12 @@
                 <label class="my-2" for="passwd">Mot de passe</label>
                 <input type="password" class="form-control" id="passwd" name="passwd" placeholder="Votre mot de passe" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100 my-2">Se connecter</button>
+            <button type="submit" class="btn btn-dark w-100 my-2">Se connecter</button>
         </form>
 
         <!-- Lien pour retourner à la page d'accueil -->
         <div class="text-center my-3">
-            <a href="./">Retour à l'accueil</a>
+            <a href="./">-> Retour à l'accueil <-</a>
         </div>
     </div>
 

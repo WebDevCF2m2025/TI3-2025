@@ -33,7 +33,7 @@ function connectUtilisateur(PDO $con, string $username, string $passwd): bool
 
 # Déconnexion de l'administrateur
 
-function disconnectUtilisateur(): void
+function disconnectUtilisateur(): bool
 {
     session_unset();
 
@@ -51,4 +51,27 @@ function disconnectUtilisateur(): void
     }
 
     session_destroy();
+
+    return true;
+}
+
+function updateUserById(PDO $connect, array $datas): bool
+{
+    $id = (int)$datas['id'];
+    $nom = trim(strip_tags($datas['username']));
+    $pass = trim(strip_tags($datas['passwd']));
+
+    if (empty($id) || empty($nom) || empty($pass)) {
+        return false;
+    }
+
+    $sql = "UPDATE `utilisateurs` SET `username` = ?, `passwd` = ? WHERE `id` = ?";
+    $prepare = $connect->prepare($sql);
+
+    try {
+        $prepare->execute([$nom, $pass, $id]);
+        return true;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
 }

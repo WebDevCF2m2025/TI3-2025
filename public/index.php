@@ -24,7 +24,7 @@ if(isset($_SESSION['idutilisateurs'])){
     require_once "../controller/publicController.php";
 }
 
-if(APP_MODE == "dev"):
+if(APP_MODE === "dev"):
 
 // Affichage de la barre de débogage
 echo '<div class="bg-white p-4 rounded shadow-sm mb-5"<hr><h3>Barre de débogage</h3><hr>';

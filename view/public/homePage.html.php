@@ -12,17 +12,14 @@
 </head>
 
 <body>
-    <nav>
-        <a href="?pg=login">connexion</a>
-        <a href="?pg=about">À propos</a>
-    </nav>
+    <?php include "menuPublic.html.php"; ?>
     <div>
         <h1>Carte interactive.</h1>
         <h2>Parcours Salle de sports à Bruxelles</h2>
         <br>
         <div class="grille">
             <div class="map">
-                <div id="carte" class="rounded-4"></div>
+                <div id="carteAccueil"></div>
             </div>
             <div class="tableau">
                 <h3>Liste des points</h3>
@@ -42,7 +39,7 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        let map = L.map('carte').setView([50.8503, 4.3517], 11);
+        let map = L.map('carteAccueil').setView([50.8503, 4.3517], 11);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -55,7 +52,7 @@
         <?php foreach ($localisations as $localisation): ?>
             L.marker([<?php echo $localisation['latitude']; ?>, <?php echo $localisation['longitude']; ?>])
                 .addTo(map)
-                .bindPopup("<?php echo $localisation['nom']; ?>");
+                .bindPopup("<?php echo $localisation['nom'] . " <br> " . $localisation['adresse'] . " <br> " . $localisation['codepostal'] . " <br> " . $localisation['ville']; ?>");
         <?php endforeach; ?>
     </script>
 </body>
