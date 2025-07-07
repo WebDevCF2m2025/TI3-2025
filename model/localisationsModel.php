@@ -44,7 +44,24 @@ function getAllMarkers(PDO $db): array {
   }
 }
 
-$markers = getAllMarkers($db);
+function getAllMarkersFrontPage(PDO $db): array {
+
+  $request = $db->query("SELECT m.`id`, m.`nom`, m.`adresse`, m.`codepostal`, m.`ville`,m.`nb_velos`, m.`latitude`, m.`longitude`
+  FROM localisations m 
+  ORDER BY `id` DESC
+  LIMIT 10");
+
+  try{
+    $request->execute();
+    $results = $request->fetchAll();
+    $request->closeCursor();
+    return $results;
+
+  }catch (Exception $e ){
+    die($e->getMessage());
+  }
+}
+
 
 // Supprimer un marqueur
 function deleteMarkerById(PDO $db, int $id): bool {
@@ -74,10 +91,10 @@ function updateMarkerById(PDO $db,$id,$nom, $adresse, $codepostal, $ville, $nb_v
   // Vérification des champs
   if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($latitude) ||
     empty($longitude)) {
-    return "a";
+    return false;
   }
   if (strlen($nom) > 30 || strlen($adresse) > 100 || strlen($ville) > 20 || strlen($codepostal) > 4) {
-    return "b";
+    return false;
   }
 
   $sql = "UPDATE localisations SET
@@ -140,7 +157,16 @@ function addMarker(PDO $db, array $datas): bool
   $latitude = $datas['latitude'];
   $longitude = $datas['longitude'];
 
-  if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($nb_velos) || empty($latitude) ||
+  // Sécurisation des données utilisateurs
+  $nom = htmlspecialchars(strip_tags(trim($nom)), ENT_QUOTES);
+  $adresse = htmlspecialchars(strip_tags(trim($adresse)), ENT_QUOTES);
+  $codepostal = htmlspecialchars(strip_tags(trim($codepostal)), ENT_QUOTES);
+  $ville = htmlspecialchars(strip_tags(trim($ville)), ENT_QUOTES);
+  $nb_velos = (int) $nb_velos;
+  $latitude = (float) $latitude;
+  $longitude = (float) $longitude;
+
+  if(empty($nom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($latitude) ||
     empty($longitude)) {
     return false;
   } elseif (strlen($nom) > 30 || strlen($adresse) > 100 || strlen($ville) > 20 || strlen($codepostal) > 4) {

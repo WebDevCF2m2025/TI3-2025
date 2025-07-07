@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <nom>MVC-CRUD-Procedural | Connexion</nom>
   <link rel="icon" type="image/x-icon" href="img/logo.png"/>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -21,9 +20,8 @@
 <?php
 include "menu.html.php";
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Modification</h1>
 <div class="container">
-  <div class="bg-white p-4 rounded shadow-sm mb-5">
+  <div class="bg-dark p-4 rounded shadow-sm mb-5  ">
     <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
     <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
     <h3 class="mb-3 text-left mb-3">Formulaire d'update de l'article "<?=$marker['adresse']?>"</h3>
@@ -37,8 +35,8 @@ include "menu.html.php";
     <?php
     endif;
     ?>
-    <div class="container">
-      <div class="bg-white p-4 rounded shadow-sm mb-5">
+    <div class="container ">
+      <div class="bg-dark p-4 rounded mb-5  ">
         <h2 class="mb-3 text-center mb-5">Modification de l'article</h2>
         <!-- on affiche l'erreur -->
         <?php if (isset($error)): ?>
@@ -85,7 +83,6 @@ include "menu.html.php";
           </div>
 
 
-          <input type="hidden" name="id" value="<?=$_SESSION['idutilisateurs']?>">
           <button type="submit" class="btn btn-primary">Envoyer</button>
 
         </form>

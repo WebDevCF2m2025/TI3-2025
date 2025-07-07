@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <nom>MVC-CRUD-Procedural | Connexion</nom>
   <link rel="icon" type="image/x-icon" href="img/logo.png"/>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -23,20 +22,19 @@
     }
   </style>
 </head>
-<body class="bg-light">
+<body>
 <?php
 include "menu.html.php";
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Administration | Insertion</h1>
-<div class="container">
-  <div class="bg-white p-4 rounded shadow-sm mb-5">
+<div class="container ">
+  <div class="bg-dark p-4 rounded shadow-sm mb-5">
     <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
     <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
     <h3 class="mb-3 text-left mb-3">Formulaire d'update de l'article</h3>
     <?php
     if(isset($merci)):
       ?>
-      <h4 class="alert alert-success">Merci pour votre mise à jour !</h4>
+      <h4 class="alert alert-success">Le marqueur a été ajouter avec succées ! </h4>
       <script>
         setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
       </script>
@@ -44,7 +42,7 @@ include "menu.html.php";
     endif;
     ?>
     <div class="container">
-      <div class="bg-white p-4 rounded shadow-sm mb-5">
+      <div class="bg-dark p-4 rounded shadow-sm mb-5">
         <!-- on affiche l'erreur -->
         <?php if (isset($error)): ?>
           <div class="alert alert-danger"><?=$error?></div>
@@ -149,6 +147,11 @@ include "menu.html.php";
       } catch (error) {
         console.error('Erreur lors du reverse geocoding :', error);
       }
+    });
+
+    // click on map puis scroll sur le formulaire
+    map.on('click', function () {
+      document.querySelector('#nom').focus();
     });
 
     // Optionnel : supprimer le marqueur quand le popup se ferme

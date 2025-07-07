@@ -1,11 +1,11 @@
 <?php
 
 # MySQL
-const DB_HOST = "localhost";
-const DB_NAME = "ti3_2025";
-const DB_LOGIN = "root";
-const DB_PWD = "";
-const DB_PORT = 3306; // MariaDB uses port 3307 by default
+const DB_HOST = "sqlgold.webmo.fr";
+const DB_NAME = "2025_web_reda";
+const DB_LOGIN = "2025_web_reda";
+const DB_PWD = "hsrRXeJu5wDD";
+const DB_PORT = 3307; // MariaDB uses port 3307 by default
 const DB_CHARSET = "utf8mb4";
 
 const APP_MODE = "dev";

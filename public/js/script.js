@@ -20,7 +20,7 @@ fetch('./index.php?getjson')
       const marker = L.marker([point.latitude, point.longitude])
         .addTo(map)
         .bindPopup(
-          `<strong>${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong>
+          `<strong> ${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong>
 
           ${point.adresse.replace(/</g, '&lt;').replace(/>/g, '&gt;')} ${point.numero}
 
@@ -37,7 +37,7 @@ fetch('./index.php?getjson')
       li.dataset.lat = point.latitude;
       li.dataset.lng = point.longitude;
       li.style.cursor = 'pointer';
-      li.innerHTML = `<strong>${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong> — ${point.adresse} ${point.numero}, ${point.ville}`;
+      li.innerHTML = `hehehe<strong>hellooo ${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong> — ${point.adresse} ${point.numero}, ${point.ville}`;
       li.addEventListener('click', function(){
         // Retirer classe active des autres
         document.querySelectorAll('#loc-list .active').forEach(el => el.classList.remove('active'));

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MVC-CRUD-Procedural | Connexion</title>
   <link rel="icon" type="image/x-icon" href="img/logo.png"/>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -25,7 +24,7 @@
 <?php
   include "menu.html.php";
 ?>
-<h1 class="mb-4 text-center">MVC-CRUD-Procedural | Connexion</h1>
+<h1 class="mb-4 text-center">MY-MAP: PAGE D'ADMINISTRATION</h1>
 <div class="container">
   <div class="bg-secondary bg-opacity-50 p-4 rounded shadow-sm mb-5">
     <h1>ADMIN</h1>
@@ -44,9 +43,9 @@
     endif;
     ?>
 </div>
-  <div class="table-responsive d-none d-md-block">
-    <table class="table table-hover align-middle bg-white rounded">
-      <thead class="table-dark">
+  <div class="table-responsive">
+    <table class="table table-responsive table-hover align-middle bg-white rounded ">
+      <thead class="table-dark ">
       <tr>
         <th scope="col">Nom</th>
         <th scope="col">Adresse</th>
@@ -59,7 +58,7 @@
         <th scope="col" class="text-center">Supprimer</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody >
       <?php foreach ($marks as $marker): ?>
       <tr>
         <td>
@@ -85,10 +84,10 @@
           <?=$marker['longitude'] ?>
         </td>
         <td>
-          <a href="?pg=update&id=<?= $marker['id']?>" class="btn btn-warning btn-sm">Modifier</a>
+          <a href="?pg=update&id=<?= $marker['id']?>" class="btn btn-warning btn-sm btn-anim">Modifier</a>
         </td>
         <td>
-          <a href="?pg=delete&id=<?= $marker['id'] ?>" class="btn btn-sm btn-danger">Supprimer</a>
+          <a href="?pg=delete&id=<?= $marker['id'] ?>" class="btn btn-sm btn-danger btn-anim">Supprimer</a>
         </td>
 
         <?php endforeach; ?>

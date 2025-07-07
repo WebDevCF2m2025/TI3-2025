@@ -4,7 +4,7 @@ require_once "../model/localisationsModel.php";
 require_once "../model/utilisateursModel.php";
 
 if (isset($_GET['getjson'])) {
-  $markers = getAllMarkers($db);
+  $markers = getAllMarkersFrontPage($db);
   header('Content-Type: application/json');
   echo json_encode($markers);
   exit();
@@ -69,7 +69,7 @@ if (isset($_GET['pg'])) {
     if (isset($_POST['nom'], $_POST['adresse'] ,$_POST['codepostal'], $_POST['ville'],$_POST['nb_velos'], $_POST['latitude'], $_POST['longitude'])) {
       $insert = addMarker($db, $_POST);
       if ($insert === true) {
-        echo "ok";
+        $merci = true;
       } else {
         $error = true;
       }
@@ -109,4 +109,4 @@ if (isset($_GET['pg'])) {
   require_once "../view/public/homepage.html.php";
 
 }
-echo "Hello from PrivateCon @troller!";
+// echo "Hello from PrivateCon @troller!";

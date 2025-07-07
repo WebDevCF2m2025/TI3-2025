@@ -13,7 +13,10 @@
       $activeHome = "active";
     }elseif($_GET['pg']==="admin"){
       $activeAdmin = "active";
+    }elseif($_GET['pg']==="addMarker"){
+      $activeMarker = "active";
     }
+
     ?>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <div class="navbar-nav ms-auto">
@@ -23,8 +26,9 @@
         // si nous sommes connectés
         if(isset($_SESSION['username'])):
           ?>
-          <span class="nav-link small"> | <?=$_SESSION['username']?></span>
+          <a class="nav-link <?=$activeMarker?>" href="./?pg=addMarker">Marqueurs</a>
           <a class="nav-link <?=$activeAdmin?>" href="./?pg=admin">Administration</a>
+          <span class="nav-link small"> | <?=$_SESSION['username']?></span>
           <a class="nav-link" href="./?pg=logout">Déconnexion</a>
 
         <?php

@@ -1,7 +1,7 @@
-<div class="navbar navbar-expand-lg bg-white border-bottom shadow-sm mb-4">
+<div class="navbar navbar-expand-lg bg-dark border-bottom shadow-sm mb-4">
   <div class="container">
     <a class="navbar-brand fw-bold" href="./">
-      <img src="./img/logo.png" alt="Logo CF2M" height="40" class="me-2">
+      <h4>My-Map</h4>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
       <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,6 @@
       <div class="navbar-nav ms-auto">
         <!-- Correction : usage cohérent de ?pg=... -->
         <a class="nav-link <?=$activeHome?>" href="./">Accueil</a>
-        <a class="nav-link <?=$activeAbout?>" href="./?pg=about">À propos</a>
         <?php
         // si nous sommes connectés
         if(isset($_SESSION['username'])):

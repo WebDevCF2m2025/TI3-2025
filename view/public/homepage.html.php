@@ -16,14 +16,14 @@
 </head>
 <body>
 <div class="top-page">
-  <h1>Carte interactive</h1>
-  <h3>Parcours BD à Bruxelles</h3>
+  <h1 class="title">My-Map</h1>
+  <h3 class="sd-title" >Carte interactive</h3>
   <?php
   // Si l'utilisateur est connecté, on affiche le bouton de déconnexion
   if (isset($_SESSION['username'])) :
   ?>
-  <button><a href="?pg=logout"> Déconnexion </a></button>
-  <button><a href="?pg=admin"> Administration </a></button>
+  <button style="margin-right: 20px" class="anime"><a href="?pg=logout"> Déconnexion </a></button>
+  <button class="anime"><a href="?pg=admin"> Administration </a></button>
   <?php
   else:
   ?>
@@ -31,19 +31,18 @@
   <?php
   endif;
   ?>
-
 </div>
 
 <div class="main-page">
-  <div class="map-container" style="width: 1000px" >
+  <div class="map-container" >
     <div id="map" ></div>
   </div>
 
   <div class="points">
-    <div style="text-align: center">liste des Points</div>
-    <p style="text-align: center">Cliquez sur un element ci-dessous pour le situer sur la carte.</p>
+    <div class="lst" style="text-align: center">liste des Points</div>
+    <p class="lst" style="text-align: center">Cliquez sur un element ci-dessous pour le situer sur la carte.</p>
     <hr>
-    <div class="point">
+    <div id="sidebar" class="point sidebar">
     <ul id="loc-list"></ul>
     </div>
   </div>

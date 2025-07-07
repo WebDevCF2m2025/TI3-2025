@@ -14,12 +14,11 @@ include "menu.html.php";
 ?>
 <h1 class="mb-4 text-center">MVC-CRUD-Procedural | Connexion</h1>
 <div class="container">
-  <div class="bg-white p-4 rounded shadow-sm mb-5">
-    <h3 class="mb-4 ">Tu es un C2 ?</h3>
-    <h2 class="mb-4 text-center">Veuillez-vous connecter</h2>
+  <div class="bg-dark p-4 rounded shadow-sm mb-5 map-container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <div class="bg-white rounded shadow-sm p-4">
+        <div class="bg-dark rounded shadow-sm p-4 ">
+          <h2>Veuillez vous connectez </h2>
           <div class="mt-3 <?=$displaySucces?>  alert alert-success" id="successMessage">Merci de vous être connecté !</div>
           <div class="mt-3 <?=$displayError?> alert alert-danger" id="errorMessage">Login et/ou mot de passe
             incorrecte !</div>

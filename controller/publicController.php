@@ -5,7 +5,7 @@ require_once "../model/utilisateursModel.php";
 if(isset($_GET['pg'])){
   if($_GET['pg'] === "login"){
     // création des variables qui affichent le succès/ erreur de connexion
-    $displaySuces = "d-none"; // non visible par défaut
+    $displaySucces = "d-none"; // non visible par défaut
     $displayError = "d-none"; // non visible par défaut
     $displayForm = ""; // affichage du formulaire visible par défaut
 
@@ -13,7 +13,7 @@ if(isset($_GET['pg'])){
     if(isset($_POST['username']) && isset($_POST['passwd'])){
       // si c'est le bon utilisateur
       if(connectUser($db, $_POST['username'], $_POST['passwd'])){
-        $displaySuces = ""; // succès visible
+        $displaySucces = ""; // succès visible
         $displayForm = "d-none"; // on cache le formulaire
         // création d'un javascript de redirection
         $jsRedirect = "<script>
@@ -31,10 +31,10 @@ if(isset($_GET['pg'])){
   }
 }else{
   // chargement du marqueur pour la carte
-  $markers = getAllMarkers($db);
+  $markers = getAllMarkersFrontPage($db);
   // si on veut récupérer les marqueurs en json
   if (isset($_GET['getjson'])) {
-    $markers = getAllMarkers($db);
+    $markers = getAllMarkersFrontPage($db);
     header('Content-Type: application/json');
     echo json_encode($markers);
     exit();
@@ -43,4 +43,4 @@ if(isset($_GET['pg'])){
   }
 }
 
-echo "Hello from PublicController!";
+// echo "Hello from PublicController!";
