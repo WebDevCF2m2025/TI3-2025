@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-lg bg-dark border-bottom shadow-sm mb-4">
+<div class="navbar navbar-expand-lg bg-light border-bottom shadow-sm mb-4 rounded-3">
   <div class="container">
     <a class="navbar-brand fw-bold" href="./">
       <h4>My-Map</h4>

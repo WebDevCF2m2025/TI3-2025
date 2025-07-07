@@ -26,10 +26,10 @@ try {
 // Vérifier si l'utilisateur est connecté
 if (isset($_SESSION['username'])) {
   // Si l'utilisateur est connecté, charger le contrôleur privé
-  require_once "../controller/PrivateController.php";
+  require_once "../controller/privateController.php";
 } else {
   // Sinon, charger le contrôleur public
-  require_once "../controller/PublicController.php";
+  require_once "../controller/publicController.php";
 }
 
 // Si nous sommes en mode développement, afficher la barre de débogage

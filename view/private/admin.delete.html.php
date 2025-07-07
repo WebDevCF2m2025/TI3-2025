@@ -8,7 +8,7 @@
   <style>
     body {
 
-      font-family: "impact Strive", ui-serif;
+      font-family: "impact-Strive", ui-serif;
       color: white;
     }
     h3 {

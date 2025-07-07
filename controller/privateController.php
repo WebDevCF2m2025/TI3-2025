@@ -93,8 +93,8 @@ if (isset($_GET['pg'])) {
       $update = updateMarkerById($db, $_POST['id'], $_POST['nom'], $_POST['adresse'], $_POST['codepostal'], $_POST['ville'], $_POST['nb_velos'],
         $_POST['latitude'], $_POST['longitude']);
       if ($update === true) {
-        header("Location: ./?pg=admin");
         $merci = true;
+        header("Location: ./?pg=admin");
         $displayForm = "d-none"; // on cache le formulaire
       } else {
         $error = "Erreur lors de la modification d'un article";

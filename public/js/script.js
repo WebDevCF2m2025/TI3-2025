@@ -1,4 +1,12 @@
 
+// Fix pour les icônes de Leaflet (à mettre avant tout ajout de marqueur)
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
 
 let map = L.map('map').setView([50.8301436, 4.3402184], 13);
 
@@ -37,7 +45,7 @@ fetch('./index.php?getjson')
       li.dataset.lat = point.latitude;
       li.dataset.lng = point.longitude;
       li.style.cursor = 'pointer';
-      li.innerHTML = `hehehe<strong>hellooo ${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong> — ${point.adresse} ${point.numero}, ${point.ville}`;
+      li.innerHTML = `<strong>${point.nom.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</strong> — ${point.adresse} ${point.numero}, ${point.ville}, ${point.codepostal}`;
       li.addEventListener('click', function(){
         // Retirer classe active des autres
         document.querySelectorAll('#loc-list .active').forEach(el => el.classList.remove('active'));

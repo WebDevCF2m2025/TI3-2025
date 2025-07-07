@@ -1,10 +1,10 @@
 
 
 @font-face {
-  font-family: 'impact Strive';
+  font-family: 'impact-Strive';
   font-style: normal;
   font-weight: normal;
-  src: url("../font/impact Strive.otf") format("opentype");
+  src: url("../font/impact-Strive.otf") format("opentype");
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
@@ -19,8 +19,8 @@ body {
   background: linear-gradient(45deg, #CA0C0C, #000, #216A75, #000, #D4D8DE);
   background-size: 400% 400%;
   animation: gradient 25s ease infinite;
-  font-family: "impact Strive", ui-serif;
-  color: white;
+  font-family: "impact-Strive", ui-serif;
+  color: white !important;
 }
 
 @keyframes gradient {
@@ -155,7 +155,7 @@ body {
   list-style: none;
   position: absolute;
   width: 500px;
-  top: 20%;
+  top: 25%;
   left: 0;
   z-index: 1000;
 }

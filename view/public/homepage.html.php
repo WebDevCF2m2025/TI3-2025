@@ -13,6 +13,12 @@
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
           crossorigin=""></script>
   <title>Carte interactif</title>
+  <style>
+    body {
+      font-family: "impact-Strive", ui-serif;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 <div class="top-page">

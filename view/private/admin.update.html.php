@@ -8,19 +8,12 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <style>
-    body {
-
-      font-family: "impact Strive", ui-serif;
-      color: white;
-    }
-  </style>
 </head>
 <body class="bg-light">
 <?php
 include "menu.html.php";
 ?>
-<div class="container">
+<div class="container text-light">
   <div class="bg-dark p-4 rounded shadow-sm mb-5  ">
     <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
     <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
@@ -28,7 +21,7 @@ include "menu.html.php";
     <?php
     if(isset($merci)):
       ?>
-      <h4 class="alert alert-success">Merci pour votre mise à jour !</h4>
+      <h4 class="alert alert-success">Votre marqueur a été mis a jour !</h4>
       <script>
         setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
       </script>

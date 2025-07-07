@@ -17,7 +17,7 @@
   <style>
     body {
 
-      font-family: "impact Strive", ui-serif;
+      font-family: "impact-Strive", ui-serif;
       color: white;
     }
   </style>
@@ -26,7 +26,7 @@
 <?php
 include "menu.html.php";
 ?>
-<div class="container ">
+<div class="container text-light ">
   <div class="bg-dark p-4 rounded shadow-sm mb-5">
     <h4 class="mb-3 text-left mb-3"><a href="?pg=admin">Retour à l'administration</a></h4>
     <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
