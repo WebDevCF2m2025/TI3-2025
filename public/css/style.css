@@ -1,0 +1,158 @@
+ /* ========================= CSS GÉNÉRAL ==================== */
+ body.bg-dark {
+    background: #18191a;
+    color: #f8f9fa;
+    min-height: 100vh;
+    font-family: "Space Grotesk", "Segoe UI", "Roboto", "Arial", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 30px 0;
+}
+
+h2, h3 {
+    text-align: center;
+    margin: 14px 0 10px 0;
+}
+
+.text-brand {
+    color: #66bfff;
+    letter-spacing: 1px;
+}
+
+
+.text-secondary {
+    color: #cfd8dc;
+}
+.h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card {
+    background-color: #23272b !important;
+    color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px #12121244;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid #242424;
+    box-sizing: border-box;
+}
+
+.actions-bar {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 12px 8px;
+    min-width: 180px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.btn-primary {
+    background: #1976d2;
+    color: #fff;
+    border: 1px solid #2196f3;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: #1565c0;
+    color: #fff;
+}
+.btn-outline {
+    background: transparent;
+    color: #66bfff;
+    border: 1px solid #66bfff;
+}
+.btn-outline:hover, .btn-outline:focus {
+    background: #66bfff;
+    color: #23272b;
+}
+
+
+/* ========================= MAP ============================ */
+#map {
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 0 2px 24px #12121233;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 500px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto 24px auto;
+    box-sizing: border-box;
+}
+
+/* ================== LISTE DES POINTS ====================== */
+#points {
+    overflow-y: auto;
+    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 500px;
+
+    /* Pour alignement */
+}
+
+#points hr {
+    border-color: #495057;
+}
+#points p {
+    text-align: center;
+    color: #b1bad3;
+    font-size: 1rem;
+}
+#points ul {
+    list-style-type: disc;
+    padding-left: 32px;
+}
+#points li {
+    margin-bottom: 5px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.16s;
+}
+#points li:hover {
+    background: #334656;
+}
+
+.muted {
+    color: #b1bad3 !important;
+}
+
+
+/* =============== ÉCRAN LARGE (+ de 640px) ================= */
+@media (min-width: 641px) {
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    #map, #points {
+        height: 500px;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+}
