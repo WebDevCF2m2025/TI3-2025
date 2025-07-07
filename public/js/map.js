@@ -2,8 +2,9 @@
 const carte = L.map('carte').setView([50.840816,4.349019], 15);
 
 /* fond de carte */
-L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png', {
-  maxZoom: 20,
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(carte);
 
 // Options pour le fetch() qui va récupérer les données

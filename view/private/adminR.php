@@ -18,7 +18,7 @@ include_once "../view/menu.php";
 <div class="container">
     <div class="bg-dark p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a  class="btn btn-success" href="?pg=adminC">Ajouter une adresse</a></h4>
-<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
+<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p>
         <h3 class="mb-3 text-left mb-3">Gestion des articles</h3>
 
         <?php
