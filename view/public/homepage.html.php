@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
+    <!-- Css -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Leaflet -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="img/map.png">
 </head>
 <body class="bg-dark">
 <h1 class="text-brand">Carte interactive | Accueil</h1>

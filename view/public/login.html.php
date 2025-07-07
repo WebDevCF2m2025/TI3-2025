@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carte interactive | Connexion</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png"/>
-    <!-- Thème Bootswatch darkly -->
+    <!-- Icône -->
+    <link rel="icon" type="image/png" href="img/map.png">
+    <!-- Thème Bootstrap dark via Bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+    <!-- Css -->
     <link rel="stylesheet" href="css/style.admin.css">
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.public.html.php"; ?>

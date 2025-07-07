@@ -1,19 +1,37 @@
+<?php
+if (
+    isset($_GET['pg']) &&
+    $_GET['pg'] === 'update' &&
+    !isset($error) &&
+    !isset($thanks)
+) {
+    $doAnim = true;
+} else {
+    $doAnim = false;
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carte interactive | Administration | Modifier un lieu</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png"/>
+    <!-- Icône -->
+    <link rel="icon" type="image/png" href="img/map.png">
     <!-- Thème Bootstrap dark via Bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+    <!-- Css -->
     <link rel="stylesheet" href="css/style.admin.css">
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.html.php"; ?>
-<h1 class="mb-4 text-center text-light">Carte interactive | Administration | Modifier un lieu</h1>
-<div class="container">
+<h1 class="mb-4 text-center text-light title_home">Carte interactive | Administration | Modifier un lieu</h1>
+<div class="container container_admin">
     <div class="bg-dark p-4 rounded shadow mb-3 text-light">
         <h4 class="mb-3 text-left">
             <a href="?pg=admin" class="btn btn-pagination">&larr; Retour à l'administration</a>
@@ -21,13 +39,13 @@
         <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p>
         <hr class="border-secondary">
         <h2 class="mb-3 text-center">Modifier un lieu</h2>
+        <h4 class="text-light text-center small mb-3">Modifiez les champs nécéssaires</h4>
         <?php if (isset($thanks)): ?>
             <h4 class="alert alert-success text-center">Le lieu a bien été modifié !</h4>
             <script>
                 setTimeout(function(){ window.location.href="./?pg=admin"; },3000);
             </script>
         <?php endif; ?>
-        <h4 class="text-light text-center small mb-3">Modifiez les champs nécéssaires</h4>
         <div class="container px-0">
             <div class="bg-white p-4 rounded shadow-sm">
                 <?php if (isset($error)): ?>
@@ -68,12 +86,17 @@
                         <input type="text" class="form-control" id="longitude" name="longitude" value="<?=htmlspecialchars($point['longitude'])?>" required>
                     </div>
                     <a href="?pg=admin" class="btn btn-secondary me-2">Annuler</a>
-                    <button type="submit" class="btn btn-pagination">Enregistrer les modifications</button>
+                    <button type="submit" class="btn btn-pagination">Sauvegarder</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<?php if($doAnim): ?>
+    <script src="js/script.admin.js"></script>
+<?php endif; ?>
 </body>
 </html>

@@ -1,19 +1,36 @@
+<?php
+if (
+    isset($_GET['pg']) &&
+    $_GET['pg'] === 'admin' &&
+    !isset($_GET['page'])
+) {
+    $doAnim = true;
+} else {
+    $doAnim = false;
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carte interactive | Accueil de l'administration</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png"/>
+    <!-- Icône -->
+    <link rel="icon" type="image/png" href="img/map.png">
     <!-- Thème Bootstrap dark via Bootswatch -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/darkly/bootstrap.min.css" rel="stylesheet">
+    <!-- Css -->
     <link rel="stylesheet" href="css/style.admin.css">
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 </head>
 <body class="bg-dark" data-bs-theme="dark">
 <?php include "_menu.html.php"; ?>
-<h1 class="mb-4 text-center text-light">Carte interactive | Accueil de l'administration</h1>
-<div class="container">
+<h1 class="mb-4 text-center text-light title_home">Carte interactive | Accueil de l'administration</h1>
+<div class="container container_admin">
     <div class="bg-dark p-4 rounded shadow mb-3 text-light">
         <a class="btn btn-pagination mb-3" href="?pg=addLoc">Ajouter une localisation</a>
         <p>Bienvenue sur votre espace d'administration : <?=$_SESSION['username']?></p><hr class="border-secondary">
@@ -51,7 +68,7 @@
                 </thead>
                 <tbody class="table-group-divider">
                 <?php foreach ($points as $point): ?>
-                    <tr>
+                    <tr class="trLoc">
                         <td>
                             <?= $point['id'] ?>
                         </td>
@@ -96,7 +113,7 @@
                         <h5 class="card-title"><?= $point['nom'] ?></h5>
                         <p class="mb-1"><strong>ID :</strong> <?= $point['id'] ?></p>
                         <p class="mb-1"><strong>Adresse :</strong> <?= $point['adresse'] ?></p>
-                        <p class="mb-1"><strong>Numéro :<?= $point['numero'] ?></p>
+                        <p class="mb-1"><strong>Numéro :</strong> <?= $point['numero'] ?></p>
                         <p class="mb-1"><strong>Ville :</strong> <?= $point['ville'] ?></p>
                         <p class="mb-1"><strong>Code postal :</strong> <?= $point['codepostal'] ?></p>
                         <p class="mb-1"><strong>Latitude :</strong> <?= $point['latitude'] ?></p>
@@ -112,7 +129,7 @@
 
 <!-- Pagination -->
 <?php if ($totalPages > 1): ?>
-    <nav aria-label="Pagination" class="mt-4">
+    <nav aria-label="Pagination" class="mt-4 anim_pagination">
         <ul class="pagination justify-content-center">
             <!-- Bouton précédent -->
             <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
@@ -132,7 +149,12 @@
     </nav>
 <?php endif; ?>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<?php if ($doAnim): ?>
+    <script src="js/script.admin.js"></script>
+<?php endif; ?>
+
 </body>
 </html>
