@@ -26,7 +26,7 @@ function addAdresse(PDO $connect, array $datas): bool
     if (empty($adresse) || strlen($adresse) > 200) return false;
 
     $codepostal = (int)$datas['codepostal'];
-    if (empty($codepostal) || $codepostal > 9000) return false;
+    if (empty($codepostal) || $codepostal > 9000 || $codepostal < 1000) return false;
 
     $ville = htmlspecialchars(trim(strip_tags($datas['ville'])));
     if (empty($ville) || strlen($ville) > 100) return false;
@@ -68,7 +68,7 @@ function addAdresse(PDO $connect, array $datas): bool
 
 function getListPublished(PDO $connect): array
 {
-    $request = $connect->prepare("SELECT * FROM `localisations`");
+    $request = $connect->prepare("SELECT * FROM `localisations` ORDER BY `localisations`.`id` DESC");
     try {
         $request->execute();
         $results = $request->fetchAll();
@@ -119,7 +119,7 @@ function updateAdresseById(PDO $connect, array $datas): bool
     if (empty($adresse) || strlen($adresse) > 200) return false;
 
     $codepostal = (int)$datas['codepostal'];
-    if (empty($codepostal) || $codepostal > 9000) return false;
+    if (empty($codepostal) || $codepostal > 9000 || $codepostal < 1000) return false;
 
     $ville = htmlspecialchars(trim(strip_tags($datas['ville'])));
     if (empty($ville) || strlen($ville) > 100) return false;

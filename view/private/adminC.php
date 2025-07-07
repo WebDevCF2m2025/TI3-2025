@@ -20,25 +20,24 @@ include_once "../view/menu.php";
 <div class="container">
     <div class="bg-dark p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a  class="btn btn-success" href="?pg=adminR">Retour à l'administration</a></h4>
-<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Formulaire d'ajout</h3>
+<p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p>
         <?php
         if(isset($merci)):
         ?>
         <h4 class="alert alert-success">Adresse rajouté !</h4>
         <script>
-            setTimeout(function(){ window.location.href="./?pg=admin"; },1500);
+            setTimeout(function(){ window.location.href="./?pg=adminR"; },1500);
         </script>
         <?php
         endif;
         ?>
             <div class="container">
-                <div class="bg-gradient p-4 rounded shadow-sm mb-5">
+                <div class="bg-gradient p-4 rounded shadow-sm my-5">
                     <h2 class="mb-3 text-center mb-5">Ajouter d'une adresse</h2>
                     <!-- on affiche l'erreur -->
                     <?php if (isset($probleme)): ?>
                         <div class="alert alert-danger">Erreur lors de l'insertion de l'adresse</div>
-                        <a href="javascript:history.go(-1);">Revenir sur l'adresse</a>
+                        <a href="javascript:history.go(-1);" class="btn btn-warning">Revenir sur l'adresse</a>
                         <hr>
                     <?php endif; ?>
                     <form action="" method="post" name="list">
@@ -82,13 +81,5 @@ include_once "../view/menu.php";
                 </div>
             </div>
         </div>
-    <script>
-        // affichage du formulaire si on choisit publier.
-        document.getElementById('articlepublished').addEventListener('change', function () {
-            const dateContainer = document.getElementById('dateContainer');
-            dateContainer.classList.toggle('d-none', !this.checked);
-        });
-    </script>
-    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

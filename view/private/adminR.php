@@ -98,7 +98,6 @@ include_once "../view/menu.php";
         </div>
 
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

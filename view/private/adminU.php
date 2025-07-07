@@ -18,8 +18,7 @@ include_once "../view/menu.php";
 <div class="container">
     <div class="bg-dark p-4 rounded shadow-sm mb-5">
         <h4 class="mb-3 text-left mb-3"><a  class="btn btn-success" href="?pg=adminR">Retour à l'administration</a></h4>
-        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p><hr>
-        <h3 class="mb-3 text-left mb-3">Modifier l'adresse "<?=$adresseU['nom']?>"</h3>
+        <p>Bienvenue sur votre espace d'administration <?=$_SESSION['username']?></p>        
         <?php
         if(isset($merci)):
         ?>
@@ -31,12 +30,12 @@ include_once "../view/menu.php";
         endif;
         ?>
             <div class="container">
-                <div class="bg-gradient p-4 rounded shadow-sm mb-5">
-                    <h2 class="mb-3 text-center mb-5">Modification de l'adresse</h2>
+                <div class="bg-gradient p-4 rounded shadow-sm my-5">
+                    <h3 class="mb-3 text-left mb-3">Modifier l'adresse "<?=$adresseU['nom']?>"</h3>
                     <!-- on affiche l'erreur -->
                     <?php if (isset($error)): ?>
                         <div class="alert alert-danger"><?=$error?></div>
-                    <a href="javascript:history.go(-1);">Revenir sur l'adresse</a>
+                    <a href="javascript:history.go(-1);" class="btn btn-warning">Revenir sur l'adresse</a>
                     <hr>
                     <?php endif; ?>
                     <form action="" method="post" name="list">
@@ -81,6 +80,5 @@ include_once "../view/menu.php";
             </div>
         </div>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
