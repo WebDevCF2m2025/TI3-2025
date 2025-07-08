@@ -1,0 +1,201 @@
+
+
+@font-face {
+  font-family: 'impact-Strive';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/impact-Strive.otf") format("opentype");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1em;
+  background: linear-gradient(45deg, #CA0C0C, #000, #216A75, #000, #D4D8DE);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
+  font-family: "impact-Strive", ui-serif;
+  color: white !important;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 75% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.title {
+  font-size: 3.5em;
+  letter-spacing: 5px;
+}
+
+.sd-title {
+  font-size: 4em;
+}
+
+.top-page {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.top-page button{
+  position: relative;
+  padding: 5px 10px;
+  width: 150px;
+  background: linear-gradient(0deg, #000, #272727);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.top-page button:before, .top-page button:after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  background: linear-gradient(45deg, #CA0C0C, #000, #216A75,#D4D8DE, #FFF, #CA0C0C,
+  #000, #216A75,#D4D8DE, #FFF);
+  background-size: 400%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 5px;
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+
+.top-page button:after {
+  filter: blur(10px);
+}
+
+
+.top-page button a {
+  font-family: "Quintessential", cursive;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+
+}
+
+.top-page button:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: paused;
+}
+
+#map{
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(0deg, #000, #272727);
+}
+
+.map-container:before, .map-container:after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  background: linear-gradient(45deg, #FFF, #000, #FFF, #FFF, #000, #FFF,
+  #FFF, #FFF,#000, #FFF);
+  background-size: 500%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  z-index: -1;
+  border-radius: 10px;
+  animation: steam 55s linear infinite;
+}
+#map:after {
+  filter: blur(10px);
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+
+
+.top-page button:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.main-page{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 200px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 870px;
+  border-radius: 10px;
+}
+#loc-list {
+  list-style: none;
+  position: absolute;
+  width: 500px;
+  top: 25%;
+  left: 0;
+  z-index: 1000;
+}
+.lst {
+  display: none;
+}
+
+@media (max-width: 1150px) {
+  .map-container{
+    width: 90%;
+    height: 400px;
+  }
+  .main-page {
+    flex-direction: column;
+    align-items: center;
+  }
+  #loc-list {
+    margin-top: 25px;
+    list-style: none;
+    width: 500px;
+    position: static;
+  }
+  .lst {
+    display: block;
+  }
+}
+
+
+
+
+#loc-list li {
+  font-size: 1.2em;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  font-family: "Quintessential", cursive;
+}
+
+#loc-list li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
